@@ -1,0 +1,332 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String         @id @default(cuid())
+  name              String?
+  email             String         @unique
+  password          String
+  phone             String?
+  avatar            String?
+  role              UserRole       @default(CLIENT)
+  rating            Float?         @default(0.0)
+  bio               String?
+  skills            String[]       @default([])
+  location          String?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  language          String         @default("sq")
+  pushNotifications Boolean        @default(true)
+  smsAlerts         Boolean        @default(false)
+  theme             String         @default("light")
+  
+  // Marketplace & Provider statuses
+  providerStatus    ProviderStatus @default(NONE)
+  sellerStatus      SellerStatus   @default(NONE)
+
+  // Professional relations
+  applications      ProviderApplication[]
+  portfolioItems    PortfolioItem[]
+  courses           Course[]
+  documents         Document[]
+
+  appointments      Appointment[]
+  disputes          Dispute[]
+  clientJobs        Job[]          @relation("ClientJobs")
+  providerJobs      Job[]          @relation("ProviderJobs")
+  messagesSent      Message[]      @relation("MessageSender")
+  notifications     Notification[]
+  sentOffers        Offer[]        @relation("ProviderOffers")
+  reviewsReceived   Review[]       @relation("Reviewee")
+  reviewsWritten    Review[]       @relation("Reviewer")
+  services          Service[]
+  conversations     Conversation[] @relation("ConversationParticipants")
+  
+  // Marketplace relations
+  products          Product[]      @relation("SellerProducts")
+  salesAsSeller     Sale[]         @relation("SellerSales")
+  purchasesAsBuyer  Sale[]         @relation("BuyerPurchases")
+
+  @@map("users")
+}
+
+model Job {
+  id          String    @id @default(cuid())
+  title       String
+  description String
+  location    String
+  budget      String
+  status      JobStatus @default(OPEN)
+  proofImages String[]  @default([])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  clientId    String
+  providerId  String?
+  category    String?
+  dispute     Dispute?
+  client      User      @relation("ClientJobs", fields: [clientId], references: [id])
+  provider    User?     @relation("ProviderJobs", fields: [providerId], references: [id])
+  offers      Offer[]
+  review      Review?
+
+  @@map("jobs")
+}
+
+model Dispute {
+  id          String        @id @default(cuid())
+  reason      String
+  status      DisputeStatus @default(OPEN)
+  resolution  String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  jobId       String        @unique
+  createdById String
+  createdBy   User          @relation(fields: [createdById], references: [id])
+  job         Job           @relation(fields: [jobId], references: [id])
+
+  @@map("disputes")
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  price       Float
+  category    String
+  location    String?
+  images      String[] @default([])
+  providerId  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  duration    String?
+  isActive    Boolean  @default(true)
+  provider    User     @relation(fields: [providerId], references: [id])
+
+  @@map("services")
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  rating     Int
+  comment    String?
+  jobId      String   @unique
+  reviewerId String
+  revieweeId String
+  createdAt  DateTime @default(now())
+  job        Job      @relation(fields: [jobId], references: [id])
+  reviewee   User     @relation("Reviewee", fields: [revieweeId], references: [id])
+  reviewer   User     @relation("Reviewer", fields: [reviewerId], references: [id])
+
+  @@map("reviews")
+}
+
+model Conversation {
+  id           String    @id @default(cuid())
+  updatedAt    DateTime  @updatedAt
+  messages     Message[]
+  participants User[]    @relation("ConversationParticipants")
+
+  @@map("conversations")
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  content        String
+  read           Boolean      @default(false)
+  conversationId String
+  senderId       String
+  createdAt      DateTime     @default(now())
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  sender         User         @relation("MessageSender", fields: [senderId], references: [id])
+
+  @@map("messages")
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  type      String
+  message   String
+  read      Boolean  @default(false)
+  link      String?
+  userId    String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("notifications")
+}
+
+model Appointment {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  date        DateTime
+  status      String   @default("SCHEDULED")
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@map("appointments")
+}
+
+model Offer {
+  id         String      @id @default(cuid())
+  price      Float
+  message    String?
+  status     OfferStatus @default(PENDING)
+  jobId      String
+  providerId String
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  job        Job         @relation(fields: [jobId], references: [id])
+  provider   User        @relation("ProviderOffers", fields: [providerId], references: [id])
+
+  @@map("offers")
+}
+
+model Product {
+  id          String        @id @default(cuid())
+  name        String
+  description String
+  price       Float
+  images      String[]      @default([])
+  category    String
+  status      ProductStatus @default(ACTIVE)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  sellerId    String
+  seller      User          @relation("SellerProducts", fields: [sellerId], references: [id])
+
+  sales       Sale[]
+  @@map("products")
+}
+
+model Sale {
+  id               String     @id @default(cuid())
+  productId        String
+  product          Product    @relation(fields: [productId], references: [id])
+  
+  buyerId          String
+  buyer            User       @relation("BuyerPurchases", fields: [buyerId], references: [id])
+  
+  sellerId         String
+  seller           User       @relation("SellerSales", fields: [sellerId], references: [id])
+  
+  totalAmount      Float
+  commissionAmount Float      // 8% platform fee
+  netoAmount       Float      // total - commission
+  status           SaleStatus @default(PENDING)
+  createdAt        DateTime   @default(now())
+
+  @@map("sales")
+}
+
+model ProviderApplication {
+  id          String         @id @default(cuid())
+  userId      String
+  user        User           @relation(fields: [userId], references: [id])
+  category    String
+  bio         String
+  experience  String
+  status      ProviderStatus @default(PENDING)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@map("provider_applications")
+}
+
+model PortfolioItem {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  imageUrl    String
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+
+  @@map("portfolio_items")
+}
+
+model Course {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  videoUrl    String?
+  price       Float    @default(0.0)
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+
+  @@map("courses")
+}
+
+model Document {
+  id          String   @id @default(cuid())
+  name        String
+  url         String
+  type        String   // CONTRACT, CERTIFICATE, etc.
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+
+  @@map("documents")
+}
+
+enum UserRole {
+  CLIENT
+  PROVIDER
+  ADMIN
+}
+
+enum ProviderStatus {
+  NONE
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum SellerStatus {
+  NONE
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum JobStatus {
+  OPEN
+  IN_PROGRESS
+  COMPLETED
+  DISPUTED
+  CANCELLED
+}
+
+enum DisputeStatus {
+  OPEN
+  RESOLVED_CLIENT
+  RESOLVED_PROVIDER
+}
+
+enum OfferStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+enum ProductStatus {
+  ACTIVE
+  SOLD
+  DELETED
+}
+
+enum SaleStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+}
