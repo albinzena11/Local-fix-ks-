@@ -1,0 +1,736 @@
+{
+    "header": {
+        "title": "LocalFIX - Ihr Marktplatz für lokale Dienstleistungen",
+        "searchService": "Service finden",
+        "offerService": "Service anbieten",
+        "login": "Anmelden",
+        "register": "Registrieren",
+        "dashboard": "Dashboard",
+        "profile": "Profil",
+        "messages": "Nachrichten",
+        "logout": "Abmelden",
+        "marketplace": "Marktplatz",
+        "adminPanel": "Admin-Bereich"
+    },
+    "hero": {
+        "title": "Finden Sie zuverlässige Anbieter für jeden lokalen Service",
+        "subtitle": "Die vertrauenswürdigste Plattform zum Finden und Anbieten lokaler Dienstleistungen",
+        "seeAllJobs": "Alle Jobs anzeigen",
+        "badge": "Plattform Nr. 1 in Albanien",
+        "ourServices": "Unsere Dienstleistungen",
+        "discoverMore": "Mehr entdecken",
+        "whyChooseUs": "Warum uns wählen?",
+        "or": "oder"
+    },
+    "categories": {
+        "title": "Unsere beliebtesten Dienstleistungen",
+        "subtitle": "Wählen Sie aus einer breiten Palette von Dienstleistungen, die von verifizierten Fachleuten angeboten werden"
+    },
+    "services": {
+        "home": "Haus & Familie",
+        "homeDescription": "Dienstleistungen für Ihr Zuhause",
+        "repair": "Reparaturen",
+        "repairDescription": "Alle Arten von Reparaturen",
+        "electrical": "Elektriker",
+        "plumbing": "Installateur",
+        "cleaning": "Reinigung",
+        "construction": "Bauwesen",
+        "it": "IT & Technologie",
+        "painting": "Malerei",
+        "transport": "Transport",
+        "assembly": "Montage",
+        "care": "Pflege",
+        "plumbingDescription": "Sanitär-Spezialisten",
+        "electricalDescription": "Elektrofachkräfte",
+        "itDescription": "Technologielösungen",
+        "cleaningDescription": "Professionelle Reinigung"
+    },
+    "buttons": {
+        "submit": "Absenden",
+        "cancel": "Abbrechen",
+        "save": "Speichern",
+        "search": "Suche"
+    },
+    "forms": {
+        "name": "Name",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "password": "Passwort",
+        "confirmPassword": "Passwort bestätigen",
+        "location": "Standort",
+        "description": "Beschreibung",
+        "budget": "Budget"
+    },
+    "auth": {
+        "loginTitle": "Anmeldung zum Konto",
+        "registerTitle": "Neues Konto erstellen",
+        "noAccount": "Sie haben noch kein Konto?",
+        "haveAccount": "Sie haben bereits ein Konto?",
+        "emailPlaceholder": "name@email.com",
+        "passwordPlaceholder": "••••••••",
+        "forgotPassword": "Passwort vergessen?",
+        "signIn": "Anmelden",
+        "signingIn": "Anmeldung...",
+        "registerHere": "Hier registrieren",
+        "registerProvider": "Als Dienstleister registrieren",
+        "registerClient": "Als Kunde registrieren",
+        "createAccount": "Neues Konto erstellen",
+        "joinClient": "Treten Sie unserer Kunden-Community bei",
+        "joinProvider": "Als Dienstleister registrieren",
+        "fullName": "Vollständiger Name",
+        "fullNameBox": "Geben Sie Ihren Namen ein",
+        "phone": "Telefon (Optional)",
+        "phoneBox": "+355 XX XXX XXXX",
+        "location": "Standort (Optional)",
+        "locationBox": "Stadt, Region",
+        "roleLabel": "Ich möchte mich registrieren als:",
+        "roleClient": "Kunde (Ich suche Dienstleistungen)",
+        "roleProvider": "Anbieter (Ich biete Dienstleistungen an)",
+        "termsAgreement": "Ich stimme den",
+        "terms": "Nutzungsbedingungen",
+        "and": "und",
+        "privacy": "Datenschutzbestimmungen",
+        "registering": "Registrierung...",
+        "registerSuccess": "Registrierung erfolgreich! Sie können sich jetzt anmelden.",
+        "alreadyHaveAccount": "Bereits ein Konto?",
+        "loginHere": "Hier anmelden",
+        "emailError": "Ungültige E-Mail oder Passwort",
+        "generalError": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+        "welcomeBack": "Willkommen zurück",
+        "loginSubtitle": "Melden Sie sich an, um fortzufahren"
+    },
+    "errors": {
+        "fillAllFields": "Bitte füllen Sie alle Pflichtfelder aus",
+        "passwordMinLength": "Das Passwort muss mindestens 6 Zeichen lang sein",
+        "passwordsDoNotMatch": "Passwörter stimmen nicht überein",
+        "invalidEmail": "E-Mail ist ungültig",
+        "registrationFailed": "Bei der Registrierung ist etwas schief gelaufen"
+    },
+    "stats": {
+        "registeredUsers": "Registrierte Benutzer",
+        "completedServices": "Abgeschlossene Dienste",
+        "averageRating": "Durchschnittliche Bewertung",
+        "satisfiedClients": "Zufriedene Kunden",
+        "activeRequests": "Aktive Anfragen",
+        "offersReceived": "Erhaltene Angebote",
+        "hiredProfessionals": "Eingestellte Fachkräfte",
+        "totalExpenses": "Gesamtausgaben",
+        "activeJobs": "Aktive Jobs",
+        "monthlyEarnings": "Monatlicher Verdienst",
+        "profileViews": "Profilansichten"
+    },
+    "dashboard": {
+        "title": "Dashboard",
+        "notifications": {
+            "title": "Benachrichtigungen",
+            "viewAll": "Alle ansehen",
+            "noNotifications": "Keine Benachrichtigungen",
+            "noNotificationsSub": "Hier erscheinen neue Benachrichtigungen",
+            "markAllRead": "Alle als gelesen markieren"
+        },
+        "settings": {
+            "title": "Einstellungen",
+            "profile": "Profil",
+            "viewProfile": "Profil anzeigen",
+            "editProfile": "Profil bearbeiten",
+            "myServices": "Meine Dienste",
+            "account": "Konto",
+            "systemSettings": "Systemeinstellungen",
+            "systemSettingsDesc": "Sprache, Thema und Benachrichtigungen",
+            "security": "Sicherheit",
+            "payments": "Zahlungen",
+            "help": "Hilfe",
+            "helpSupport": "Hilfe & Support"
+        },
+        "userMenu": {
+            "user": "Benutzer",
+            "signOut": "Abmelden"
+        },
+        "welcome": {
+            "clientDesc": "Posten Sie Anfragen, finden Sie qualifizierte Fachkräfte und lösen Sie Ihre Probleme.",
+            "providerDesc": "Verwalten Sie Ihre Jobs, verfolgen Sie Ihre Einnahmen und bauen Sie Ihren Ruf auf.",
+            "joined": "Beigetreten",
+            "today": "Heute"
+        },
+        "searchPlaceholder": "Anfragen, Fachleute oder Hilfe suchen...",
+        "quickActions": {
+            "title": "Schnellaktionen",
+            "postRequest": "Anfrage posten",
+            "postRequestDesc": "Einen Profi anfordern",
+            "findPros": "Profis finden",
+            "findProsDesc": "Angebote durchsuchen",
+            "myHires": "Meine Mitarbeiter",
+            "myHiresDesc": "Auftragshistorie",
+            "support": "Support",
+            "supportDesc": "Kontaktieren Sie uns",
+            "findJobs": "Jobs finden",
+            "findJobsDesc": "Neue Anfragen ansehen",
+            "manageOffers": "Dienste verwalten",
+            "earnings": "Verdienst",
+            "earningsDesc": "Finanzberichte",
+            "providerHelp": "Anbieter-Hilfe",
+            "providerHelpDesc": "Unterstützung für Anbieter",
+            "marketplace": "Marktplatz",
+            "marketplaceDesc": "Kaufen und verkaufen Sie professionelle Werkzeuge"
+        },
+        "recentActivity": {
+            "title": "Letzte Aktivität",
+            "viewAll": "Alle ansehen",
+            "newRequest": "Neue Anfrage",
+            "requestApproved": "Ihre Anfrage wurde genehmigt"
+        },
+        "profileCard": {
+            "title": "Ihr Profil",
+            "status": "Status",
+            "active": "Aktiv",
+            "userId": "Benutzer-ID",
+            "joined": "Beigetreten",
+            "updateProfile": "Profil aktualisieren"
+        },
+        "appointments": {
+            "title": "Anstehende Termine",
+            "noAppointments": "Keine anstehenden Termine",
+            "addNew": "Neuen Termin hinzufügen",
+            "addModal": {
+                "title": "Termin hinzufügen",
+                "labelTitle": "Titel",
+                "labelDate": "Datum & Uhrzeit",
+                "labelDesc": "Beschreibung (Optional)",
+                "placeholderTitle": "z.B. Beratung",
+                "placeholderDesc": "Zusätzliche Details...",
+                "cancel": "Abbrechen",
+                "save": "Termin speichern"
+            }
+        },
+        "tips": {
+            "title": "Tipps für eine bessere Nutzung",
+            "desc": "Nutzen Sie Filter, um Fachleute schneller zu finden, aktualisieren Sie Ihr Profil für bessere Ergebnisse.",
+            "learnMore": "Mehr erfahren"
+        },
+        "debug": {
+            "title": "Debug-Informationen",
+            "devOnly": "Nur Entwicklung"
+        },
+        "becomeProvider": "Bëhu Profesionist",
+        "becomeProviderDesc": "Regjistrohuni si profesionist për të ofruar shërbimet tuaja, për të hapur kurse dhe për të dërguar kontrata pune.",
+        "pendingApproval": "Kërkesa në proces aprovimi",
+        "applyNow": "Apliko Tani",
+        "providerSections": {
+            "portfolio": "Portfolio",
+            "portfolioDesc": "Menaxhoni fotot e punëve tuaja të kryera.",
+            "courses": "Kurse",
+            "coursesDesc": "Ngarkoni kurset tuaja profesionale.",
+            "contracts": "Kontrata",
+            "contractsDesc": "Menaxhoni kontratat e punës.",
+            "viewAll": "Shiko",
+            "add": "Shto"
+        }
+    },
+    "features": {
+        "title": "Warum Local FIX wählen?",
+        "subtitle": "Wir bieten mehr als nur eine Plattform",
+        "securePayment": "Sichere Zahlung",
+        "verifiedProviders": "Verifizierte Anbieter",
+        "satisfactionGuarantee": "Zufriedenheitsgarantie",
+        "realReviews": "Echte Bewertungen",
+        "support247": "24/7 Support",
+        "competitivePrices": "Wettbewerbsfähige Preise",
+        "securePaymentDescription": "Gelder werden auf einem Treuhandkonto gehalten und erst nach Bestätigung der Arbeit freigegeben",
+        "verifiedProvidersDescription": "Alle Anbieter werden mit echten Bewertungen verifiziert",
+        "satisfactionGuaranteeDescription": "Zahlen Sie erst, wenn Sie mit dem Ergebnis zufrieden sind",
+        "realReviewsDescription": "Lesen Sie Bewertungen von echten Kunden, bevor Sie wählen",
+        "support247Description": "Unterstützung während des gesamten Arbeitsprozesses",
+        "competitivePricesDescription": "Preise vergleichen und die beste Option für Ihr Budget wählen"
+    },
+    "home": {
+        "cta": {
+            "title": "Bereit loszulegen?",
+            "subtitle": "Schließen Sie sich heute Tausenden von zufriedenen Kunden und Profis an.",
+            "registerClient": "Als Kunde registrieren",
+            "registerProvider": "Als Anbieter registrieren",
+            "login": "Hier anmelden"
+        }
+    },
+    "faq": {
+        "title": "Häufig gestellte Fragen",
+        "subtitle": "Antworten auf häufig gestellte Fragen finden",
+        "badge": "Häufig gestellte Fragen",
+        "q1": "Wie funktioniert die Bezahlung?",
+        "a1": "Die Zahlung erfolgt über unsere sichere Plattform. Die Gelder werden auf einem Treuhandkonto gehalten, bis die Arbeit abgeschlossen ist.",
+        "q2": "Sind Fachleute verifiziert?",
+        "a2": "Ja, alle Anbieter durchlaufen einen Identitäts- und Qualifikationsprüfungsprozess.",
+        "q3": "Wie viel kostet die Registrierung?",
+        "a3": "Die Registrierung ist für Kunden kostenlos. Anbieter zahlen nur eine geringe Gebühr für jeden gewonnenen Auftrag.",
+        "q4": "Was ist, wenn ich nicht zufrieden bin?",
+        "a4": "Wir bieten eine Zufriedenheitsgarantie. Bei Problemen wird unser Support-Team vermitteln.",
+        "stillHaveQuestions": "Haben Sie noch Fragen?",
+        "contactUs": "Kontaktieren Sie uns"
+    },
+    "testimonials": {
+        "title": "Was unsere Benutzer sagen",
+        "subtitle": "Tausende zufriedene Benutzer vertrauen uns täglich für ihre lokalen Bedürfnisse.",
+        "badge": "Kundenstimmen"
+    },
+    "trustedBy": {
+        "title": "Vertraut von führenden Unternehmen"
+    },
+    "admin": {
+        "loading": "Admin-Panel wird geladen...",
+        "title": "LocalFIX Admin",
+        "overview": "Übersicht",
+        "usersProviders": "Benutzer & Anbieter",
+        "disputes": "Streitigkeiten",
+        "exit": "Admin beenden",
+        "role": "ADMINISTRATOR"
+    },
+    "blog": {
+        "title": "Blog",
+        "description": "Aktuelle Nachrichten und Tipps von LocalFIX",
+        "readMore": "Mehr lesen",
+        "categories": {
+            "home": "Zuhause",
+            "tips": "Tipps",
+            "news": "Neuigkeiten"
+        }
+    },
+    "footer": {
+        "services": "Dienstleistungen",
+        "company": "Unternehmen",
+        "support": "Support",
+        "legal": "Rechtliches",
+        "about": "Über uns",
+        "howItWorks": "Wie es funktioniert",
+        "trustSafety": "Vertrauen & Sicherheit",
+        "blog": "Blog",
+        "careers": "Karriere",
+        "helpCenter": "Hilfe-Center",
+        "contact": "Kontakt",
+        "faq": "FAQ",
+        "disputes": "Streitbeilegung",
+        "community": "Community",
+        "terms": "Nutzungsbedingungen",
+        "privacy": "Datenschutz",
+        "cookies": "Cookie-Richtlinie",
+        "licenses": "Lizenzen",
+        "accessibility": "Barrierefreiheit",
+        "description": "LocalFIX ist die führende Plattform in Albanien, um Kunden mit den besten lokalen Dienstleistern zu verbinden.",
+        "rights": "Alle Rechte vorbehalten.",
+        "sitemap": "Sitemap",
+        "madeWith": "Erstellt mit",
+        "in": "in",
+        "location": "Albanien & Kosovo",
+        "tagline": "Professionelle Dienstleistungen",
+        "no1Albania": "Plattform Nr. 1 in Albanien."
+    },
+    "about": {
+        "title": "Über uns",
+        "description": "Erfahren Sie mehr über LocalFIX",
+        "mission": {
+            "title": "Unsere Mission",
+            "desc": "LocalFIX ist die führende Plattform zur Verbindung von Einzelpersonen mit qualifizierten Fachkräften für Haus- und Geschäftsdienstleistungen."
+        },
+        "history": {
+            "title": "Unsere Geschichte",
+            "desc": "LocalFIX wurde in Tirana gegründet und entstand aus dem Bedürfnis, Transparenz und Qualität in den Markt für lokale Dienstleistungen zu bringen."
+        },
+        "values": {
+            "title": "Unsere Werte",
+            "reliability": "Zuverlässigkeit: Wir überprüfen jeden Profi.",
+            "quality": "Qualität: Hohe Standards für jeden Service.",
+            "transparency": "Transparenz: Klare Preise und keine versteckten Kosten."
+        }
+    },
+    "howItWorksPage": {
+        "title": "Wie es funktioniert",
+        "description": "Ihr Leitfaden zur Nutzung der Plattform",
+        "forClients": {
+            "title": "Für Kunden",
+            "desc": "Posten, wählen und zahlen Sie erst, wenn der Job erledigt ist."
+        },
+        "forProviders": {
+            "title": "Für Anbieter",
+            "desc": "Finden Sie Arbeit, bauen Sie Ihren Ruf auf und steigern Sie Ihren Verdienst."
+        }
+    },
+    "howItWorksComponent": {
+        "title": "Wie funktioniert's?",
+        "step1": {
+            "title": "Anfrage posten",
+            "desc": "Formular in 2 Min ausfüllen"
+        },
+        "step2": {
+            "title": "Angebote annehmen",
+            "desc": "Bestes Angebot wählen"
+        },
+        "step3": {
+            "title": "Sicher bezahlen",
+            "desc": "Geld bleibt sicher"
+        },
+        "step4": {
+            "title": "Service erhalten",
+            "desc": "Arbeit wird professionell erledigt"
+        }
+    },
+    "trustSafety": {
+        "title": "Vertrauen und Sicherheit",
+        "description": "Ihre Sicherheit ist unsere oberste Priorität",
+        "verified": {
+            "title": "Verifizierte Profis",
+            "desc": "Jeder Anbieter durchlaufen einen strengen Identitäts- und Qualifikationsprüfungsprozess."
+        },
+        "payment": {
+            "title": "Zahlungsschutz",
+            "desc": "Ihre Zahlungen werden sicher aufbewahrt und erst freigegeben, wenn Sie mit der Arbeit zufrieden sind."
+        },
+        "secure": {
+            "title": "Sichere Daten",
+            "desc": "Wir verwenden modernste Verschlüsselungstechnologie zum Schutz Ihrer Daten."
+        },
+        "standards": {
+            "title": "Community-Standards",
+            "desc": "Wir tolerieren keine Form von Betrug, Belästigung oder unprofessionalem Verhalten."
+        }
+    },
+    "contactPage": {
+        "title": "Kontakt",
+        "description": "Wir sind hier, um zuzuhören",
+        "form": {
+            "title": "Schreiben Sie uns",
+            "name": "Name",
+            "email": "E-Mail",
+            "message": "Nachricht",
+            "submit": "Nachricht senden"
+        },
+        "info": {
+            "email": "E-Mail",
+            "phone": "Telefon",
+            "workingHours": "Montag - Freitag, 09:00 - 17:00",
+            "offices": "Unsere Büros",
+            "address": "Beispielstraße, Nr. 123, Tirana, Albanien"
+        }
+    },
+    "careers": {
+        "title": "Karriere",
+        "description": "Werden Sie Teil des LocalFIX-Teams",
+        "hiring": "Wir stellen ein!",
+        "hiringDesc": "Haben Sie Leidenschaft für Technologie und lokale Dienstleistungen? Wir möchten Sie kennenlernen.",
+        "viewPositions": "Offene Stellen ansehen",
+        "activePositions": "Aktive Stellen",
+        "apply": "Bewerben"
+    },
+    "community": {
+        "title": "Community",
+        "description": "Treten Sie der LocalFIX-Community bei",
+        "forum": {
+            "title": "Diskussionsforen",
+            "desc": "Sprechen Sie mit anderen Mitgliedern, tauschen Sie Wohntipps aus und teilen Sie Ihre Erfahrungen.",
+            "cta": "Zum Forum"
+        },
+        "expert": {
+            "title": "Fragen Sie einen Experten",
+            "desc": "Haben Sie eine technische Frage? Erhalten Sie Antworten von unseren Top-Profis.",
+            "cta": "Experten fragen"
+        },
+        "success": "Erfolgsgeschichten"
+    },
+    "faqPage": {
+        "title": "Häufig gestellte Fragen (FAQ)",
+        "description": "Antworten auf Ihre häufigsten Fragen",
+        "q1": "Ist LocalFIX kostenlos?",
+        "a1": "Die Registrierung und Suche nach Fachkräften ist für Kunden kostenlos. Dienstleister zahlen einen kleinen Prozentsatz für jeden gewonnenen Auftrag.",
+        "q2": "Wie wird die Servicequalität sichergestellt?",
+        "a2": "Alle Fachkräfte werden verifiziert und von anderen Kunden bewertet. Wir überwachen ständig ihre Leistung.",
+        "q3": "Was ist, wenn ich nicht zufrieden bin?",
+        "a3": "Wir haben eine Kundenschutzrichtlinie. Wenn die Arbeit nicht vereinbarungsgemäß erledigt wurde, werden wir eingreifen.",
+        "q4": "Wie funktioniert die Bezahlung?",
+        "a4": "Sie können sicher über die Plattform bezahlen. Die Gelder werden blockiert, bis die Arbeit abgeschlossen ist."
+    },
+    "terms": {
+        "title": "Nutzungsbedingungen",
+        "lastUpdated": "Zuletzt aktualisiert",
+        "section1": {
+            "title": "1. Annahme der Bedingungen",
+            "content": "Durch den Zugriff auf und die Nutzung von LocalFIX erklären Sie sich mit diesen Bedingungen einverstanden."
+        },
+        "section2": {
+            "title": "2. Nutzung des Dienstes",
+            "content": "Sie sind für die Wahrung der Vertraulichkeit Ihres Kontos verantwortlich."
+        },
+        "section3": {
+            "title": "3. Zahlungen und Gebühren",
+            "content": "Details zu Servicegebühren und Zahlungsabwicklung."
+        },
+        "section4": {
+            "title": "4. Haftung",
+            "content": "LocalFIX agiert als Vermittler und übernimmt keine direkte Verantwortung für die Qualität der Arbeit der Anbieter."
+        }
+    },
+    "privacy": {
+        "title": "Datenschutzrichtlinie",
+        "lastUpdated": "Zuletzt aktualisiert",
+        "section1": {
+            "title": "Datenerhebung",
+            "content": "Wir sammeln Informationen, die Sie uns direkt zur Verfügung stellen, wie Name, E-Mail und Telefonnummer."
+        },
+        "section2": {
+            "title": "Nutzung von Informationen",
+            "content": "Ihre Daten werden verwendet, um Dienste bereitzustellen, die Plattform zu verbessern und zur Kommunikation."
+        },
+        "section3": {
+            "title": "Weitergabe von Daten",
+            "content": "Wir verkaufen Ihre persönlichen Daten nicht an Dritte."
+        },
+        "section4": {
+            "title": "Sicherheit",
+            "content": "Wir treffen angemessene Maßnahmen, um Ihre Informationen vor unbefugtem Zugriff zu schützen."
+        }
+    },
+    "cookiesPage": {
+        "title": "Cookie-Richtlinie",
+        "lastUpdated": "Zuletzt aktualisiert",
+        "intro": "LocalFIX verwendet Cookies, um Ihre Erfahrung auf unserer Website zu verbessern.",
+        "whatAreCookies": {
+            "title": "Was sind Cookies?",
+            "content": "Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden."
+        },
+        "types": {
+            "title": "Arten von Cookies, die wir verwenden",
+            "necessary": "Notwendig: Für das Funktionieren der Website.",
+            "analytical": "Analytisch: Um zu verstehen, wie die Website genutzt wird.",
+            "marketing": "Marketing: Um Ihnen relevante Werbung anzuzeigen."
+        },
+        "control": "Sie können Cookies über Ihre Browsereinstellungen steuern."
+    },
+    "disputesPage": {
+        "title": "Streitbeilegung",
+        "description": "Unser Prozess zur Konfliktlösung",
+        "fairness": {
+            "title": "Fairness-Richtlinie",
+            "content": "Wir fördern die offene Kommunikation zwischen Kunde und Fachkraft. Meist lassen sich Streitigkeiten durch ein Gespräch lösen."
+        },
+        "howToOpen": {
+            "title": "Wie öffnet man einen Fall?",
+            "step1": "Gehen Sie zu den Details des Auftrags im Dashboard.",
+            "step2": "Klicken Sie auf 'Problem melden'.",
+            "step3": "Erklären Sie die Situation und laden Sie Beweise hoch."
+        },
+        "process": {
+            "title": "Mediationsverfahren",
+            "content": "Unser Support-Team wird den Fall prüfen und beide Parteien kontaktieren."
+        },
+        "important": {
+            "title": "Wichtig:",
+            "content": "Machen Sie keine Zahlungen außerhalb der Plattform."
+        }
+    },
+    "accessibility": {
+        "title": "Barrierefreiheit",
+        "intro": "LocalFIX setzt sich dafür ein, seine Plattform für alle zugänglich zu machen.",
+        "standards": {
+            "title": "Standards",
+            "content": "Wir bemühen uns, die Richtlinien für barrierefreie Webinhalte (WCAG) 2.1 zu befolgen."
+        },
+        "features": {
+            "title": "Funktionen",
+            "screenReaders": "Unterstützung für Screenreader.",
+            "contrast": "Hoher Farbkontrast.",
+            "keyboard": "Tastaturnavigation.",
+            "altText": "Alternativtext für Bilder."
+        },
+        "contact": "Bei Problemen kontaktieren Sie uns bitte."
+    },
+    "licenses": {
+        "title": "Lizenzen",
+        "lastUpdated": "Zuletzt aktualisiert",
+        "copyright": {
+            "title": "Urheberrecht",
+            "content": "Alle Inhalte auf dieser Website sind Eigentum von LocalFIX oder seinen Partnern."
+        },
+        "openSource": {
+            "title": "Open-Source-Lizenzen",
+            "content": "Wir verwenden verschiedene Open-Source-Bibliotheken."
+        }
+    },
+    "sitemap": {
+        "title": "Sitemap",
+        "sections": {
+            "main": "Hauptseite",
+            "services": "Dienstleistungen",
+            "company": "Unternehmen",
+            "support": "Support",
+            "legal": "Rechtliches"
+        }
+    },
+    "jobForm": {
+        "title": "Anfrage posten",
+        "description": "Beschreiben Sie, was Sie brauchen, und erhalten Sie Angebote von Profis.",
+        "backToDashboard": "Zurück zum Dashboard",
+        "fullName": "Vor- und Nachname *",
+        "namePlaceholder": "Geben Sie Ihren Namen ein",
+        "phone": "Telefon *",
+        "phonePlaceholder": "+355 XX XXX XXXX",
+        "email": "E-Mail *",
+        "emailPlaceholder": "email@beispiel.com",
+        "jobTitle": "Jobtitel *",
+        "jobTitlePlaceholder": "z.B. Lampenreparatur, Wohnungsreinigung",
+        "category": "Kategorie *",
+        "selectCategory": "Kategorie auswählen",
+        "detailedDescription": "Detaillierte Beschreibung *",
+        "descriptionPlaceholder": "Beschreiben Sie im Detail, was Sie benötigen...",
+        "location": "Standort *",
+        "locationPlaceholder": "z.B. Tirana, Zentrum",
+        "estimatedBudget": "Geschätztes Budget (optional)",
+        "budgetCurrency": "€",
+        "submit": "Anfrage posten",
+        "submitting": "Wird gesendet...",
+        "contactNote": "Sie werden innerhalb von 24 Stunden kontaktiert",
+        "success": "Anfrage erfolgreich gesendet!",
+        "error": "Etwas ist schief gelaufen",
+        "serverError": "Server-Verbindungsfehler",
+        "services": {
+            "electrical": "Elektroreparaturen",
+            "plumbing": "Sanitärreparaturen",
+            "cleaning": "Reinigung & Wartung",
+            "assembly": "Möbelmontage",
+            "it": "IT & Computer-Services",
+            "painting": "Malerarbeiten",
+            "construction": "Bau & Renovierung",
+            "transport": "Transport & Lieferung",
+            "photography": "Fotografie & Video",
+            "care": "Pflege & Assistenz",
+            "other": "Sonstiges"
+        }
+    },
+    "jobList": {
+        "errorLoading": "Fehler beim Laden der Daten",
+        "activeRequests": "Aktive Anfragen",
+        "refresh": "Aktualisieren",
+        "noJobs": "Keine Anfragen",
+        "noJobsSub": "Seien Sie der Erste, der eine Anfrage postet!",
+        "postFirstRequest": "Erste Anfrage posten",
+        "postedBy": "Gepostet von",
+        "viewDetails": "Details anzeigen",
+        "areYouProvider": "Sind Sie ein Anbieter?",
+        "providerPromo": "Bieten Sie Dienste an und verdienen Sie sicher Geld",
+        "guaranteedClients": "Garantierte Kunden",
+        "securePayment": "Sichere Zahlung",
+        "localJobs": "Lokale Jobs",
+        "onlineReputation": "Online-Ruf",
+        "registerAsProvider": "Als Anbieter registrieren",
+        "availableJobs": "Verfügbare Jobs",
+        "availableJobsDesc": "Finden Sie neue Möglichkeiten in Ihrer Nähe",
+        "availableJobsTab": "Jobs finden",
+        "myWorks": "Meine Arbeiten",
+        "myWorksDesc": "Verwalten Sie Ihre übernommenen Jobs",
+        "myWorksTab": "Meine Arbeiten",
+        "myRequests": "Meine Anfragen",
+        "myRequestsDesc": "Status Ihrer geposteten Anfragen",
+        "myRequestsTab": "Meine Anfragen"
+    },
+    "servicesPage": {
+        "title": "Dienste durchsuchen",
+        "searchPlaceholder": "Nach Diensten suchen...",
+        "allCategories": "Alle Kategorien",
+        "searchButton": "Suche",
+        "noServices": "Keine Dienste gefunden",
+        "noServicesSub": "Keine Dienste gefunden, die Ihren Kriterien entsprechen.",
+        "loading": "Dienste werden geladen...",
+        "viewDetails": "Details anzeigen",
+        "new": "Neu",
+        "rating": "Bewertung",
+        "location": "Standort"
+    },
+    "messages": {
+        "title": "Nachrichten",
+        "select": "Wählen Sie einen Chat aus, um zu schreiben",
+        "typePlaceholder": "Nachricht schreiben...",
+        "send": "Senden",
+        "unknown": "Unbekannt",
+        "noMessages": "Beginnen Sie ein Gespräch",
+        "loading": "Wird geladen..."
+    },
+    "settingsPage": {
+        "title": "Systemeinstellungen",
+        "subtitle": "Personalisieren Sie Ihr LocalFix-Erlebnis",
+        "backToDashboard": "Zurück zum Dashboard",
+        "general": {
+            "title": "Allgemein",
+            "language": {
+                "title": "Sprache",
+                "desc": "Wählen Sie Ihre Schnittstellensprache"
+            },
+            "appearance": {
+                "title": "Erscheinungsbild",
+                "desc": "Zwischen hellem oder dunklem Modus wählen",
+                "system": "System (Standard)",
+                "light": "Hell",
+                "dark": "Dunkel"
+            }
+        },
+        "notifications": {
+            "title": "Benachrichtigungen",
+            "push": {
+                "title": "Push-Benachrichtigungen",
+                "desc": "Benachrichtigungen auf Ihrem Gerät erhalten"
+            },
+            "sms": {
+                "title": "SMS-Benachrichtigungen",
+                "desc": "Dringende Job-Benachrichtigungen"
+            }
+        },
+        "save": "Änderungen speichern",
+        "saving": "Wird gespeichert...",
+        "success": "Einstellungen aktualisiert!",
+        "error": "Fehler beim Speichern der Einstellungen"
+    },
+    "marketplace": {
+        "title": "Produkt-Marktplatz",
+        "subtitle": "Kaufen und verkaufen Sie Produkte in unserer Community",
+        "searchPlaceholder": "Produkte suchen...",
+        "allCategories": "Alle Kategorien",
+        "noProducts": "Keine Produkte gefunden",
+        "noProductsSub": "Seien Sie der Erste, der ein Produkt listet!",
+        "addProduct": "Produkt verkaufen",
+        "myProducts": "Meine Produkte",
+        "buyNow": "Jetzt kaufen",
+        "commissionNote": "Die Plattform berechnet 8% Provision.",
+        "productName": "Produktname",
+        "productPrice": "Preis (€)",
+        "productCategory": "Kategorie",
+        "productDescription": "Beschreibung",
+        "productImages": "Produktbilder",
+        "saving": "Wird gespeichert...",
+        "success": "Produkt erfolgreich hinzugefügt!",
+        "error": "Fehler beim Hinzufügen",
+        "categories": {
+            "tools": "Werkzeuge",
+            "electronics": "Elektronik",
+            "furniture": "Möbel",
+            "materials": "Baumaterialien",
+            "other": "Sonstiges"
+        },
+        "status": {
+            "ACTIVE": "Aktiv",
+            "SOLD": "Verkauft",
+            "DELETED": "Gelöscht"
+        },
+        "sellerApproval": {
+            "title": "Aprobimi i Shitësit",
+            "pending": "Kërkesa juaj është në pritje të aprovimit nga stafi.",
+            "apply": "Për të shitur produkte në markatë, duhet të aplikoni për aprovim.",
+            "applyBtn": "Apliko për t'u bërë Shitës",
+            "goBack": "Kthehu te Markata"
+        }
+    },
+    "provider": {
+        "apply": "Apliko si Profesionist",
+        "applyDesc": "Plotësoni të dhënat tuaja për të filluar ofrimin e shërbimeve.",
+        "category": "Kategoria e Shërbimit",
+        "experience": "Përvoja juaj",
+        "bio": "Bio Profesionale",
+        "submit": "Dërgo Kërkesën",
+        "sending": "Duke dërguar...",
+        "success": "Aplikimi u Dërgua!",
+        "successDesc": "Faleminderit! Kërkesa juaj për t'u bërë profesionist është në proces shqyrtimi. Do të njoftoheni së shpejti."
+    }
+}
