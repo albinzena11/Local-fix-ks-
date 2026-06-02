@@ -1,12 +1,12 @@
 // app/profile/page.tsx - FAQA KRYESORE E PROFILIT
-import { getServerSession } from "next-auth";
+import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth";
 import Link from "next/link";
 import { FiArrowLeft, FiUser, FiSettings, FiShield, FiBell, FiCreditCard, FiHelpCircle, FiEdit } from "react-icons/fi";
 
 export default async function ProfilePage() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions) as any;
 
   if (!session) {
     redirect("/login");
@@ -38,7 +38,7 @@ export default async function ProfilePage() {
                 <h2 className="text-xl font-bold text-gray-900">{session.user?.name}</h2>
                 <p className="text-gray-600 text-sm">{session.user?.email}</p>
                 <span className="mt-2 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium capitalize">
-                  {session.user?.role}
+                  {(session?.user as any)?.role}
                 </span>
               </div>
 
@@ -134,7 +134,7 @@ export default async function ProfilePage() {
                         Roli
                       </label>
                       <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-                        <p className="text-gray-900 capitalize">{session.user?.role}</p>
+                        <p className="text-gray-900 capitalize">{(session?.user as any)?.role}</p>
                       </div>
                     </div>
                   </div>
@@ -153,7 +153,7 @@ export default async function ProfilePage() {
                       </label>
                       <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
                         <code className="text-sm font-mono text-gray-900">
-                          {session.user?.id}
+                          {(session?.user as any)?.id}
                         </code>
                       </div>
                     </div>

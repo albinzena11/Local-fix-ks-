@@ -2,11 +2,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter, Link, usePathname } from "@/frontend/i18n/routing"; // Fixed import
+import { useRouter, usePathname } from "@/i18n/routing";
+import { Link } from "@/i18n/routing";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
-import { FiSettings, FiUser, FiBell, FiHelpCircle, FiLogOut, FiSearch, FiCalendar, FiTrendingUp, FiEdit, FiCreditCard, FiGlobe, FiImage, FiPlus, FiBriefcase } from "react-icons/fi";
+import { FiSettings, FiUser, FiBell, FiHelpCircle, FiLogOut, FiSearch, FiCalendar, FiTrendingUp, FiEdit, FiCreditCard, FiGlobe, FiImage, FiPlus, FiBriefcase, FiShoppingBag } from "react-icons/fi";
 import { TbClipboardCheck, TbTools, TbStar } from "react-icons/tb";
 
 interface Notification {
@@ -36,13 +37,23 @@ interface DashboardStats {
   earnings?: number; // Placeholder
 }
 
+interface SessionUser {
+    name?: string;
+    email?: string;
+    role?: string;
+    id?: string;
+    image?: string;
+    providerStatus?: string;
+    sellerStatus?: string;
+}
+
 export default function DashboardPage() {
   const t = useTranslations('dashboard');
   const tStats = useTranslations('stats');
   const router = useRouter();
   const locale = useLocale();
   const pathname = usePathname();
-  const [session, setSession] = useState<{ user?: { name?: string; email?: string; role?: string; id?: string; image?: string; providerStatus?: string; sellerStatus?: string } } | null>(null);
+  const [session, setSession] = useState<{ user?: SessionUser } | null>(null);
   const [loading, setLoading] = useState(true);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
@@ -57,7 +68,16 @@ export default function DashboardPage() {
     fetchNotifications();
     fetchAppointments();
     fetchStats();
+    triggerCleanup();
   }, []);
+
+  const triggerCleanup = async () => {
+    try {
+      await fetch('/api/jobs/cleanup');
+    } catch (e) {
+      console.error('Error triggering cleanup:', e);
+    }
+  };
 
   const fetchSession = async () => {
     try {
@@ -208,6 +228,16 @@ export default function DashboardPage() {
     }
   };
 
+  const isProvider = session?.user?.role === "PROVIDER";
+  const isAdmin = session?.user?.role === "ADMIN";
+
+  // Ridrejto adminët automatikisht te paneli i adminit
+  useEffect(() => {
+    if (isAdmin) {
+      router.push("/admin");
+    }
+  }, [isAdmin, router]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center">
@@ -220,16 +250,6 @@ export default function DashboardPage() {
     router.push("/login");
     return null;
   }
-
-  const isProvider = session.user?.role === "PROVIDER";
-  const isAdmin = session.user?.role === "ADMIN";
-
-  // Ridrejto adminët automatikisht te paneli i adminit
-  useEffect(() => {
-    if (isAdmin) {
-      router.push("/admin");
-    }
-  }, [isAdmin, router]);
 
   if (isAdmin) return null; // Shmang shfaqjen e dashboard-it të thjeshtë për adminët
 
@@ -252,28 +272,22 @@ export default function DashboardPage() {
 
   // Role-based Quick Actions
   const clientActions = [
-    { title: t('quickActions.postRequest'), description: t('quickActions.postRequestDesc'), icon: "📝", color: "from-blue-500 to-blue-600", link: "/requests/create" },
-    { title: t('quickActions.findPros'), description: t('quickActions.findProsDesc'), icon: "🔍", color: "from-green-500 to-green-600", link: "/professionals" },
-    { title: t('quickActions.myHires'), description: t('quickActions.myHiresDesc'), icon: "🤝", color: "from-yellow-500 to-yellow-600", link: "/jobs" },
-    { title: t('quickActions.marketplace'), description: t('quickActions.marketplaceDesc'), icon: "🛒", color: "from-orange-500 to-orange-600", link: "/marketplace" },
-    { title: t('quickActions.support'), description: t('quickActions.supportDesc'), icon: "❓", color: "from-purple-500 to-purple-600", link: "/support" },
+    { title: t('quickActions.postRequest'), description: t('quickActions.postRequestDesc'), icon: <FiEdit />, color: "from-blue-500 to-blue-600", link: "/requests/create" },
+    { title: t('quickActions.findPros'), description: t('quickActions.findProsDesc'), icon: <FiSearch />, color: "from-green-500 to-green-600", link: "/professionals" },
+    { title: t('quickActions.myHires'), description: t('quickActions.myHiresDesc'), icon: <FiUser />, color: "from-yellow-500 to-yellow-600", link: "/jobs" },
+    { title: t('quickActions.marketplace'), description: t('quickActions.marketplaceDesc'), icon: <FiShoppingBag />, color: "from-orange-500 to-orange-600", link: "/marketplace" },
+    { title: t('quickActions.support'), description: t('quickActions.supportDesc'), icon: <FiHelpCircle />, color: "from-purple-500 to-purple-600", link: "/help" },
   ];
 
   const providerActions = [
-    { title: t('quickActions.findJobs'), description: t('quickActions.findJobsDesc'), icon: "💼", color: "from-blue-500 to-blue-600", link: "/jobs" },
-    { title: t('quickActions.manageOffers'), description: t('quickActions.manageOffers'), icon: "🛠️", color: "from-green-500 to-green-600", link: "/profile/services" },
-    { title: t('quickActions.earnings'), description: t('quickActions.earningsDesc'), icon: "💰", color: "from-yellow-500 to-yellow-600", link: "/finance" },
-    { title: t('quickActions.marketplace'), description: t('quickActions.marketplaceDesc'), icon: "🛒", color: "from-orange-500 to-orange-600", link: "/marketplace" },
-    { title: t('quickActions.providerHelp'), description: t('quickActions.providerHelpDesc'), icon: "❓", color: "from-purple-500 to-purple-600", link: "/help-provider" },
+    { title: t('quickActions.findJobs'), description: t('quickActions.findJobsDesc'), icon: <FiBriefcase />, color: "from-blue-500 to-blue-600", link: "/jobs" },
+    { title: t('quickActions.manageOffers'), description: t('quickActions.manageOffers'), icon: <TbTools />, color: "from-green-500 to-green-600", link: "/profile/services" },
+    { title: t('quickActions.earnings'), description: t('quickActions.earningsDesc'), icon: <FiTrendingUp />, color: "from-yellow-500 to-yellow-600", link: "/finance" },
+    { title: t('quickActions.marketplace'), description: t('quickActions.marketplaceDesc'), icon: <FiShoppingBag />, color: "from-orange-500 to-orange-600", link: "/marketplace" },
+    { title: t('quickActions.providerHelp'), description: t('quickActions.providerHelpDesc'), icon: <FiHelpCircle />, color: "from-purple-500 to-purple-600", link: "/help" },
   ];
 
-  const adminActions = [
-    { title: "Statistikat e Platformës", description: "Shiko përdoruesit, punët dhe mosmarrëveshjet.", icon: "📊", color: "from-red-600 to-red-700", link: "/admin" },
-    { title: "Menaxho Përdoruesit", description: "Shiko dhe edito përdoruesit e regjistruar.", icon: "👥", color: "from-blue-600 to-blue-700", link: "/admin/users" },
-    { title: "Zgjidh Mosmarrëveshjet", description: "Shiko raportet e hapur platformë-mbarë.", icon: "⚠️", color: "from-orange-600 to-orange-700", link: "/admin/disputes" },
-  ];
-
-  const quickActions = isAdmin ? adminActions : (isProvider ? providerActions : clientActions);
+  const quickActions = isProvider ? providerActions : clientActions;
 
   // Role-based Recent Activity (Mock)
   const clientActivity = [
@@ -305,7 +319,7 @@ export default function DashboardPage() {
                   router.replace(pathname, { locale: nextLocale });
                 }}
                 className="p-2 rounded-full hover:bg-gray-100 transition flex items-center space-x-2 text-gray-600"
-                title="Change Language"
+                title={t('changeLanguage')}
               >
                 <FiGlobe className="w-5 h-5" />
                 <span className="text-xs font-bold uppercase">{locale}</span>
@@ -383,7 +397,7 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              {/* Settings */}
+              {/* Settings Dropdown */}
               <div className="relative group">
                 <button className="p-2 rounded-full hover:bg-gray-100 transition">
                   <FiSettings className="w-5 h-5 text-gray-600" />
@@ -415,20 +429,20 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              {/* Profile Dropdown */}
+              {/* Profile Tool */}
               <div className="relative group pl-2 border-l border-gray-200">
                 <button className="flex items-center space-x-3 p-1 rounded-full hover:bg-gray-100 transition ring-2 ring-transparent focus:ring-blue-100">
                   <div className="w-9 h-9 bg-gradient-to-tr from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm shadow-md">
-                    {session.user?.name?.charAt(0) || "U"}
+                    {session?.user?.name?.charAt(0) || "U"}
                   </div>
                 </button>
 
                 <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="p-4 border-b border-gray-100">
-                    <p className="font-bold text-gray-900 truncate">{session.user?.name}</p>
-                    <p className="text-xs text-gray-500 truncate">{session.user?.email}</p>
+                    <p className="font-bold text-gray-900 truncate">{session?.user?.name}</p>
+                    <p className="text-xs text-gray-500 truncate">{session?.user?.email}</p>
                     <span className="mt-2 inline-block px-2 py-0.5 bg-blue-50 text-blue-700 text-[10px] font-bold uppercase tracking-wider rounded">
-                      {session.user?.role}
+                      {session?.user?.role}
                     </span>
                   </div>
                   <div className="p-2">
@@ -454,7 +468,7 @@ export default function DashboardPage() {
           <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
               <h2 className="text-3xl font-bold mb-2">
-                {t('welcome.joined')}, {session.user?.name?.split(" ")[0]}!
+                {t('welcome.joined')}, {session?.user?.name?.split(" ")[0]}!
               </h2>
               <p className="text-blue-100 max-w-lg">
                 {isProvider ? t('welcome.providerDesc') : t('welcome.clientDesc')}
@@ -489,10 +503,30 @@ export default function DashboardPage() {
           {/* Main Column */}
           <div className="lg:col-span-2 space-y-8">
             {/* Quick Actions */}
-            ...
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {quickActions.map((action, index) => (
+                <Link 
+                  key={index}
+                  href={action.link}
+                  className="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all flex items-center gap-4"
+                >
+                  <div className={`w-12 h-12 bg-gradient-to-br ${action.color} rounded-xl flex items-center justify-center text-xl text-white shadow-lg group-hover:scale-110 transition-transform`}>
+                    {action.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                      {action.title}
+                    </h3>
+                    <p className="text-xs text-gray-500 font-medium">
+                      {action.description}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
             
             {/* Provider Application Status (if not approved) */}
-            {session.user?.role !== "PROVIDER" && (
+            {session?.user?.role !== "PROVIDER" && (
               <div className="bg-white rounded-[2rem] shadow-xl shadow-slate-100 border border-slate-50 p-8 overflow-hidden relative group hover:border-blue-200 transition-all">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-blue-50 rounded-full -mr-20 -mt-20 group-hover:scale-110 transition-transform"></div>
                 <div className="relative z-10">
@@ -504,7 +538,7 @@ export default function DashboardPage() {
                     {t('becomeProviderDesc')}
                   </p>
                   
-                  {session.user?.providerStatus === "PENDING" ? (
+                  {session?.user?.providerStatus === "PENDING" ? (
                     <div className="inline-flex items-center gap-3 px-6 py-3 bg-yellow-50 text-yellow-700 rounded-2xl font-black text-sm border border-yellow-100">
                       <span className="w-2.5 h-2.5 bg-yellow-500 rounded-full animate-pulse"></span>
                       {t('pendingApproval')}
@@ -522,7 +556,7 @@ export default function DashboardPage() {
             )}
 
             {/* Provider Exclusive Sections */}
-            {session.user?.role === "PROVIDER" && (
+            {session?.user?.role === "PROVIDER" && (
               <div className="space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {/* Portfolio Card */}
@@ -595,15 +629,15 @@ export default function DashboardPage() {
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <div className="flex items-center space-x-4 mb-6">
                 <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-2xl font-bold text-gray-500 overflow-hidden border-2 border-white shadow-lg">
-                  {session.user?.image ? (
+                  {session?.user?.image ? (
                     <Image src={session.user.image} alt={session.user.name || "User"} width={64} height={64} className="w-full h-full object-cover" />
                   ) : (
-                    session.user?.name?.charAt(0)
+                    session?.user?.name?.charAt(0)
                   )}
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg text-gray-900">{session.user?.name}</h4>
-                  <p className="text-sm text-gray-500">{session.user?.email}</p>
+                  <h4 className="font-bold text-lg text-gray-900">{session?.user?.name}</h4>
+                  <p className="text-sm text-gray-500">{session?.user?.email}</p>
                 </div>
               </div>
 
@@ -630,7 +664,7 @@ export default function DashboardPage() {
               </h3>
               <div className="space-y-4">
                 {appointments.length === 0 ? (
-                  <p className="text-sm text-gray-500 italic text-center py-4">No upcoming appointments</p>
+                  <p className="text-sm text-gray-500 italic text-center py-4">{t('appointments.noAppointments')}</p>
                 ) : (
                   appointments.map((apt) => (
                     <div key={apt.id} className="bg-blue-50 p-4 rounded-xl border-l-4 border-blue-500">
@@ -655,21 +689,21 @@ export default function DashboardPage() {
             {showAppointmentModal && (
               <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
                 <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 animate-in fade-in zoom-in duration-200">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Add Appointment</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">{t('appointments.addModal.title')}</h3>
                   <form onSubmit={handleAddAppointment} className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">{t('appointments.addModal.labelTitle')}</label>
                       <input
                         type="text"
                         required
                         className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none transition"
                         value={newAppointment.title}
                         onChange={(e) => setNewAppointment({ ...newAppointment, title: e.target.value })}
-                        placeholder="e.g. Consultation"
+                        placeholder={t('appointments.addModal.placeholderTitle')}
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Date & Time</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">{t('appointments.addModal.labelDate')}</label>
                       <input
                         type="datetime-local"
                         required
@@ -679,13 +713,13 @@ export default function DashboardPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Description (Optional)</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">{t('appointments.addModal.labelDesc')}</label>
                       <textarea
                         className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none transition"
                         rows={3}
                         value={newAppointment.description}
                         onChange={(e) => setNewAppointment({ ...newAppointment, description: e.target.value })}
-                        placeholder="Additional details..."
+                        placeholder={t('appointments.addModal.placeholderDesc')}
                       />
                     </div>
                     <div className="flex justify-end gap-2 mt-6">
@@ -694,13 +728,13 @@ export default function DashboardPage() {
                         onClick={() => setShowAppointmentModal(false)}
                         className="px-4 py-2 text-gray-600 font-medium hover:bg-gray-100 rounded-lg transition"
                       >
-                        Cancel
+                        {t('appointments.addModal.cancel')}
                       </button>
                       <button
                         type="submit"
                         className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition shadow-lg shadow-blue-500/30"
                       >
-                        Save Appointment
+                        {t('appointments.addModal.save')}
                       </button>
                     </div>
                   </form>

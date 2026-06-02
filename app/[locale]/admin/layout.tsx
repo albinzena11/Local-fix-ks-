@@ -1,9 +1,8 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { usePathname, useRouter } from "@/frontend/i18n/routing";
+import { usePathname, useRouter, Link } from "@/i18n/routing";
 import { useEffect, useState } from "react";
-import Link from "next/link"; // Ideally use i18n link, but for internal admin admin/ link might be okay or use routing Link
 import { FiHome, FiUsers, FiAlertTriangle, FiLogOut, FiMenu, FiBriefcase, FiTool } from "react-icons/fi";
 import { useTranslations } from "next-intl";
 
@@ -18,7 +17,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         if (status === "unauthenticated") {
             router.push("/login");
         } else if (status === "authenticated") {
-            if ((session?.user as { role?: string })?.role !== "ADMIN") {
+            if (session?.user?.role !== "ADMIN") {
                 router.push("/dashboard");
             }
         }
@@ -28,7 +27,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         return <div className="flex h-screen items-center justify-center">{t('loading')}</div>;
     }
 
-    if (!session || (session.user as { role?: string }).role !== "ADMIN") {
+    if (!session?.user || (session.user as any).role !== "ADMIN") {
         return null; // Will redirect via useEffect
     }
 

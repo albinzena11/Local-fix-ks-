@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import { Link, useRouter } from "@/frontend/i18n/routing";
+import { Link, useRouter } from "@/i18n/routing";
 import { FiUser, FiMail, FiLock, FiBriefcase, FiHome, FiPhone, FiMapPin } from "react-icons/fi";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -272,7 +272,7 @@ export default function RegisterPage() {
                   placeholder={t('passwordPlaceholder')}
                 />
               </div>
-              <p className="mt-1 text-xs text-gray-500">Min. 6 {t('passwordPlaceholder')}</p>
+              <p className="mt-1 text-xs text-gray-500">{t('passwordMinLengthHint')}</p>
             </div>
 
             <div>

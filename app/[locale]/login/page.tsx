@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import { Link, useRouter } from "@/frontend/i18n/routing";
+import { Link, useRouter } from "@/i18n/routing";
 import { signIn } from "next-auth/react";
 import { FiMail, FiLock, FiHome } from "react-icons/fi";
 import { useTranslations } from "next-intl";
