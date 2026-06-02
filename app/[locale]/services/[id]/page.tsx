@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { Link, useRouter } from "@/frontend/i18n/routing";
+import { Link, useRouter } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -52,7 +52,7 @@ export default function ServiceDetailPage() {
             return;
         }
 
-        if (session.user.id === service?.provider.id) {
+        if ((session?.user as any)?.id === service?.provider.id) {
             alert("You cannot message yourself.");
             return;
         }

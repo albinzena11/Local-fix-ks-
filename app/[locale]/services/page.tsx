@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from "react";
-import { Link } from "@/frontend/i18n/routing";
+import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -208,13 +208,13 @@ export default function ServicesPage() {
                 <div className="bg-gradient-to-br from-blue-600 to-indigo-800 rounded-[3.5rem] p-12 md:p-16 text-white text-center shadow-2xl relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
                     <div className="relative z-10 max-w-2xl mx-auto">
-                        <h2 className="text-4xl font-black mb-6 tracking-tight">Keni një aftësi për të ofruar?</h2>
-                        <p className="text-blue-100 text-lg mb-10 font-medium">Bëhuni pjesë e platformës tonë dhe filloni të fitoni sot duke ofruar shërbimet tuaja profesioniste.</p>
+                        <h2 className="text-4xl font-black mb-6 tracking-tight">{t('becomeProviderTitle')}</h2>
+                        <p className="text-blue-100 text-lg mb-10 font-medium">{t('becomeProviderDesc')}</p>
                         <Link 
                             href="/register?role=PROVIDER" 
                             className="inline-flex items-center px-12 py-5 bg-white text-blue-900 rounded-2xl font-black shadow-xl hover:scale-105 transition-all active:scale-95"
                         >
-                            Fillo Tani
+                            {t('startNow')}
                             <FiArrowRight className="ml-3 text-xl" />
                         </Link>
                     </div>

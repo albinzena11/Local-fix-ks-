@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "@/backend/lib/auth";
 
 export async function GET(request: NextRequest) {
   try {
@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     const category = searchParams.get("category");
     const sellerId = searchParams.get("sellerId");
     
-    const where: any = { 
+    const where: { status?: any; category?: string; sellerId?: string } = { 
        status: { not: "DELETED" }
     };
     
@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     if (sellerId) where.sellerId = sellerId;
     else where.status = "ACTIVE"; // If browsing, only show active ones
 
-    const products = await (prisma as any).product.findMany({
+    const products = await prisma.product.findMany({
       where,
       include: {
         seller: {
@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session || !session.user) {
+    if (!session?.user?.id) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -54,21 +54,21 @@ export async function POST(request: NextRequest) {
 
     const user = await prisma.user.findUnique({
         where: { id: session.user.id },
-        select: { sellerStatus: true } as any
+        select: { sellerStatus: true }
     });
 
-    if (!user || (user as any).sellerStatus !== "APPROVED") {
+    if (!user || user.sellerStatus !== "APPROVED") {
         return NextResponse.json({ error: "Duhet të jeni shitës i aprovuar" }, { status: 403 });
     }
 
-    const product = await (prisma as any).product.create({
+    const product = await prisma.product.create({
       data: {
         name,
         description: description || "",
         price: parseFloat(price),
         category,
         images: images || [],
-        sellerId: (session.user as any).id,
+        sellerId: session.user.id,
       }
     });
 

@@ -12,7 +12,7 @@ export default function JobsPage() {
     const t = useTranslations('jobList');
     const [activeTab, setActiveTab] = useState<'available' | 'my-works' | 'my-requests'>('available');
 
-    const role = (session?.user as { role?: string })?.role;
+    const role = (session?.user as any)?.role;
 
     return (
         <div className="min-h-screen bg-gray-50">
