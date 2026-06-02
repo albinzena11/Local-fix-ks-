@@ -10,13 +10,16 @@
         "messages": "Mesazhet",
         "logout": "Dil",
         "marketplace": "Markata",
-        "adminPanel": "Paneli i Adminit"
+        "adminPanel": "Paneli i Adminit",
+        "findServices": "Gjej Shërbime",
+        "findJobs": "Gjej Punë"
     },
     "hero": {
         "title": "Gjej ofrues të besueshëm për çdo shërbim lokal",
         "subtitle": "Platforma më e besueshme për të gjetur dhe ofruar shërbime lokale",
         "seeAllJobs": "Shiko të gjitha punët",
         "badge": "Platforma nr. 1 në Shqipëri",
+        "welcomeBack": "Mirë se vini përsëri",
         "ourServices": "Shërbimet Tona",
         "discoverMore": "Zbuloni më shumë",
         "whyChooseUs": "Pse na zgjodhët ne?",
@@ -97,7 +100,8 @@
         "emailError": "Email ose fjalëkalim i gabuar",
         "generalError": "Diçka shkoi keq. Ju lutem provoni përsëri.",
         "welcomeBack": "Mirë se vini",
-        "loginSubtitle": "Identifikohu për të vazhduar"
+        "loginSubtitle": "Hyni për të vazhduar",
+        "passwordMinLengthHint": "Min. 6 karaktere"
     },
     "errors": {
         "fillAllFields": "Ju lutem plotësoni të gjitha fushat e detyrueshme",
@@ -111,13 +115,14 @@
         "completedServices": "Shërbime të Kompletuara",
         "averageRating": "Vlerësim Mesatar",
         "satisfiedClients": "Klientë të Kënaqur",
-        "activeRequests": "Kërkesa Aktiv",
-        "offersReceived": "Oferta të Marrë",
-        "hiredProfessionals": "Profesionistë të Punësuar",
-        "totalExpenses": "Shpenzime Totale",
+        "activeRequests": "Kërkesa Aktive",
+        "offersReceived": "Oferta të Marra",
+        "hired": "Profesionistë të Punësuar",
         "activeJobs": "Punë Aktive",
-        "monthlyEarnings": "Fitimet e Muajit",
-        "profileViews": "Shikime Profili"
+        "completedJobs": "Punë të Kryera",
+        "rating": "Vlerësimi",
+        "success": "Shkalla e Suksesit",
+        "messages": "Mesazhe të Reja"
     },
     "dashboard": {
         "title": "Dashboard",
@@ -146,6 +151,7 @@
             "user": "Përdorues",
             "signOut": "Dil nga Llogaria"
         },
+        "changeLanguage": "Ndrysho Gjuhën",
         "welcome": {
             "clientDesc": "Postoni kërkesa, gjeni profesionistë të kualifikuar dhe zgjidhni problemet tuaja.",
             "providerDesc": "Menaxhoni punët tuaja, gjurmoni fitimet dhe rrisni reputacionin tuaj.",
@@ -200,7 +206,10 @@
                 "placeholderDesc": "Detaje shtesë...",
                 "cancel": "Anulo",
                 "save": "Ruaj Takimin"
-            }
+            },
+            "consultation": "Konsultë",
+            "tomorrow": "Nesër",
+            "dayAfterTomorrow": "Pasnesër"
         },
         "tips": {
             "title": "Këshilla për Përdorim Më të Mirë",
@@ -248,7 +257,9 @@
             "subtitle": "Bashkohuni me mijëra klientë dhe profesionistë të kënaqur sot.",
             "registerClient": "Regjistrohu si Klient",
             "registerProvider": "Regjistrohu si Ofrues",
-            "login": "Hyr këtu"
+            "login": "Hyr këtu",
+            "loggedInTitle": "Vazhdoni me projektet tuaja",
+            "loggedInSubtitle": "Shikoni statusin e punëve ose postoni kërkesë të re direkt nga dashboard."
         }
     },
     "faq": {
@@ -264,7 +275,8 @@
         "q4": "Çfarë ndodh nëse nuk jam i kënaqur?",
         "a4": "Ne ofrojmë garanci të kënaqësisë. Nëse ka probleme, ekipi ynë i suportit do të ndërhyjë për zgjidhje.",
         "stillHaveQuestions": "Keni ende pyetje?",
-        "contactUs": "Na kontaktoni"
+        "contactUs": "Na kontaktoni",
+        "emailSupport": "Mbështetja me Email"
     },
     "testimonials": {
         "title": "Çfarë Thonë Përdoruesit Tanë",
@@ -324,21 +336,16 @@
     },
     "about": {
         "title": "Rreth Nesh",
-        "description": "Mësoni më shumë për LocalFIX",
+        "description": "Mësoni më shumë për misionin dhe ekipin e LocalFIX.",
         "mission": {
             "title": "Misioni Ynë",
-            "desc": "LocalFIX është platforma kryesore për lidhjen e individëve me profesionistë të kualifikuar për shërbime shtëpiake dhe biznesi. Ne synojmë të bëjmë procesin e gjetjes së një profesionisti të besueshëm sa më të thjeshtë dhe të sigurt."
+            "desc": "LocalFIX synon të lidhë klientët me profesionistët më të mirë në Shqipëri, duke siguruar cilësi dhe besueshmëri në çdo shërbim."
         },
-        "history": {
-            "title": "Historia Jonë",
-            "desc": "E themeluar në Tiranë, LocalFIX lindi nga nevoja për të sjellë transparencë dhe cilësi në tregun e shërbimeve lokale."
+        "vision": {
+            "title": "Vizioni Ynë",
+            "desc": "Të bëhemi burimi parësor për çdo nevojë shërbimi, duke nxitur rritjen ekonomike lokale përmes teknologjisë."
         },
-        "values": {
-            "title": "Vlerat Tona",
-            "reliability": "Besueshmëria: Ne verifikojmë çdo profesionist.",
-            "quality": "Cilësia: Standarde të larta për çdo shërbim.",
-            "transparency": "Transparenca: Çmime të qarta dhe pa kosto të fshehura."
-        }
+        "team": "Ekipi ynë i përkushtuar punon çdo ditë për t'ju ofruar eksperiencën më të mirë."
     },
     "howItWorksPage": {
         "title": "Si Funksionon",
@@ -447,101 +454,98 @@
     },
     "terms": {
         "title": "Kushtet e Përdorimit",
+        "description": "Ju lutem lexoni me kujdes kushtet tona të shërbimit.",
         "lastUpdated": "Përditësuar së fundmi",
-        "section1": {
+        "acceptance": {
             "title": "1. Pranimet e Kushteve",
-            "content": "Duke hyrë dhe përdorur LocalFIX, ju pranoni të jeni të detyruar nga këto kushte."
+            "desc": "Duke hyrë dhe përdorur LocalFIX, ju pranoni të jeni të detyruar nga këto kushte."
         },
-        "section2": {
-            "title": "2. Përdorimi i Shërbimit",
-            "content": "Ju jeni përgjegjës për ruajtjen e konfidencialitetit të llogarisë tuaj."
+        "userConduct": {
+            "title": "2. Sjellja e Përdoruesit",
+            "desc": "Ju jeni përgjegjës për ruajtjen e konfidencialitetit të llogarisë tuaj dhe për çdo aktivitet që ndodh në të."
         },
-        "section3": {
+        "payments": {
             "title": "3. Pagesat dhe Tarifat",
-            "content": "Detajet rreth tarifave të shërbimit dhe procesimit të pagesave."
+            "desc": "Detajet rreth tarifave të shërbimit dhe procesimit të pagesave. Fondet lëshohen vetëm pas përfundimit të punës."
         },
-        "section4": {
-            "title": "4. Përgjegjësia",
-            "content": "LocalFIX vepron si ndërmjetës dhe nuk mban përgjegjësi direkte për cilësinë e punës së ofruesve, megjithëse ne ofrojmë mekanizma mbrojtjeje."
+        "termination": {
+            "title": "4. Ndërprerja",
+            "desc": "Ne rezervojmë të drejtën për të mbyllur ose pezulluar aksesin tuaj nëse shkelen rregullat tona."
         }
     },
     "privacy": {
         "title": "Politika e Privatësisë",
+        "description": "Siguria e të dhënave tuaja është prioritet për ne.",
         "lastUpdated": "Përditësuar së fundmi",
-        "section1": {
+        "collection": {
             "title": "Mbledhja e të Dhënave",
-            "content": "Ne mbledhim informacione që ju na jepni direkt, si emri, email, dhe numri i telefonit kur regjistroheni."
+            "desc": "Ne mbledhim informacione që ju na jepni direkt, si emri, email, dhe numri i telefonit kur regjistroheni."
         },
-        "section2": {
+        "usage": {
             "title": "Përdorimi i Informacionit",
-            "content": "Të dhënat tuaja përdoren për të ofruar shërbimet, për të përmirësuar platformën, dhe për komunikim."
+            "desc": "Të dhënat tuaja përdoren për të ofruar shërbimet, për të përmirësuar platformën, dhe për komunikim."
         },
-        "section3": {
+        "sharing": {
             "title": "Ndarja e të Dhënave",
-            "content": "Ne nuk i shesim të dhënat tuaja personale palëve të treta."
-        },
-        "section4": {
-            "title": "Siguria",
-            "content": "Ne marrim masa të arsyeshme për të mbrojtur informacionin tuaj nga aksesi i paautorizuar."
+            "desc": "Ne nuk i shesim të dhënat tuaja personale palëve të treta dhe i ndajmë ato vetëm kur është e nevojshme për shërbimin."
         }
     },
-    "cookiesPage": {
+    "cookies": {
         "title": "Politika e Cookies",
+        "description": "Si i përdorim cookies për të përmirësuar përvojën tuaj.",
         "lastUpdated": "Përditësuar së fundmi",
-        "intro": "LocalFIX përdor cookies për të përmirësuar përvojën tuaj në faqen tonë.",
-        "whatAreCookies": {
+        "what": {
             "title": "Çfarë janë Cookies?",
-            "content": "Cookies janë skedarë të vegjël teksti që ruhen në pajisjen tuaj kur vizitoni një faqe interneti."
+            "desc": "Cookies janë skedarë të vegjël teksti që ruhen në pajisjen tuaj kur vizitoni faqen tonë."
+        },
+        "how": {
+            "title": "Si i përdorim ato?",
+            "desc": "Ne përdorim cookies për t'ju mbajtur të identifikuar dhe për të kuptuar si përdoret faqja."
         },
         "types": {
-            "title": "Llojet e Cookies që përdorim",
-            "necessary": "Të domosdoshme: Për funksionimin e faqes (psh. login).",
-            "analytical": "Analitike: Për të kuptuar si përdoret faqja.",
+            "title": "Llojet e Cookies",
+            "essential": "Të domosdoshme: Për funksionimin e faqes (psh. login).",
+            "analytics": "Analitike: Për të kuptuar si përdoret faqja.",
             "marketing": "Marketing: Për t'ju shfaqur reklama relevante."
-        },
-        "control": "Ju mund të kontrolloni dhe menaxhoni cookies përmes cilësimeve të shfletuesit tuaj."
+        }
     },
-    "disputesPage": {
+    "disputes": {
         "title": "Zgjidhja e Mosmarrëveshjeve",
-        "description": "Procesi ynë për zgjidhjen e konflikteve",
-        "fairness": {
-            "title": "Politika e Drejtësisë",
-            "content": "Ne inkurajojmë gjithmonë komunikimin e hapur mes klientit dhe profesionistit. Në shumicën e rasteve, mosmarrëveshjet mund të zgjidhen përmes bisedës së thjeshtë."
-        },
-        "howToOpen": {
-            "title": "Si të hapni një rast?",
-            "step1": "Shkoni te detajet e punës në Dashboard-in tuaj.",
-            "step2": "Klikoni butonin 'Raporto Problem' ose 'Hap Mosmarrëveshje'.",
-            "step3": "Shpjegoni situatën dhe ngarkoni prova (foto, mesazhe)."
-        },
+        "description": "Si i zgjidhim konfliktet në platformë.",
         "process": {
-            "title": "Procesi i Ndërmjetësimit",
-            "content": "Ekipi ynë i suportit do të shqyrtojë rastin brenda 24 orëve. Ne do të kontaktojmë të dyja palët për të dëgjuar versionet e tyre."
+            "title": "Procesi i Zgjidhjes",
+            "desc": "Ne gjithmonë inkurajojmë komunikimin e hapur mes klientit dhe profesionistit për të zgjidhur çdo problem."
         },
-        "important": {
-            "title": "E Rëndësishme:",
-            "content": "Mos bëni pagesa jashtë platformës. Ne nuk mund të garantojmë ose mbrojmë pagesat e kryera me para në dorë ose transferta direkte bankare."
+        "mediation": {
+            "title": "Ndërmjetësimi",
+            "desc": "Në raste të vështira, ekipi ynë i suportit do të ndërhyjë për të shqyrtuar provat dhe për të marrë një vendim të drejtë."
         }
     },
     "accessibility": {
         "title": "Aksesueshmëria",
-        "intro": "LocalFIX është e përkushtuar të bëjë platformën e saj të aksesueshme për të gjithë, përfshirë njerëzit me aftësi të kufizuara.",
+        "description": "Angazhimi ynë për gjithëpërfshirje.",
+        "commitment": {
+            "title": "Angazhimi Ynë",
+            "desc": "LocalFIX është e përkushtuar të bëjë platformën e saj të aksesueshme për të gjithë, përfshirë njerëzit me aftësi të kufizuara."
+        },
         "standards": {
             "title": "Standardet",
-            "content": "Ne përpiqemi të ndjekim Udhëzimet për Aksesueshmërinë e Përmbajtjes në Web (WCAG) 2.1."
+            "desc": "Ne përpiqemi të ndjekim Udhëzimet për Aksesueshmërinë e Përmbajtjes në Web (WCAG) 2.1."
         },
-        "features": {
-            "title": "Veçoritë",
-            "screenReaders": "Mbështetje për lexuesit e ekranit.",
-            "contrast": "Kontrast i lartë i ngjyrave.",
-            "keyboard": "Navigim me tastierë.",
-            "altText": "Tekst alternativ për imazhet (alt text)."
-        },
-        "contact": "Nëse hasni ndonjë problem aksesueshmërie, ju lutemi na kontaktoni."
+        "feedback": "Nëse hasni ndonjë problem aksesueshmërie, ju lutemi na kontaktoni."
     },
     "licenses": {
         "title": "Licencat",
+        "description": "Informacion rreth licencave të softuerit dhe profesionistëve.",
         "lastUpdated": "Përditësuar së fundmi",
+        "software": {
+            "title": "Licencat e Softuerit",
+            "desc": "Platforma jonë përdor disa biblioteka me kod të hapur dhe licenca të tjera softueri."
+        },
+        "professional": {
+            "title": "Licencat Profesionale",
+            "desc": "Të gjithë profesionistët në platformë duhet të kenë licencat përkatëse sipas ligjit."
+        },
         "copyright": {
             "title": "Të Drejtat e Autorit",
             "content": "E gjithë përmbajtja në këtë faqe është pronë e LocalFIX ose partnerëve të saj."
@@ -585,6 +589,7 @@
         "submitting": "Po dërgohet...",
         "contactNote": "Pas paraqitjes, do të kontaktoheni brenda 24 orëve nga ofruesit tanë",
         "success": "Kërkesa u dërgua me sukses! Do t'ju kontaktojmë brenda 24 orëve.",
+        "postAnother": "Posto një kërkesë tjetër",
         "error": "Dicka shkoi keq",
         "serverError": "Gabim në lidhje me serverin",
         "services": {
@@ -620,12 +625,43 @@
         "availableJobs": "Punë të Disponueshme",
         "availableJobsDesc": "Gjej mundësi të reja pranë teje",
         "availableJobsTab": "Gjej Punë",
+        "latestOpportunities": "Mundësitë e Fundit",
+        "homeServices": "Shërbime Shtëpiake",
+        "paintingCleaningRepair": "Lyerje, Pastrim, Rregullim",
+        "itExpert": "Ekspert IT",
+        "designers": "Dizajnerë",
+        "delivery": "Dërgesa",
         "myWorks": "Punët e Mia",
         "myWorksDesc": "Menaxho punët që ke marrë përsipër",
         "myWorksTab": "Punët e Mia",
         "myRequests": "Kërkesat e Mia",
         "myRequestsDesc": "Statusi i kërkesave që ke postuar",
         "myRequestsTab": "Kërkesat e Mia"
+    },
+    "escrow": {
+        "verifyPending": "Verifikimi në Pritje",
+        "verifyPendingDesc": "Punkryesi ka shënuar punën si të kryer.",
+        "waitingClient": "Duke pritur që klienti të verifikojë punën tuaj. Nëse nuk verifikohet mbrenda 24 orëve, puna do të aprovohet automatikisht.",
+        "verifyAndPay": "Verifiko & Lësho Pagesën",
+        "openDispute": "Hap Kontest (Dispute)",
+        "jobCompleted": "Punë e Përfunduar",
+        "paymentProcessed": "Pagesa është procesuar me sukses.",
+        "workProofProvider": "Dëshmia e Punkryesit",
+        "workProofClient": "Dëshmia e Klientit",
+        "reportProblem": "Keni një problem? Raporto kontest",
+        "disputeTitle": "Punë në Kontest (Dispute)",
+        "disputeDesc": "Administratori do të rishikojë dëshmitë e të dy palëve dhe do të vendosë për hapat e radhës.",
+        "uploadAdditionalProof": "Ngarko dëshmi shtesë",
+        "inProgress": "Puna është në proces",
+        "inProgressDesc": "Kur të përfundoni, ngarkoni një foto si dëshmi për të kërkuar pagesën.",
+        "uploadProofAndComplete": "Ngarko Dëshminë & Përfundo",
+        "uploading": "Duke ngarkuar...",
+        "acceptJob": "Prano Këtë Punë (Provider)",
+        "confirmVerify": "A dëshironi të verifikoni kryerjen e punës dhe të lëshoni pagesën?",
+        "backToDashboard": "Kthehu te Dashboard",
+        "reportDispute": "Raporto Kontest (Dispute)",
+        "disputeReasonPlaceholder": "Përshkruani problemin në detaje...",
+        "submitReport": "Dërgo Raportin"
     },
     "servicesPage": {
         "title": "Shfleto Shërbimet",
@@ -638,7 +674,10 @@
         "viewDetails": "Shiko Detajet",
         "new": "I ri",
         "rating": "Vlerësimi",
-        "location": "Vendndodhja"
+        "location": "Vendndodhja",
+        "becomeProviderTitle": "Keni një aftësi për të ofruar?",
+        "becomeProviderDesc": "Bëhuni pjesë e platformës tonë dhe filloni të fitoni sot duke ofruar shërbimet tuaja profesioniste.",
+        "startNow": "Fillo Tani"
     },
     "messages": {
         "title": "Mesazhet",
@@ -693,6 +732,11 @@
         "addProduct": "Shit një Produkt",
         "myProducts": "Produktet e Mia",
         "buyNow": "Blej Tani",
+        "loginToBuy": "Ju lutem hyni në llogari për të blerë.",
+        "buySuccess": "Blerja u krye me sukses!",
+        "buyError": "Pati një problem gjatë blerjes.",
+        "transactionError": "Gabim gjatë transaksionit.",
+        "info": "Platforma jonë siguron çdo transaksion. Fondet mbahen të sigurta derisa blerësi të marrë produktin.",
         "commissionNote": "Platforma mban 8% komision.",
         "productName": "Emri i Produktit",
         "productPrice": "Çmimi (€)",

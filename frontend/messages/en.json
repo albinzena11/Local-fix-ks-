@@ -10,13 +10,16 @@
         "messages": "Messages",
         "logout": "Logout",
         "marketplace": "Marketplace",
-        "adminPanel": "Admin Panel"
+        "adminPanel": "Admin Panel",
+        "findServices": "Find Services",
+        "findJobs": "Find Jobs"
     },
     "hero": {
         "title": "Find reliable providers for every local service",
         "subtitle": "The most trusted platform to find and provide local services",
         "seeAllJobs": "Show all jobs",
         "badge": "No. 1 Platform in Albania",
+        "welcomeBack": "Welcome Back",
         "ourServices": "Our Services",
         "discoverMore": "Discover more",
         "whyChooseUs": "Why choose us?",
@@ -97,7 +100,8 @@
         "emailError": "Invalid email or password",
         "generalError": "Something went wrong. Please try again.",
         "welcomeBack": "Welcome Back",
-        "loginSubtitle": "Sign in to continue"
+        "loginSubtitle": "Sign in to continue",
+        "passwordMinLengthHint": "Min. 6 characters"
     },
     "errors": {
         "fillAllFields": "Please fill all mandatory fields",
@@ -146,6 +150,7 @@
             "user": "User",
             "signOut": "Sign Out"
         },
+        "changeLanguage": "Change Language",
         "welcome": {
             "clientDesc": "Post requests, find qualified professionals, and solve your problems.",
             "providerDesc": "Manage your jobs, track earnings, and build your reputation.",
@@ -267,7 +272,8 @@
         "q4": "What if I am not satisfied?",
         "a4": "We offer a satisfaction guarantee. If there are issues, our support team will intervene for a resolution.",
         "stillHaveQuestions": "Still have questions?",
-        "contactUs": "Contact us"
+        "contactUs": "Contact us",
+        "emailSupport": "Email Support"
     },
     "testimonials": {
         "title": "What Our Users Say",
@@ -327,21 +333,16 @@
     },
     "about": {
         "title": "About Us",
-        "description": "Learn more about LocalFIX",
+        "description": "Learn more about LocalFIX's mission and team.",
         "mission": {
             "title": "Our Mission",
-            "desc": "LocalFIX is the leading platform for connecting individuals with qualified professionals for home and business services. We aim to make the process of finding a reliable professional as simple and secure as possible."
+            "desc": "LocalFIX aims to connect clients with the best professionals in Albania, ensuring quality and reliability in every service."
         },
-        "history": {
-            "title": "Our History",
-            "desc": "Founded in Tirana, LocalFIX was born from the need to bring transparency and quality to the local services market."
+        "vision": {
+            "title": "Our Vision",
+            "desc": "To become the primary source for every service need, fostering local economic growth through technology."
         },
-        "values": {
-            "title": "Our Values",
-            "reliability": "Reliability: We verify every professional.",
-            "quality": "Quality: High standards for every service.",
-            "transparency": "Transparency: Clear prices and no hidden costs."
-        }
+        "team": "Our dedicated team works every day to provide you with the best experience."
     },
     "howItWorksPage": {
         "title": "How it Works",
@@ -450,101 +451,98 @@
     },
     "terms": {
         "title": "Terms of Service",
+        "description": "Please read our terms of service carefully.",
         "lastUpdated": "Last Updated",
-        "section1": {
+        "acceptance": {
             "title": "1. Acceptance of Terms",
-            "content": "By accessing and using LocalFIX, you agree to be bound by these terms."
+            "desc": "By accessing and using LocalFIX, you agree to be bound by these terms."
         },
-        "section2": {
-            "title": "2. Use of Service",
-            "content": "You are responsible for maintaining the confidentiality of your account."
+        "userConduct": {
+            "title": "2. User Conduct",
+            "desc": "You are responsible for maintaining the confidentiality of your account and for all activities that occur under it."
         },
-        "section3": {
+        "payments": {
             "title": "3. Payments and Fees",
-            "content": "Details about service fees and payment processing."
+            "desc": "Details about service fees and payment processing. Funds are released only after the work is completed."
         },
-        "section4": {
-            "title": "4. Liability",
-            "content": "LocalFIX acts as an intermediary and does not hold direct responsibility for the quality of providers' work, although we offer protection mechanisms."
+        "termination": {
+            "title": "4. Termination",
+            "desc": "We reserve the right to terminate or suspend your access if our rules are violated."
         }
     },
     "privacy": {
         "title": "Privacy Policy",
+        "description": "Your data security is our top priority.",
         "lastUpdated": "Last Updated",
-        "section1": {
+        "collection": {
             "title": "Data Collection",
-            "content": "We collect information you provide us directly, such as name, email, and phone number when you register."
+            "desc": "We collect information you provide us directly, such as name, email, and phone number when you register."
         },
-        "section2": {
+        "usage": {
             "title": "Use of Information",
-            "content": "Your data is used to provide services, improve the platform, and for communication."
+            "desc": "Your data is used to provide services, improve the platform, and for communication."
         },
-        "section3": {
+        "sharing": {
             "title": "Data Sharing",
-            "content": "We do not sell your personal data to third parties."
-        },
-        "section4": {
-            "title": "Security",
-            "content": "We take reasonable measures to protect your information from unauthorized access."
+            "desc": "We do not sell your personal data to third parties and share it only when necessary for the service."
         }
     },
-    "cookiesPage": {
+    "cookies": {
         "title": "Cookie Policy",
+        "description": "How we use cookies to improve your experience.",
         "lastUpdated": "Last Updated",
-        "intro": "LocalFIX uses cookies to improve your experience on our site.",
-        "whatAreCookies": {
+        "what": {
             "title": "What are Cookies?",
-            "content": "Cookies are small text files stored on your device when you visit a website."
+            "desc": "Cookies are small text files stored on your device when you visit our website."
+        },
+        "how": {
+            "title": "How we use them?",
+            "desc": "We use cookies to keep you logged in and to understand how the site is used."
         },
         "types": {
-            "title": "Types of Cookies we use",
-            "necessary": "Necessary: For the functioning of the site (e.g. login).",
-            "analytical": "Analytical: To understand how the site is used.",
+            "title": "Types of Cookies",
+            "essential": "Essential: For site functioning (e.g. login).",
+            "analytics": "Analytical: To understand how the site is used.",
             "marketing": "Marketing: To show you relevant ads."
-        },
-        "control": "You can control and manage cookies through your browser settings."
+        }
     },
-    "disputesPage": {
+    "disputes": {
         "title": "Dispute Resolution",
-        "description": "Our process for resolving conflicts",
-        "fairness": {
-            "title": "Fairness Policy",
-            "content": "We always encourage open communication between the client and the professional. In most cases, disputes can be resolved through simple conversation."
-        },
-        "howToOpen": {
-            "title": "How to open a case?",
-            "step1": "Go to job details in your Dashboard.",
-            "step2": "Click the 'Report Problem' or 'Open Dispute' button.",
-            "step3": "Explain the situation and upload proof (photos, messages)."
-        },
+        "description": "How we resolve conflicts on the platform.",
         "process": {
-            "title": "Mediation Process",
-            "content": "Our support team will review the case within 24 hours. We will contact both parties to hear their versions."
+            "title": "Resolution Process",
+            "desc": "We always encourage open communication between the client and the professional to resolve any issues."
         },
-        "important": {
-            "title": "Important:",
-            "content": "Do not make payments outside the platform. We cannot guarantee or protect payments made in cash or direct bank transfers."
+        "mediation": {
+            "title": "Mediation",
+            "desc": "In difficult cases, our support team will intervene to review evidence and make a fair decision."
         }
     },
     "accessibility": {
         "title": "Accessibility",
-        "intro": "LocalFIX is committed to making its platform accessible to everyone, including people with disabilities.",
+        "description": "Our commitment to inclusion.",
+        "commitment": {
+            "title": "Our Commitment",
+            "desc": "LocalFIX is committed to making its platform accessible to everyone, including people with disabilities."
+        },
         "standards": {
             "title": "Standards",
-            "content": "We strive to follow the Web Content Accessibility Guidelines (WCAG) 2.1."
+            "desc": "We strive to follow the Web Content Accessibility Guidelines (WCAG) 2.1."
         },
-        "features": {
-            "title": "Features",
-            "screenReaders": "Screen reader support.",
-            "contrast": "High color contrast.",
-            "keyboard": "Keyboard navigation.",
-            "altText": "Alternative text for images (alt text)."
-        },
-        "contact": "If you encounter any accessibility issues, please contact us."
+        "feedback": "If you encounter any accessibility issues, please contact us."
     },
     "licenses": {
         "title": "Licenses",
+        "description": "Information about software and professional licenses.",
         "lastUpdated": "Last Updated",
+        "software": {
+            "title": "Software Licenses",
+            "desc": "Our platform uses several open source libraries and other software licenses."
+        },
+        "professional": {
+            "title": "Professional Licenses",
+            "desc": "All professionals on the platform must hold appropriate licenses according to the law."
+        },
         "copyright": {
             "title": "Copyright",
             "content": "All content on this site is property of LocalFIX or its partners."
@@ -588,6 +586,7 @@
         "submitting": "Posting...",
         "contactNote": "After submission, you will be contacted within 24 hours by our providers",
         "success": "Request sent successfully! We will contact you within 24 hours.",
+        "postAnother": "Post another request",
         "error": "Something went wrong",
         "serverError": "Server connection error",
         "services": {
@@ -623,12 +622,43 @@
         "availableJobs": "Available Jobs",
         "availableJobsDesc": "Find new opportunities near you",
         "availableJobsTab": "Find Jobs",
+        "latestOpportunities": "Latest Opportunities",
+        "homeServices": "Home Services",
+        "paintingCleaningRepair": "Painting, Cleaning, Repair",
+        "itExpert": "IT Expert",
+        "designers": "Designers",
+        "delivery": "Delivery",
         "myWorks": "My Works",
         "myWorksDesc": "Manage the jobs you've taken on",
         "myWorksTab": "My Works",
         "myRequests": "My Requests",
         "myRequestsDesc": "Status of requests you've posted",
         "myRequestsTab": "My Requests"
+    },
+    "escrow": {
+        "verifyPending": "Verification Pending",
+        "verifyPendingDesc": "Provider has marked the job as completed.",
+        "waitingClient": "Waiting for the client to verify your work. If not verified within 24 hours, the job will be auto-approved.",
+        "verifyAndPay": "Verify & Release Payment",
+        "openDispute": "Open Dispute",
+        "jobCompleted": "Job Completed",
+        "paymentProcessed": "Payment has been processed successfully.",
+        "workProofProvider": "Provider Proof",
+        "workProofClient": "Client Proof",
+        "reportProblem": "Have a problem? Report dispute",
+        "disputeTitle": "Job in Dispute",
+        "disputeDesc": "The administrator will review evidence from both parties and decide on the next steps.",
+        "uploadAdditionalProof": "Upload additional proof",
+        "inProgress": "Job is in progress",
+        "inProgressDesc": "When finished, upload a photo as proof to request payment.",
+        "uploadProofAndComplete": "Upload Proof & Complete",
+        "uploading": "Uploading...",
+        "acceptJob": "Accept This Job (Provider)",
+        "confirmVerify": "Do you want to verify the completion of the work and release the payment?",
+        "backToDashboard": "Back to Dashboard",
+        "reportDispute": "Report Dispute",
+        "disputeReasonPlaceholder": "Describe the problem in detail...",
+        "submitReport": "Submit Report"
     },
     "servicesPage": {
         "title": "Browse Services",
@@ -641,7 +671,10 @@
         "viewDetails": "View Details",
         "new": "New",
         "rating": "Rating",
-        "location": "Location"
+        "location": "Location",
+        "becomeProviderTitle": "Do you have a skill to offer?",
+        "becomeProviderDesc": "Become part of our platform and start earning today by offering your professional services.",
+        "startNow": "Start Now"
     },
     "messages": {
         "title": "Messages",
@@ -696,6 +729,11 @@
         "addProduct": "Sell a Product",
         "myProducts": "My Products",
         "buyNow": "Buy Now",
+        "loginToBuy": "Please login to buy.",
+        "buySuccess": "Purchase successful!",
+        "buyError": "There was a problem during purchase.",
+        "transactionError": "Transaction error.",
+        "info": "Our platform secures every transaction. Funds are held safely until the buyer receives the product.",
         "commissionNote": "Platform takes 8% commission.",
         "productName": "Product Name",
         "productPrice": "Price (€)",
@@ -718,22 +756,22 @@
             "DELETED": "Deleted"
         },
         "sellerApproval": {
-            "title": "Aprobimi i Shitësit",
-            "pending": "Kërkesa juaj është në pritje të aprovimit nga stafi.",
-            "apply": "Për të shitur produkte në markatë, duhet të aplikoni për aprovim.",
-            "applyBtn": "Apliko për t'u bërë Shitës",
-            "goBack": "Kthehu te Markata"
+            "title": "Seller Approval",
+            "pending": "Your request is pending approval by the staff.",
+            "apply": "To sell products in the marketplace, you must apply for approval.",
+            "applyBtn": "Apply to become a Seller",
+            "goBack": "Back to Marketplace"
         }
     },
     "provider": {
-        "apply": "Apliko si Profesionist",
-        "applyDesc": "Plotësoni të dhënat tuaja për të filluar ofrimin e shërbimeve.",
-        "category": "Kategoria e Shërbimit",
-        "experience": "Përvoja juaj",
-        "bio": "Bio Profesionale",
-        "submit": "Dërgo Kërkesën",
-        "sending": "Duke dërguar...",
-        "success": "Aplikimi u Dërgua!",
-        "successDesc": "Faleminderit! Kërkesa juaj për t'u bërë profesionist është në proces shqyrtimi. Do të njoftoheni së shpejti."
+        "apply": "Apply as Professional",
+        "applyDesc": "Fill in your details to start offering services.",
+        "category": "Service Category",
+        "experience": "Your Experience",
+        "bio": "Professional Bio",
+        "submit": "Submit Request",
+        "sending": "Sending...",
+        "success": "Application Sent!",
+        "successDesc": "Thank you! Your request to become a professional is being reviewed. You will be notified soon."
     }
 }

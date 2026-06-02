@@ -10,13 +10,16 @@
         "messages": "Nachrichten",
         "logout": "Abmelden",
         "marketplace": "Marktplatz",
-        "adminPanel": "Admin-Bereich"
+        "adminPanel": "Admin-Bereich",
+        "findServices": "Dienste finden",
+        "findJobs": "Jobs finden"
     },
     "hero": {
         "title": "Finden Sie zuverlässige Anbieter für jeden lokalen Service",
         "subtitle": "Die vertrauenswürdigste Plattform zum Finden und Anbieten lokaler Dienstleistungen",
         "seeAllJobs": "Alle Jobs anzeigen",
         "badge": "Plattform Nr. 1 in Albanien",
+        "welcomeBack": "Willkommen zurück",
         "ourServices": "Unsere Dienstleistungen",
         "discoverMore": "Mehr entdecken",
         "whyChooseUs": "Warum uns wählen?",
@@ -97,7 +100,8 @@
         "emailError": "Ungültige E-Mail oder Passwort",
         "generalError": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
         "welcomeBack": "Willkommen zurück",
-        "loginSubtitle": "Melden Sie sich an, um fortzufahren"
+        "loginSubtitle": "Melden Sie sich an, um fortzufahren",
+        "passwordMinLengthHint": "Min. 6 Zeichen"
     },
     "errors": {
         "fillAllFields": "Bitte füllen Sie alle Pflichtfelder aus",
@@ -113,11 +117,12 @@
         "satisfiedClients": "Zufriedene Kunden",
         "activeRequests": "Aktive Anfragen",
         "offersReceived": "Erhaltene Angebote",
-        "hiredProfessionals": "Eingestellte Fachkräfte",
-        "totalExpenses": "Gesamtausgaben",
+        "hired": "Eingestellt",
         "activeJobs": "Aktive Jobs",
-        "monthlyEarnings": "Monatlicher Verdienst",
-        "profileViews": "Profilansichten"
+        "completedJobs": "Abgeschlossene Jobs",
+        "rating": "Bewertung",
+        "success": "Erfolgsquote",
+        "messages": "Neue Nachrichten"
     },
     "dashboard": {
         "title": "Dashboard",
@@ -146,9 +151,10 @@
             "user": "Benutzer",
             "signOut": "Abmelden"
         },
+        "changeLanguage": "Sprache ändern",
         "welcome": {
-            "clientDesc": "Posten Sie Anfragen, finden Sie qualifizierte Fachkräfte und lösen Sie Ihre Probleme.",
-            "providerDesc": "Verwalten Sie Ihre Jobs, verfolgen Sie Ihre Einnahmen und bauen Sie Ihren Ruf auf.",
+            "clientDesc": "Anfragen posten, qualifizierte Fachkräfte finden und Probleme lösen.",
+            "providerDesc": "Jobs verwalten, Einnahmen verfolgen und Ruf aufbauen.",
             "joined": "Beigetreten",
             "today": "Heute"
         },
@@ -159,19 +165,19 @@
             "postRequestDesc": "Einen Profi anfordern",
             "findPros": "Profis finden",
             "findProsDesc": "Angebote durchsuchen",
-            "myHires": "Meine Mitarbeiter",
+            "myHires": "Meine Einstellungen",
             "myHiresDesc": "Auftragshistorie",
             "support": "Support",
             "supportDesc": "Kontaktieren Sie uns",
             "findJobs": "Jobs finden",
             "findJobsDesc": "Neue Anfragen ansehen",
-            "manageOffers": "Dienste verwalten",
+            "manageOffers": "Meine Dienste",
             "earnings": "Verdienst",
             "earningsDesc": "Finanzberichte",
             "providerHelp": "Anbieter-Hilfe",
             "providerHelpDesc": "Unterstützung für Anbieter",
             "marketplace": "Marktplatz",
-            "marketplaceDesc": "Kaufen und verkaufen Sie professionelle Werkzeuge"
+            "marketplaceDesc": "Professionelle Werkzeuge kaufen und verkaufen"
         },
         "recentActivity": {
             "title": "Letzte Aktivität",
@@ -200,7 +206,10 @@
                 "placeholderDesc": "Zusätzliche Details...",
                 "cancel": "Abbrechen",
                 "save": "Termin speichern"
-            }
+            },
+            "consultation": "Beratung",
+            "tomorrow": "Morgen",
+            "dayAfterTomorrow": "Übermorgen"
         },
         "tips": {
             "title": "Tipps für eine bessere Nutzung",
@@ -211,19 +220,19 @@
             "title": "Debug-Informationen",
             "devOnly": "Nur Entwicklung"
         },
-        "becomeProvider": "Bëhu Profesionist",
-        "becomeProviderDesc": "Regjistrohuni si profesionist për të ofruar shërbimet tuaja, për të hapur kurse dhe për të dërguar kontrata pune.",
-        "pendingApproval": "Kërkesa në proces aprovimi",
-        "applyNow": "Apliko Tani",
+        "becomeProvider": "Profi werden",
+        "becomeProviderDesc": "Registrieren Sie sich als Profi, um Ihre Dienste anzubieten, Kurse zu eröffnen und Arbeitsverträge zu versenden.",
+        "pendingApproval": "Antrag in Bearbeitung",
+        "applyNow": "Jetzt bewerben",
         "providerSections": {
             "portfolio": "Portfolio",
-            "portfolioDesc": "Menaxhoni fotot e punëve tuaja të kryera.",
+            "portfolioDesc": "Verwalten Sie Fotos Ihrer abgeschlossenen Arbeiten.",
             "courses": "Kurse",
-            "coursesDesc": "Ngarkoni kurset tuaja profesionale.",
-            "contracts": "Kontrata",
-            "contractsDesc": "Menaxhoni kontratat e punës.",
-            "viewAll": "Shiko",
-            "add": "Shto"
+            "coursesDesc": "Laden Sie Ihre professionellen Kurse hoch.",
+            "contracts": "Verträge",
+            "contractsDesc": "Verwalten Sie Arbeitsverträge.",
+            "viewAll": "Ansehen",
+            "add": "Hinzufügen"
         }
     },
     "features": {
@@ -248,7 +257,9 @@
             "subtitle": "Schließen Sie sich heute Tausenden von zufriedenen Kunden und Profis an.",
             "registerClient": "Als Kunde registrieren",
             "registerProvider": "Als Anbieter registrieren",
-            "login": "Hier anmelden"
+            "login": "Hier anmelden",
+            "loggedInTitle": "Setzen Sie Ihre Projekte fort",
+            "loggedInSubtitle": "Sehen Sie den Status Ihrer Aufträge oder posten Sie neue Anfragen direkt von Ihrem Dashboard."
         }
     },
     "faq": {
@@ -264,7 +275,8 @@
         "q4": "Was ist, wenn ich nicht zufrieden bin?",
         "a4": "Wir bieten eine Zufriedenheitsgarantie. Bei Problemen wird unser Support-Team vermitteln.",
         "stillHaveQuestions": "Haben Sie noch Fragen?",
-        "contactUs": "Kontaktieren Sie uns"
+        "contactUs": "Kontaktieren Sie uns",
+        "emailSupport": "E-Mail-Support"
     },
     "testimonials": {
         "title": "Was unsere Benutzer sagen",
@@ -275,7 +287,7 @@
         "title": "Vertraut von führenden Unternehmen"
     },
     "admin": {
-        "loading": "Admin-Panel wird geladen...",
+        "loading": "Admin-Panel wird ladene...",
         "title": "LocalFIX Admin",
         "overview": "Übersicht",
         "usersProviders": "Benutzer & Anbieter",
@@ -324,21 +336,16 @@
     },
     "about": {
         "title": "Über uns",
-        "description": "Erfahren Sie mehr über LocalFIX",
+        "description": "Erfahren Sie mehr über LocalFIX's Mission und Team.",
         "mission": {
             "title": "Unsere Mission",
-            "desc": "LocalFIX ist die führende Plattform zur Verbindung von Einzelpersonen mit qualifizierten Fachkräften für Haus- und Geschäftsdienstleistungen."
+            "desc": "LocalFIX möchte Kunden mit den besten Fachkräften in Albanien verbinden und Qualität sowie Zuverlässigkeit bei jedem Service gewährleisten."
         },
-        "history": {
-            "title": "Unsere Geschichte",
-            "desc": "LocalFIX wurde in Tirana gegründet und entstand aus dem Bedürfnis, Transparenz und Qualität in den Markt für lokale Dienstleistungen zu bringen."
+        "vision": {
+            "title": "Unsere Vision",
+            "desc": "Die primäre Quelle für jeden Servicebedarf zu werden und das lokale Wirtschaftswachstum durch Technologie zu fördern."
         },
-        "values": {
-            "title": "Unsere Werte",
-            "reliability": "Zuverlässigkeit: Wir überprüfen jeden Profi.",
-            "quality": "Qualität: Hohe Standards für jeden Service.",
-            "transparency": "Transparenz: Klare Preise und keine versteckten Kosten."
-        }
+        "team": "Unser engagiertes Team arbeitet jeden Tag daran, Ihnen das beste Erlebnis zu bieten."
     },
     "howItWorksPage": {
         "title": "Wie es funktioniert",
@@ -376,7 +383,7 @@
         "description": "Ihre Sicherheit ist unsere oberste Priorität",
         "verified": {
             "title": "Verifizierte Profis",
-            "desc": "Jeder Anbieter durchlaufen einen strengen Identitäts- und Qualifikationsprüfungsprozess."
+            "desc": "Jeder Anbieter durchläuft einen strengen Identitäts- und Qualifikationsprüfungsprozess."
         },
         "payment": {
             "title": "Zahlungsschutz",
@@ -437,7 +444,7 @@
         "title": "Häufig gestellte Fragen (FAQ)",
         "description": "Antworten auf Ihre häufigsten Fragen",
         "q1": "Ist LocalFIX kostenlos?",
-        "a1": "Die Registrierung und Suche nach Fachkräften ist für Kunden kostenlos. Dienstleister zahlen einen kleinen Prozentsatz für jeden gewonnenen Auftrag.",
+        "a1": "Registrierung und Suche nach Fachkräften ist für Kunden kostenlos. Dienstleister zahlen einen kleinen Prozentsatz für jeden gewonnenen Auftrag.",
         "q2": "Wie wird die Servicequalität sichergestellt?",
         "a2": "Alle Fachkräfte werden verifiziert und von anderen Kunden bewertet. Wir überwachen ständig ihre Leistung.",
         "q3": "Was ist, wenn ich nicht zufrieden bin?",
@@ -447,108 +454,105 @@
     },
     "terms": {
         "title": "Nutzungsbedingungen",
+        "description": "Bitte lesen Sie unsere Nutzungsbedingungen sorgfältig durch.",
         "lastUpdated": "Zuletzt aktualisiert",
-        "section1": {
+        "acceptance": {
             "title": "1. Annahme der Bedingungen",
-            "content": "Durch den Zugriff auf und die Nutzung von LocalFIX erklären Sie sich mit diesen Bedingungen einverstanden."
+            "desc": "Durch den Zugriff auf und die Nutzung von LocalFIX erklären Sie sich mit diesen Bedingungen einverstanden."
         },
-        "section2": {
-            "title": "2. Nutzung des Dienstes",
-            "content": "Sie sind für die Wahrung der Vertraulichkeit Ihres Kontos verantwortlich."
+        "userConduct": {
+            "title": "2. Nutzerverhalten",
+            "desc": "Sie sind für die Wahrung der Vertraulichkeit Ihres Kontos und für alle Aktivitäten unter Ihrem Konto verantwortlich."
         },
-        "section3": {
+        "payments": {
             "title": "3. Zahlungen und Gebühren",
-            "content": "Details zu Servicegebühren und Zahlungsabwicklung."
+            "desc": "Details zu Servicegebühren und Zahlungsabwicklung. Gelder werden erst nach Abschluss der Arbeit freigegeben."
         },
-        "section4": {
-            "title": "4. Haftung",
-            "content": "LocalFIX agiert als Vermittler und übernimmt keine direkte Verantwortung für die Qualität der Arbeit der Anbieter."
+        "termination": {
+            "title": "4. Kündigung",
+            "desc": "Wir behalten uns das Recht vor, Ihren Zugriff zu kündigen oder auszusetzen, wenn unsere Regeln verletzt werden."
         }
     },
     "privacy": {
         "title": "Datenschutzrichtlinie",
+        "description": "Ihre Datensicherheit ist unsere oberste Priorität.",
         "lastUpdated": "Zuletzt aktualisiert",
-        "section1": {
+        "collection": {
             "title": "Datenerhebung",
-            "content": "Wir sammeln Informationen, die Sie uns direkt zur Verfügung stellen, wie Name, E-Mail und Telefonnummer."
+            "desc": "Wir sammeln Informationen, die Sie uns direkt zur Verfügung stellen, wie Name, E-Mail und Telefonnummer bei der Registrierung."
         },
-        "section2": {
+        "usage": {
             "title": "Nutzung von Informationen",
-            "content": "Ihre Daten werden verwendet, um Dienste bereitzustellen, die Plattform zu verbessern und zur Kommunikation."
+            "desc": "Ihre Daten werden verwendet, um Dienste bereitzustellen, die Plattform zu verbessern und zur Kommunikation."
         },
-        "section3": {
+        "sharing": {
             "title": "Weitergabe von Daten",
-            "content": "Wir verkaufen Ihre persönlichen Daten nicht an Dritte."
-        },
-        "section4": {
-            "title": "Sicherheit",
-            "content": "Wir treffen angemessene Maßnahmen, um Ihre Informationen vor unbefugtem Zugriff zu schützen."
+            "desc": "Wir verkaufen Ihre persönlichen Daten nicht an Dritte und geben sie nur weiter, wenn dies für den Service notwendig ist."
         }
     },
-    "cookiesPage": {
+    "cookies": {
         "title": "Cookie-Richtlinie",
+        "description": "Wie wir Cookies verwenden, um Ihre Erfahrung zu verbessern.",
         "lastUpdated": "Zuletzt aktualisiert",
-        "intro": "LocalFIX verwendet Cookies, um Ihre Erfahrung auf unserer Website zu verbessern.",
-        "whatAreCookies": {
+        "what": {
             "title": "Was sind Cookies?",
-            "content": "Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden."
+            "desc": "Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden."
+        },
+        "how": {
+            "title": "Wie wir sie verwenden?",
+            "desc": "Wir verwenden Cookies, um Sie angemeldet zu halten und zu verstehen, wie die Seite genutzt wird."
         },
         "types": {
-            "title": "Arten von Cookies, die wir verwenden",
-            "necessary": "Notwendig: Für das Funktionieren der Website.",
-            "analytical": "Analytisch: Um zu verstehen, wie die Website genutzt wird.",
+            "title": "Arten von Cookies",
+            "essential": "Notwendig: Für das Funktionieren der Website.",
+            "analytics": "Analytisch: Um zu verstehen, wie die Website genutzt wird.",
             "marketing": "Marketing: Um Ihnen relevante Werbung anzuzeigen."
-        },
-        "control": "Sie können Cookies über Ihre Browsereinstellungen steuern."
+        }
     },
-    "disputesPage": {
+    "disputes": {
         "title": "Streitbeilegung",
-        "description": "Unser Prozess zur Konfliktlösung",
-        "fairness": {
-            "title": "Fairness-Richtlinie",
-            "content": "Wir fördern die offene Kommunikation zwischen Kunde und Fachkraft. Meist lassen sich Streitigkeiten durch ein Gespräch lösen."
-        },
-        "howToOpen": {
-            "title": "Wie öffnet man einen Fall?",
-            "step1": "Gehen Sie zu den Details des Auftrags im Dashboard.",
-            "step2": "Klicken Sie auf 'Problem melden'.",
-            "step3": "Erklären Sie die Situation und laden Sie Beweise hoch."
-        },
+        "description": "Wie wir Konflikte auf der Plattform lösen.",
         "process": {
-            "title": "Mediationsverfahren",
-            "content": "Unser Support-Team wird den Fall prüfen und beide Parteien kontaktieren."
+            "title": "Lösungsprozess",
+            "desc": "Wir fördern stets die offene Kommunikation zwischen Kunde und Fachkraft, um Probleme zu lösen."
         },
-        "important": {
-            "title": "Wichtig:",
-            "content": "Machen Sie keine Zahlungen außerhalb der Plattform."
+        "mediation": {
+            "title": "Mediation",
+            "desc": "In schwierigen Fällen wird unser Support-Team vermitteln, Beweise prüfen und eine faire Entscheidung treffen."
         }
     },
     "accessibility": {
         "title": "Barrierefreiheit",
-        "intro": "LocalFIX setzt sich dafür ein, seine Plattform für alle zugänglich zu machen.",
+        "description": "Unser Engagement für Inklusion.",
+        "commitment": {
+            "title": "Unser Engagement",
+            "desc": "LocalFIX setzt sich dafür ein, seine Plattform für alle zugänglich zu machen, auch für Menschen mit Behinderungen."
+        },
         "standards": {
             "title": "Standards",
-            "content": "Wir bemühen uns, die Richtlinien für barrierefreie Webinhalte (WCAG) 2.1 zu befolgen."
+            "desc": "Wir bemühen uns, die Richtlinien für barrierefreie Webinhalte (WCAG) 2.1 zu befolgen."
         },
-        "features": {
-            "title": "Funktionen",
-            "screenReaders": "Unterstützung für Screenreader.",
-            "contrast": "Hoher Farbkontrast.",
-            "keyboard": "Tastaturnavigation.",
-            "altText": "Alternativtext für Bilder."
-        },
-        "contact": "Bei Problemen kontaktieren Sie uns bitte."
+        "feedback": "Bei Problemen mit der Barrierefreiheit kontaktieren Sie uns bitte."
     },
     "licenses": {
         "title": "Lizenzen",
+        "description": "Informationen über Software- und Berufslizenzen.",
         "lastUpdated": "Zuletzt aktualisiert",
+        "software": {
+            "title": "Software-Lizenzen",
+            "desc": "Unsere Plattform nutzt verschiedene Open-Source-Bibliotheken."
+        },
+        "professional": {
+            "title": "Berufslizenzen",
+            "desc": "Alle Profis auf der Plattform müssen über die gesetzlich vorgeschriebenen Lizenzen verfügen."
+        },
         "copyright": {
             "title": "Urheberrecht",
             "content": "Alle Inhalte auf dieser Website sind Eigentum von LocalFIX oder seinen Partnern."
         },
         "openSource": {
             "title": "Open-Source-Lizenzen",
-            "content": "Wir verwenden verschiedene Open-Source-Bibliotheken."
+            "content": "Wir verwenden verschiedene Open-Source-Bibliotheken. Hier ist die Liste:"
         }
     },
     "sitemap": {
@@ -584,7 +588,8 @@
         "submit": "Anfrage posten",
         "submitting": "Wird gesendet...",
         "contactNote": "Sie werden innerhalb von 24 Stunden kontaktiert",
-        "success": "Anfrage erfolgreich gesendet!",
+        "postAnother": "Weitere Anfrage posten",
+        "success": "Anfrage erfolgreich gesendet! Wir melden uns innerhalb von 24 Stunden.",
         "error": "Etwas ist schief gelaufen",
         "serverError": "Server-Verbindungsfehler",
         "services": {
@@ -620,12 +625,43 @@
         "availableJobs": "Verfügbare Jobs",
         "availableJobsDesc": "Finden Sie neue Möglichkeiten in Ihrer Nähe",
         "availableJobsTab": "Jobs finden",
+        "latestOpportunities": "Neueste Gelegenheiten",
+        "homeServices": "Hausdienstleistungen",
+        "paintingCleaningRepair": "Malerarbeiten, Reinigung, Reparatur",
+        "itExpert": "IT-Experte",
+        "designers": "Designer",
+        "delivery": "Lieferung",
         "myWorks": "Meine Arbeiten",
         "myWorksDesc": "Verwalten Sie Ihre übernommenen Jobs",
         "myWorksTab": "Meine Arbeiten",
         "myRequests": "Meine Anfragen",
         "myRequestsDesc": "Status Ihrer geposteten Anfragen",
         "myRequestsTab": "Meine Anfragen"
+    },
+    "escrow": {
+        "verifyPending": "Verifizierung ausstehend",
+        "verifyPendingDesc": "Der Anbieter hat die Arbeit als abgeschlossen markiert.",
+        "waitingClient": "Warten auf die Bestätigung des Kunden. Wenn nicht innerhalb von 24 Stunden verifiziert wird, wird der Job automatisch genehmigt.",
+        "verifyAndPay": "Verifizieren & Zahlung freigeben",
+        "openDispute": "Streitfall eröffnen",
+        "jobCompleted": "Job abgeschlossen",
+        "paymentProcessed": "Die Zahlung wurde erfolgreich bearbeitet.",
+        "workProofProvider": "Nachweis des Anbieters",
+        "workProofClient": "Nachweis des Kunden",
+        "reportProblem": "Ein Problem melden? Streitfall eröffnen",
+        "disputeTitle": "Job im Streitfall",
+        "disputeDesc": "Der Administrator wird die Beweise beider Parteien prüfen und über die nächsten Schritte entscheiden.",
+        "uploadAdditionalProof": "Zusätzliche Beweise hochladen",
+        "inProgress": "Job in Bearbeitung",
+        "inProgressDesc": "Wenn Sie fertig sind, laden Sie ein Foto als Nachweis hoch, um die Zahlung anzufordern.",
+        "uploadProofAndComplete": "Nachweis hochladen & Abschließen",
+        "uploading": "Wird hochgeladen...",
+        "acceptJob": "Diesen Job annehmen (Anbieter)",
+        "confirmVerify": "Möchten Sie den Abschluss der Arbeit bestätigen und die Zahlung freigeben?",
+        "backToDashboard": "Zurück zum Dashboard",
+        "reportDispute": "Streitfall melden",
+        "disputeReasonPlaceholder": "Beschreiben Sie das Problem im Detail...",
+        "submitReport": "Bericht senden"
     },
     "servicesPage": {
         "title": "Dienste durchsuchen",
@@ -638,7 +674,10 @@
         "viewDetails": "Details anzeigen",
         "new": "Neu",
         "rating": "Bewertung",
-        "location": "Standort"
+        "location": "Standort",
+        "becomeProviderTitle": "Haben Sie eine Fähigkeit zum Anbieten?",
+        "becomeProviderDesc": "Werden Sie Teil unserer Plattform und verdienen Sie heute Geld.",
+        "startNow": "Jetzt starten"
     },
     "messages": {
         "title": "Nachrichten",
@@ -693,6 +732,11 @@
         "addProduct": "Produkt verkaufen",
         "myProducts": "Meine Produkte",
         "buyNow": "Jetzt kaufen",
+        "loginToBuy": "Bitte melden Sie sich an, um zu kaufen.",
+        "buySuccess": "Kauf erfolgreich!",
+        "buyError": "Problem beim Kauf.",
+        "transactionError": "Transaktionsfehler.",
+        "info": "Unsere Plattform sichert jede Transaktion. Gelder werden sicher aufbewahrt.",
         "commissionNote": "Die Plattform berechnet 8% Provision.",
         "productName": "Produktname",
         "productPrice": "Preis (€)",
@@ -715,22 +759,22 @@
             "DELETED": "Gelöscht"
         },
         "sellerApproval": {
-            "title": "Aprobimi i Shitësit",
-            "pending": "Kërkesa juaj është në pritje të aprovimit nga stafi.",
-            "apply": "Për të shitur produkte në markatë, duhet të aplikoni për aprovim.",
-            "applyBtn": "Apliko për t'u bërë Shitës",
-            "goBack": "Kthehu te Markata"
+            "title": "Verkäufer-Zulassung",
+            "pending": "Ihr Antrag wird vom Personal geprüft.",
+            "apply": "Um Produkte zu verkaufen, müssen Sie eine Zulassung beantragen.",
+            "applyBtn": "Verkäufer werden",
+            "goBack": "Zurück zum Marktplatz"
         }
     },
     "provider": {
-        "apply": "Apliko si Profesionist",
-        "applyDesc": "Plotësoni të dhënat tuaja për të filluar ofrimin e shërbimeve.",
-        "category": "Kategoria e Shërbimit",
-        "experience": "Përvoja juaj",
-        "bio": "Bio Profesionale",
-        "submit": "Dërgo Kërkesën",
-        "sending": "Duke dërguar...",
-        "success": "Aplikimi u Dërgua!",
-        "successDesc": "Faleminderit! Kërkesa juaj për t'u bërë profesionist është në proces shqyrtimi. Do të njoftoheni së shpejti."
+        "apply": "Als Profi bewerben",
+        "applyDesc": "Geben Sie Ihre Daten ein, um Dienste anzubieten.",
+        "category": "Service-Kategorie",
+        "experience": "Ihre Erfahrung",
+        "bio": "Berufliche Bio",
+        "submit": "Antrag senden",
+        "sending": "Wird gesendet...",
+        "success": "Antrag gesendet!",
+        "successDesc": "Vielen Dank! Ihr Antrag wird geprüft. Wir melden uns bald."
     }
 }
