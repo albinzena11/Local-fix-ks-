@@ -1,6 +1,8 @@
 'use client';
 
-import { Link } from "@/frontend/i18n/routing";
+import { Link } from "@/i18n/routing";
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import {
   FiSearch,
   FiShield,
@@ -11,17 +13,29 @@ import {
   FiTool,
   FiArrowRight,
   FiZap,
-  FiArrowUpRight
+  FiArrowUpRight,
+  FiLayout,
+  FiBriefcase,
+  FiPlusCircle
 } from "react-icons/fi";
 import TrustedBy from "@/components/TrustedBy";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
 import { useTranslations } from "next-intl";
 
 export default function HomePage() {
   const t = useTranslations();
+  const { data: session, status } = useSession();
+  const [userStats, setUserStats] = useState<any>(null);
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      fetch('/api/stats')
+        .then(res => res.json())
+        .then(data => setUserStats(data))
+        .catch(err => console.error("Error fetching stats:", err));
+    }
+  }, [status]);
 
   const services = [
     { icon: "🏠", name: t('services.home'), description: t('services.homeDescription'), color: "bg-blue-50 border-blue-100", textColor: "text-blue-700" },
@@ -78,10 +92,10 @@ export default function HomePage() {
     { value: "98%", label: t('stats.satisfiedClients') },
   ];
 
+  const isProvider = (session?.user as any)?.role === "PROVIDER";
+
   return (
     <div className="flex flex-col min-h-screen selection:bg-blue-100 selection:text-blue-900">
-      <Header />
-      
       <main className="flex-grow">
         {/* --- Hero Section --- */}
         <section className="relative pt-20 pb-32 md:pt-32 md:pb-48 overflow-hidden">
@@ -95,11 +109,11 @@ export default function HomePage() {
             <div className="flex flex-col items-center text-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-black mb-10 animate-fadeIn uppercase tracking-widest shadow-sm">
                 <FiZap className="animate-bounce" />
-                {t('hero.badge')}
+                {status === 'authenticated' ? `${t('hero.welcomeBack')}, ${session?.user?.name?.split(' ')[0]}` : t('hero.badge')}
               </div>
               
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[0.9] animate-slideInUp">
-                {t('hero.title').split(' ').map((word, i) => (
+                {t('hero.title').split(' ').map((word: string, i: number) => (
                   <span key={i} className={i > 2 ? "text-blue-600" : ""}> {word} </span>
                 ))}
               </h1>
@@ -109,31 +123,105 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center mb-24 animate-slideInUp [animation-delay:400ms]">
-                <Link
-                  href="/requests/create"
-                  className="group bg-slate-900 text-white px-10 py-5 rounded-[2rem] font-black text-xl shadow-2xl hover:shadow-blue-500/20 hover:scale-105 transition-all active:scale-95 flex items-center justify-center"
-                >
-                  <FiSearch className="mr-3 text-2xl group-hover:rotate-12 transition-transform" />
-                  <span>{t('header.searchService')}</span>
-                </Link>
-                <Link
-                  href="/register?role=provider"
-                  className="group bg-white text-slate-900 border-2 border-slate-100 px-10 py-5 rounded-[2rem] font-black text-xl shadow-xl hover:shadow-slate-200/50 hover:bg-slate-50 hover:scale-105 transition-all active:scale-95 flex items-center justify-center"
-                >
-                  <FiTool className="mr-3 text-2xl group-hover:-rotate-12 transition-transform" />
-                  <span>{t('header.offerService')}</span>
-                </Link>
+                {status === 'authenticated' ? (
+                  <>
+                    <Link
+                      href="/dashboard"
+                      className="group bg-slate-900 text-white px-10 py-5 rounded-[2rem] font-black text-xl shadow-2xl hover:shadow-blue-500/20 hover:scale-105 transition-all active:scale-95 flex items-center justify-center"
+                    >
+                      <FiLayout className="mr-3 text-2xl group-hover:rotate-12 transition-transform" />
+                      <span>{t('header.dashboard')}</span>
+                    </Link>
+                    <Link
+                      href={isProvider ? "/jobs" : "/requests/create"}
+                      className="group bg-white text-slate-900 border-2 border-slate-100 px-10 py-5 rounded-[2rem] font-black text-xl shadow-xl hover:shadow-slate-200/50 hover:bg-slate-50 hover:scale-105 transition-all active:scale-95 flex items-center justify-center"
+                    >
+                      {isProvider ? (
+                        <>
+                          <FiBriefcase className="mr-3 text-2xl group-hover:-rotate-12 transition-transform" />
+                          <span>{t('header.findJobs')}</span>
+                        </>
+                      ) : (
+                        <>
+                          <FiPlusCircle className="mr-3 text-2xl group-hover:-rotate-12 transition-transform" />
+                          <span>{t('header.searchService')}</span>
+                        </>
+                      )}
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/requests/create"
+                      className="group bg-slate-900 text-white px-10 py-5 rounded-[2rem] font-black text-xl shadow-2xl hover:shadow-blue-500/20 hover:scale-105 transition-all active:scale-95 flex items-center justify-center"
+                    >
+                      <FiSearch className="mr-3 text-2xl group-hover:rotate-12 transition-transform" />
+                      <span>{t('header.searchService')}</span>
+                    </Link>
+                    <Link
+                      href="/register?role=provider"
+                      className="group bg-white text-slate-900 border-2 border-slate-100 px-10 py-5 rounded-[2rem] font-black text-xl shadow-xl hover:shadow-slate-200/50 hover:bg-slate-50 hover:scale-105 transition-all active:scale-95 flex items-center justify-center"
+                    >
+                      <FiTool className="mr-3 text-2xl group-hover:-rotate-12 transition-transform" />
+                      <span>{t('header.offerService')}</span>
+                    </Link>
+                  </>
+                )}
               </div>
 
-              {/* Stats Bar */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 w-full max-w-6xl glass rounded-[3rem] p-8 md:p-12 shadow-2xl border border-white/50 animate-slideInUp [animation-delay:600ms]">
-                {stats.map((stat, index) => (
-                  <div key={index} className={`flex flex-col items-center justify-center px-4 ${index < stats.length - 1 ? 'md:border-r border-slate-200' : ''}`}>
-                    <div className="text-3xl md:text-5xl font-black text-slate-900 mb-2 tabular-nums tracking-tighter">{stat.value}</div>
-                    <div className="text-xs md:text-sm font-black text-slate-400 uppercase tracking-widest text-center">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
+              {/* Stats Bar / User Dashboard Mini-Widget if logged in */}
+              {status === 'authenticated' && userStats ? (
+                <div className="w-full max-w-5xl glass rounded-[3rem] p-8 md:p-12 shadow-2xl border border-white/50 animate-slideInUp [animation-delay:600ms] grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {isProvider ? (
+                      <>
+                        <div className="flex flex-col items-center border-r border-slate-100">
+                          <span className="text-3xl md:text-5xl font-black text-slate-900 mb-1">{userStats.activeJobs || 0}</span>
+                          <span className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest">{t('stats.activeJobs')}</span>
+                        </div>
+                        <div className="flex flex-col items-center border-r border-slate-100">
+                          <span className="text-3xl md:text-5xl font-black text-slate-900 mb-1">{userStats.completedJobs || 0}</span>
+                          <span className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest">{t('stats.completedJobs')}</span>
+                        </div>
+                        <div className="flex flex-col items-center border-r border-slate-100">
+                          <span className="text-3xl md:text-5xl font-black text-blue-600 mb-1">4.9</span>
+                          <span className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest">{t('stats.rating')}</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                          <span className="text-3xl md:text-5xl font-black text-emerald-600 mb-1">85%</span>
+                          <span className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest">{t('stats.success')}</span>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="flex flex-col items-center border-r border-slate-100">
+                          <span className="text-3xl md:text-5xl font-black text-slate-900 mb-1">{userStats.activeRequests || 0}</span>
+                          <span className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest">{t('stats.activeRequests')}</span>
+                        </div>
+                        <div className="flex flex-col items-center border-r border-slate-100">
+                          <span className="text-3xl md:text-5xl font-black text-blue-600 mb-1">{userStats.offersReceived || 0}</span>
+                          <span className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest">{t('stats.offersReceived')}</span>
+                        </div>
+                        <div className="flex flex-col items-center border-r border-slate-100">
+                          <span className="text-3xl md:text-5xl font-black text-slate-900 mb-1">{userStats.hiredProfessionals || 0}</span>
+                          <span className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest">{t('stats.hired')}</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                          <span className="text-3xl md:text-5xl font-black text-indigo-600 mb-1">2</span>
+                          <span className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest">{t('stats.messages')}</span>
+                        </div>
+                      </>
+                    )}
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 w-full max-w-6xl glass rounded-[3rem] p-8 md:p-12 shadow-2xl border border-white/50 animate-slideInUp [animation-delay:600ms]">
+                  {stats.map((stat, index) => (
+                    <div key={index} className={`flex flex-col items-center justify-center px-4 ${index < stats.length - 1 ? 'md:border-r border-slate-200' : ''}`}>
+                      <div className="text-3xl md:text-5xl font-black text-slate-900 mb-2 tabular-nums tracking-tighter">{stat.value}</div>
+                      <div className="text-xs md:text-sm font-black text-slate-400 uppercase tracking-widest text-center">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -226,49 +314,65 @@ export default function HomePage() {
                 
                 <div className="relative z-10 max-w-3xl mx-auto">
                     <h2 className="text-4xl md:text-7xl font-black mb-8 leading-[0.9] tracking-tighter">
-                        {t('home.cta.title')}
+                        {status === 'authenticated' ? t('home.cta.loggedInTitle') : t('home.cta.title')}
                     </h2>
                     <p className="text-xl md:text-2xl mb-12 text-blue-100/60 font-medium leading-relaxed">
-                        {t('home.cta.subtitle')}
+                        {status === 'authenticated' ? t('home.cta.loggedInSubtitle') : t('home.cta.subtitle')}
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center mb-12">
-                        <Link
-                        href="/register?role=client"
-                        className="group bg-white text-slate-900 px-12 py-5 rounded-[2rem] font-black text-xl shadow-2xl hover:bg-blue-50 hover:scale-105 transition-all active:scale-95"
-                        >
+                        {status === 'authenticated' ? (
+                          <Link
+                            href="/dashboard"
+                            className="group bg-white text-slate-900 px-12 py-5 rounded-[2rem] font-black text-xl shadow-2xl hover:bg-blue-50 hover:scale-105 transition-all active:scale-95"
+                          >
                             <span className="flex items-center justify-center gap-2">
-                                {t('home.cta.registerClient')}
+                                {t('header.dashboard')}
                                 <FiArrowRight className="group-hover:translate-x-2 transition-transform" />
                             </span>
-                        </Link>
-                        <Link
-                        href="/register?role=provider"
-                        className="group bg-transparent border-2 border-white/20 px-12 py-5 rounded-[2rem] font-black text-xl hover:bg-white/10 hover:border-white hover:scale-105 transition-all active:scale-95 shadow-xl"
-                        >
-                            <span>{t('home.cta.registerProvider')}</span>
-                        </Link>
+                          </Link>
+                        ) : (
+                          <>
+                            <Link
+                            href="/register?role=client"
+                            className="group bg-white text-slate-900 px-12 py-5 rounded-[2rem] font-black text-xl shadow-2xl hover:bg-blue-50 hover:scale-105 transition-all active:scale-95"
+                            >
+                                <span className="flex items-center justify-center gap-2">
+                                    {t('home.cta.registerClient')}
+                                    <FiArrowRight className="group-hover:translate-x-2 transition-transform" />
+                                </span>
+                            </Link>
+                            <Link
+                            href="/register?role=provider"
+                            className="group bg-transparent border-2 border-white/20 px-12 py-5 rounded-[2rem] font-black text-xl hover:bg-white/10 hover:border-white hover:scale-105 transition-all active:scale-95 shadow-xl"
+                            >
+                                <span>{t('home.cta.registerProvider')}</span>
+                            </Link>
+                          </>
+                        )}
                     </div>
 
-                    <div className="flex items-center justify-center gap-4 text-sm font-bold text-blue-100/40 uppercase tracking-[0.2em]">
-                        <div className="h-[1px] w-12 bg-white/20"></div>
-                        <span>{t('hero.or')}</span>
-                        <div className="h-[1px] w-12 bg-white/20"></div>
-                    </div>
-                    
-                    <p className="mt-8 text-lg font-bold text-blue-100/80">
-                        {t('auth.haveAccount')}{' '}
-                        <Link href="/login" className="text-white underline hover:no-underline underline-offset-8 decoration-2 decoration-blue-500 transition-all font-black">
-                        {t('home.cta.login')}
-                        </Link>
-                    </p>
+                    {!session && (
+                      <>
+                        <div className="flex items-center justify-center gap-4 text-sm font-bold text-blue-100/40 uppercase tracking-[0.2em]">
+                            <div className="h-[1px] w-12 bg-white/20"></div>
+                            <span>{t('hero.or')}</span>
+                            <div className="h-[1px] w-12 bg-white/20"></div>
+                        </div>
+                        
+                        <p className="mt-8 text-lg font-bold text-blue-100/80">
+                            {t('auth.haveAccount')}{' '}
+                            <Link href="/login" className="text-white underline hover:no-underline underline-offset-8 decoration-2 decoration-blue-500 transition-all font-black">
+                            {t('home.cta.login')}
+                            </Link>
+                        </p>
+                      </>
+                    )}
                 </div>
               </div>
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }
