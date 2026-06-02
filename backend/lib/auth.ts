@@ -2,8 +2,17 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { prisma } from "./prisma";
-import { logger } from "./logger";
+import { prisma } from "@/lib/prisma";
+import { logger } from "@/lib/logger";
+
+interface AuthUser {
+  id: string;
+  email: string;
+  name: string;
+  role: string;
+  providerStatus: string;
+  sellerStatus: string;
+}
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -57,13 +66,14 @@ export const authOptions: NextAuthOptions = {
           }
 
           console.log("🎉 Login successful for:", user.email, "Role:", user.role);
+
           return {
             id: user.id,
             email: user.email,
             name: user.name || "Përdorues",
             role: user.role,
-            providerStatus: (user as any).providerStatus,
-            sellerStatus: (user as any).sellerStatus
+            providerStatus: (user as unknown as AuthUser).providerStatus || "NONE",
+            sellerStatus: (user as unknown as AuthUser).sellerStatus || "NONE"
           };
 
         } catch (error) {
@@ -82,23 +92,24 @@ export const authOptions: NextAuthOptions = {
     error: "/login",
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user }: { token: any; user?: any }) {
       if (user) {
-        token.id = user.id;
-        token.role = (user as any).role || "CLIENT";
-        token.providerStatus = (user as any).providerStatus || "NONE";
-        token.sellerStatus = (user as any).sellerStatus || "NONE";
-        token.name = user.name;
-        token.email = user.email;
+        const u = user as unknown as AuthUser;
+        token.id = u.id;
+        token.role = u.role || "CLIENT";
+        token.providerStatus = u.providerStatus || "NONE";
+        token.sellerStatus = u.sellerStatus || "NONE";
+        token.name = u.name;
+        token.email = u.email;
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token }: { session: any; token: any }) {
       if (session?.user) {
-        (session.user as any).id = token.id as string;
-        (session.user as any).role = token.role as string;
-        (session.user as any).providerStatus = token.providerStatus as string;
-        (session.user as any).sellerStatus = token.sellerStatus as string;
+        session.user.id = token.id as string;
+        session.user.role = token.role as string;
+        session.user.providerStatus = token.providerStatus as string;
+        session.user.sellerStatus = token.sellerStatus as string;
         session.user.name = token.name as string;
         session.user.email = token.email as string;
       }

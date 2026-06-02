@@ -66,14 +66,20 @@ model Job {
   proofImages String[]  @default([])
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  clientId    String
-  providerId  String?
-  category    String?
-  dispute     Dispute?
-  client      User      @relation("ClientJobs", fields: [clientId], references: [id])
-  provider    User?     @relation("ProviderJobs", fields: [providerId], references: [id])
-  offers      Offer[]
-  review      Review?
+  clientId          String
+  providerId        String?
+  category          String?
+  completedAt       DateTime?
+  verifiedAt        DateTime?
+  clientAccepted    Boolean   @default(false)
+  remindersSent     Int       @default(0)
+  clientProofImages String[]  @default([])
+  paymentReleased   Boolean   @default(false)
+  dispute           Dispute?
+  client            User      @relation("ClientJobs", fields: [clientId], references: [id])
+  provider          User?     @relation("ProviderJobs", fields: [providerId], references: [id])
+  offers            Offer[]
+  review            Review?
 
   @@map("jobs")
 }
@@ -302,6 +308,7 @@ enum SellerStatus {
 enum JobStatus {
   OPEN
   IN_PROGRESS
+  VERIFY_PENDING
   COMPLETED
   DISPUTED
   CANCELLED
