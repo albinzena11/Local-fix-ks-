@@ -5,18 +5,20 @@ export default function TermsPage() {
     const t = useTranslations('terms');
 
     return (
-        <InfoPage title={t('title')} lastUpdated="20 Janar 2026">
-            <h2>{t('section1.title')}</h2>
-            <p>{t('section1.content')}</p>
+        <InfoPage title={t('title')} description={t('description')}>
+            <div className="prose max-w-none dark:prose-invert">
+                <h2 className="text-2xl font-black mb-4">{t('acceptance.title')}</h2>
+                <p className="text-slate-600 dark:text-slate-400 font-medium mb-8">{t('acceptance.desc')}</p>
 
-            <h2>{t('section2.title')}</h2>
-            <p>{t('section2.content')}</p>
+                <h2 className="text-2xl font-black mb-4">{t('userConduct.title')}</h2>
+                <p className="text-slate-600 dark:text-slate-400 font-medium mb-8">{t('userConduct.desc')}</p>
 
-            <h2>{t('section3.title')}</h2>
-            <p>{t('section3.content')}</p>
+                <h2 className="text-2xl font-black mb-4">{t('payments.title')}</h2>
+                <p className="text-slate-600 dark:text-slate-400 font-medium mb-8">{t('payments.desc')}</p>
 
-            <h2>{t('section4.title')}</h2>
-            <p>{t('section4.content')}</p>
+                <h2 className="text-2xl font-black mb-4">{t('termination.title')}</h2>
+                <p className="text-slate-600 dark:text-slate-400 font-medium mb-8">{t('termination.desc')}</p>
+            </div>
         </InfoPage>
     );
 }

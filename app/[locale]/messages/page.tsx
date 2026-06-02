@@ -90,7 +90,7 @@ export default function MessagesPage() {
         e.preventDefault();
         if (!newMessage.trim() || !selectedConversation) return;
 
-        const recipient = selectedConversation.participants.find(p => p.id !== session?.user?.id);
+        const recipient = selectedConversation.participants.find(p => p.id !== (session?.user as any)?.id);
         if (!recipient) return;
 
         try {
@@ -122,7 +122,7 @@ export default function MessagesPage() {
                     </div>
                     <div className="overflow-y-auto flex-1">
                         {conversations.map(conv => {
-                            const otherUser = conv.participants.find(p => p.id !== session?.user?.id);
+                            const otherUser = conv.participants.find(p => p.id !== (session?.user as any)?.id);
                             return (
                                 <div
                                     key={conv.id}
@@ -153,7 +153,7 @@ export default function MessagesPage() {
                             {/* Chat Header */}
                             <div className="p-4 border-b flex items-center bg-white shadow-sm z-10">
                                 {(() => {
-                                    const otherUser = selectedConversation.participants.find(p => p.id !== session?.user?.id);
+                                    const otherUser = selectedConversation.participants.find(p => p.id !== (session?.user as any)?.id);
                                     return (
                                         <div className="font-bold text-lg">{otherUser?.name}</div>
                                     )
@@ -163,7 +163,7 @@ export default function MessagesPage() {
                             {/* Messages */}
                             <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
                                 {messages.map((msg) => {
-                                    const isMe = msg.senderId === session?.user?.id;
+                                    const isMe = msg.senderId === (session?.user as any)?.id;
                                     return (
                                         <div key={msg.id} className={`flex ${isMe ? 'justify-end' : 'justify-start'}`}>
                                             <div className={`max-w-[70%] rounded-lg px-4 py-2 ${isMe ? 'bg-blue-600 text-white' : 'bg-white border'}`}>

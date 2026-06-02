@@ -1,15 +1,16 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { FiArrowLeft, FiPlus, FiImage, FiPackage, FiTag, FiDollarSign, FiInfo, FiShoppingBag } from "react-icons/fi";
-import { Link } from "@/frontend/i18n/routing";
+import Image from "next/image";
 
-const categories = ["tools", "materials", "equipment", "safety", "other"];
+const categories = ["tools", "electronics", "furniture", "materials", "other"];
 
 export default function AddProductPage() {
     const t = useTranslations('marketplace');
+    const ct = useTranslations('marketplace.categories');
     const router = useRouter();
     const [loading, setLoading] = useState(true);
     const [sellerStatus, setSellerStatus] = useState<string>("NONE");
@@ -34,7 +35,7 @@ export default function AddProductPage() {
             const res = await fetch("/api/applications/seller", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ reason: "Dëshira për të shitur vegla" })
+                body: JSON.stringify({ reason: "Marketplace seller application" })
             });
             if (res.ok) {
                 setSellerStatus("PENDING");
@@ -65,16 +66,15 @@ export default function AddProductPage() {
             });
 
             if (res.ok) {
-                alert(t('success'));
                 router.push("/marketplace");
             } else {
                 const err = await res.json();
                 alert(err.error || t('error'));
             }
-        } catch (error) {
+        } catch {
             alert(t('error'));
         } finally {
-            setLoading(false);
+            setIsSaving(false);
         }
     };
 
@@ -191,7 +191,7 @@ export default function AddProductPage() {
                                     className="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:ring-4 focus:ring-blue-100 focus:border-blue-500 outline-none transition-all font-bold appearance-none cursor-pointer"
                                 >
                                     {categories.map(cat => (
-                                        <option key={cat} value={cat}>{t(`categories.${cat}`)}</option>
+                                        <option key={cat} value={cat}>{ct(cat)}</option>
                                     ))}
                                 </select>
                             </div>
@@ -238,7 +238,12 @@ export default function AddProductPage() {
                                 <div className="grid grid-cols-3 gap-4 mt-4">
                                     {images.map((url, i) => (
                                         <div key={i} className="relative aspect-square rounded-2xl overflow-hidden border-2 border-slate-100 group">
-                                            <img src={url} alt={`Preview ${i}`} className="w-full h-full object-cover" />
+                                            <Image 
+                                                src={url} 
+                                                alt={`Preview ${i}`} 
+                                                fill 
+                                                className="object-cover" 
+                                            />
                                             <button
                                                 type="button"
                                                 onClick={() => removeImage(url)}
@@ -263,14 +268,14 @@ export default function AddProductPage() {
                         {/* Submit Button */}
                         <button
                             type="submit"
-                            disabled={loading}
+                            disabled={isSaving}
                             className={`w-full py-5 rounded-[2rem] font-black text-xl shadow-2xl transition-all flex items-center justify-center gap-3 ${
-                                loading 
+                                isSaving 
                                 ? "bg-slate-100 text-slate-400 cursor-not-allowed" 
                                 : "bg-blue-600 hover:bg-blue-700 text-white hover:scale-[1.02] active:scale-95 shadow-blue-200"
                             }`}
                         >
-                            {loading ? t('saving') : t('addProduct')}
+                            {isSaving ? t('saving') : t('addProduct')}
                         </button>
                     </form>
                 </div>

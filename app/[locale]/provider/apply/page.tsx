@@ -1,14 +1,13 @@
 'use client';
 
 import { useState } from "react";
-import { useRouter } from "@/frontend/i18n/routing";
 import { useTranslations } from "next-intl";
 import { FiArrowLeft, FiCheckCircle, FiTool, FiBriefcase, FiSend } from "react-icons/fi";
-import { Link } from "@/frontend/i18n/routing";
+import { Link } from "@/i18n/routing";
 
 export default function ProviderApplyPage() {
     const t = useTranslations('provider');
-    const router = useRouter();
+    const tServices = useTranslations('jobForm.services');
     const [isSaving, setIsSaving] = useState(false);
     const [submitted, setSubmitted] = useState(false);
 
@@ -66,7 +65,7 @@ export default function ProviderApplyPage() {
             <div className="max-w-3xl mx-auto px-4">
                 <Link href="/dashboard" className="inline-flex items-center text-slate-400 hover:text-blue-600 font-bold mb-8 transition-colors group">
                     <FiArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" /> 
-                    {t('category')}
+                    {t('backToDashboard')}
                 </Link>
 
                 <div className="bg-white rounded-[2.5rem] shadow-xl shadow-slate-200/60 overflow-hidden border border-slate-100">
@@ -90,11 +89,12 @@ export default function ProviderApplyPage() {
                                     className="w-full pl-11 pr-4 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:ring-0 focus:border-blue-600 outline-none transition-all font-bold text-slate-700 appearance-none"
                                 >
                                     <option value="">{t('category')}</option>
-                                    <option value="elektricist">Elektricist</option>
-                                    <option value="hidraulik">Hidraulik</option>
-                                    <option value="mekanik">Mekanik</option>
-                                    <option value="ndertim">Ndërtim</option>
-                                    <option value="tjeter">Tjetër</option>
+                                    <option value="electrical">{tServices('electrical')}</option>
+                                    <option value="plumbing">{tServices('plumbing')}</option>
+                                    <option value="cleaning">{tServices('cleaning')}</option>
+                                    <option value="construction">{tServices('construction')}</option>
+                                    <option value="it">{tServices('it')}</option>
+                                    <option value="other">{tServices('other')}</option>
                                 </select>
                             </div>
                         </div>

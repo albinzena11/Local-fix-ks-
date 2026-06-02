@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect, useCallback } from "react";
-import { Link } from "@/frontend/i18n/routing";
+import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { FiSearch, FiShoppingBag, FiFilter, FiPackage, FiArrowRight, FiPlus } from "react-icons/fi";
+import { FiSearch, FiShoppingBag, FiFilter, FiPackage, FiPlus } from "react-icons/fi";
 import { useSession } from "next-auth/react";
 
 interface Product {
@@ -57,7 +57,7 @@ export default function MarketplacePage() {
 
     const handleBuy = async (productId: string) => {
         if (!session) {
-            alert("Ju lutem hyni në llogari për të blerë.");
+            alert(t('loginToBuy'));
             return;
         }
 
@@ -69,14 +69,14 @@ export default function MarketplacePage() {
             });
 
             if (res.ok) {
-                alert("Blerja u krye me sukses!");
+                alert(t('buySuccess'));
                 fetchProducts();
             } else {
                 const data = await res.json();
-                alert(data.error || "Pati një problem gjatë blerjes.");
+                alert(data.error || t('buyError'));
             }
-        } catch (error) {
-            alert("Gabim gjatë transaksionit.");
+        } catch {
+            alert(t('transactionError'));
         }
     };
 
@@ -229,7 +229,7 @@ export default function MarketplacePage() {
                         <FiPackage className="text-5xl text-blue-400 mx-auto mb-6" />
                         <h2 className="text-3xl font-black mb-4">{t('commissionNote')}</h2>
                         <p className="text-slate-400 font-medium">
-                            Platforma jonë siguron çdo transaksion. Fondet mbahen të sigurta derisa blerësi të marrë produktin.
+                            {t('info')}
                         </p>
                     </div>
                 </div>

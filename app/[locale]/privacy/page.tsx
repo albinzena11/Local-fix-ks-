@@ -5,18 +5,17 @@ export default function PrivacyPage() {
     const t = useTranslations('privacy');
 
     return (
-        <InfoPage title={t('title')} lastUpdated="20 Janar 2026">
-            <h2>{t('section1.title')}</h2>
-            <p>{t('section1.content')}</p>
+        <InfoPage title={t('title')} description={t('description')}>
+            <div className="prose max-w-none dark:prose-invert">
+                <h2 className="text-2xl font-black mb-4">{t('collection.title')}</h2>
+                <p className="text-slate-600 dark:text-slate-400 font-medium mb-8">{t('collection.desc')}</p>
 
-            <h2>{t('section2.title')}</h2>
-            <p>{t('section2.content')}</p>
+                <h2 className="text-2xl font-black mb-4">{t('usage.title')}</h2>
+                <p className="text-slate-600 dark:text-slate-400 font-medium mb-8">{t('usage.desc')}</p>
 
-            <h2>{t('section3.title')}</h2>
-            <p>{t('section3.content')}</p>
-
-            <h2>{t('section4.title')}</h2>
-            <p>{t('section4.content')}</p>
+                <h2 className="text-2xl font-black mb-4">{t('sharing.title')}</h2>
+                <p className="text-slate-600 dark:text-slate-400 font-medium mb-8">{t('sharing.desc')}</p>
+            </div>
         </InfoPage>
     );
 }

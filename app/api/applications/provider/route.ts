@@ -12,8 +12,7 @@ export async function POST(req: NextRequest) {
     try {
         const { category, bio, experience } = await req.json();
 
-        // Check if already pending
-        const existing = await (prisma as any).providerApplication.findFirst({
+        const existing = await prisma.providerApplication.findFirst({
             where: { userId: session.user.id, status: "PENDING" }
         });
 
@@ -21,7 +20,7 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: "Keni një kërkesë aktive në pritje." }, { status: 400 });
         }
 
-        const newApplication = await (prisma as any).providerApplication.create({
+        const newApplication = await prisma.providerApplication.create({
             data: {
                 userId: session.user.id,
                 category,
@@ -34,7 +33,7 @@ export async function POST(req: NextRequest) {
         // Update user status
         await prisma.user.update({
             where: { id: session.user.id },
-            data: { providerStatus: "PENDING" } as any
+            data: { providerStatus: "PENDING" }
         });
 
         return NextResponse.json(newApplication, { status: 201 });
@@ -44,19 +43,20 @@ export async function POST(req: NextRequest) {
     }
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
     const session = await getServerSession(authOptions);
     if (!session?.user?.id) {
         return NextResponse.json({ error: "Paautorizuar" }, { status: 401 });
     }
 
     try {
-        const application = await (prisma as any).providerApplication.findUnique({
+        const application = await prisma.providerApplication.findFirst({
             where: { userId: session.user.id },
         });
 
         return NextResponse.json(application || { status: "NONE" });
     } catch (error) {
+        console.error("Get application error:", error);
         return NextResponse.json({ error: "Gabim gjatë marrjes së kërkesës." }, { status: 500 });
     }
 }

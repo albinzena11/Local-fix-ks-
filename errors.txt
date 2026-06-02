@@ -1,0 +1,74 @@
+app/[locale]/about/page.tsx(1,22): error TS2307: Cannot find module '@/components/InfoPage' or its corresponding type declarations.
+app/[locale]/admin/layout.tsx(4,40): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+app/[locale]/contact/page.tsx(1,22): error TS2307: Cannot find module '@/components/InfoPage' or its corresponding type declarations.
+app/[locale]/cookies/page.tsx(1,22): error TS2307: Cannot find module '@/components/InfoPage' or its corresponding type declarations.
+app/[locale]/dashboard/page.tsx(5,46): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+app/[locale]/faq/page.tsx(1,22): error TS2307: Cannot find module '@/components/InfoPage' or its corresponding type declarations.
+app/[locale]/jobs/[id]/page.tsx(5,22): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+app/[locale]/jobs/page.tsx(8,21): error TS2307: Cannot find module '@/components/JobList' or its corresponding type declarations.
+app/[locale]/layout.tsx(7,25): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+app/[locale]/login/page.tsx(5,33): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+app/[locale]/marketplace/add/page.tsx(7,22): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+app/[locale]/marketplace/page.tsx(4,22): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+app/[locale]/messages/page.tsx(93,95): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/[locale]/messages/page.tsx(125,99): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/[locale]/messages/page.tsx(156,123): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/[locale]/messages/page.tsx(166,82): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/[locale]/page.tsx(3,22): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+app/[locale]/page.tsx(16,23): error TS2307: Cannot find module '@/components/TrustedBy' or its corresponding type declarations.
+app/[locale]/page.tsx(17,26): error TS2307: Cannot find module '@/components/Testimonials' or its corresponding type declarations.
+app/[locale]/page.tsx(18,17): error TS2307: Cannot find module '@/components/FAQ' or its corresponding type declarations.
+app/[locale]/privacy/page.tsx(1,22): error TS2307: Cannot find module '@/components/InfoPage' or its corresponding type declarations.
+app/[locale]/profile/[id]/page.tsx(64,13): error TS18048: 'session.user' is possibly 'undefined'.
+app/[locale]/profile/[id]/page.tsx(64,26): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/[locale]/profile/page.tsx(41,34): error TS2339: Property 'role' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/[locale]/profile/page.tsx(137,80): error TS2339: Property 'role' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/[locale]/profile/page.tsx(156,42): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/[locale]/provider/apply/page.tsx(4,27): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+app/[locale]/provider/apply/page.tsx(7,22): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+app/[locale]/register/page.tsx(5,33): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+app/[locale]/requests/create/page.tsx(3,22): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+app/[locale]/requests/create/page.tsx(5,21): error TS2307: Cannot find module '@/components/JobForm' or its corresponding type declarations.
+app/[locale]/services/[id]/page.tsx(6,33): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+app/[locale]/services/[id]/page.tsx(55,13): error TS18048: 'session.user' is possibly 'undefined'.
+app/[locale]/services/[id]/page.tsx(55,26): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/[locale]/services/page.tsx(4,22): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+app/[locale]/terms/page.tsx(1,22): error TS2307: Cannot find module '@/components/InfoPage' or its corresponding type declarations.
+app/api/applications/provider/route.ts(2,24): error TS2307: Cannot find module '@/lib/prisma' or its corresponding type declarations.
+app/api/applications/provider/route.ts(8,25): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/applications/provider/route.ts(17,43): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/applications/provider/route.ts(26,38): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/applications/provider/route.ts(36,39): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/applications/provider/route.ts(49,25): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/applications/provider/route.ts(55,43): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/applications/seller/route.ts(2,24): error TS2307: Cannot find module '@/lib/prisma' or its corresponding type declarations.
+app/api/applications/seller/route.ts(8,25): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/applications/seller/route.ts(19,39): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/applications/seller/route.ts(34,25): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/applications/seller/route.ts(40,39): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/jobs/[id]/route.ts(4,24): error TS2307: Cannot find module '@/lib/prisma' or its corresponding type declarations.
+app/api/jobs/route.ts(4,24): error TS2307: Cannot find module '@/lib/prisma' or its corresponding type declarations.
+app/api/marketplace/checkout/route.ts(2,24): error TS2307: Cannot find module '@/lib/prisma' or its corresponding type declarations.
+app/api/marketplace/checkout/route.ts(20,53): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+app/api/marketplace/products/route.ts(2,24): error TS2307: Cannot find module '@/lib/prisma' or its corresponding type declarations.
+app/api/marketplace/products/route.ts(56,35): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/notifications/route.ts(2,24): error TS2307: Cannot find module '@/lib/prisma' or its corresponding type declarations.
+app/api/notifications/route.ts(15,38): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/notifications/route.ts(43,47): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/notifications/route.ts(48,51): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/offers/route.ts(3,24): error TS2307: Cannot find module '@/lib/prisma' or its corresponding type declarations.
+app/api/offers/route.ts(10,29): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/offers/route.ts(26,42): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/offers/route.ts(40,29): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/offers/route.ts(53,48): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/offers/route.ts(66,47): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/stats/route.ts(3,24): error TS2307: Cannot find module '@/lib/prisma' or its corresponding type declarations.
+app/api/stats/route.ts(10,29): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/stats/route.ts(14,37): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/stats/route.ts(15,41): error TS2339: Property 'role' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.
+app/api/stats/route.ts(39,37): error TS7006: Parameter 'j' implicitly has an 'any' type.
+backend/lib/auth.ts(5,24): error TS2307: Cannot find module './prisma' or its corresponding type declarations.
+backend/lib/auth.ts(6,24): error TS2307: Cannot find module './logger' or its corresponding type declarations.
+frontend/components/footer.tsx(3,22): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+frontend/components/header.tsx(4,46): error TS2307: Cannot find module '@/frontend/i18n/routing' or its corresponding type declarations.
+proxy.ts(2,25): error TS2307: Cannot find module './frontend/i18n/routing' or its corresponding type declarations.

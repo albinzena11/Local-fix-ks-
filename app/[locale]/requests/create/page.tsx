@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "@/frontend/i18n/routing";
+import { Link } from "@/i18n/routing";
 import { FiArrowLeft } from "react-icons/fi";
 import JobForm from "@/components/JobForm";
 import { useTranslations } from "next-intl";

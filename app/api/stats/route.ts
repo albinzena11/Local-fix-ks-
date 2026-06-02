@@ -1,8 +1,7 @@
-
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "@/backend/lib/auth";
 
 export async function GET() {
     try {
@@ -36,7 +35,7 @@ export async function GET() {
                 where: { clientId: userId },
                 select: { id: true }
             });
-            const jobIds = jobs.map(j => j.id);
+            const jobIds = jobs.map((j: { id: string }) => j.id);
 
             const offersReceived = await prisma.offer.count({
                 where: { jobId: { in: jobIds }, status: "PENDING" }
