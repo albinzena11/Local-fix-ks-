@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
     "lib": [
       "dom",
@@ -32,6 +33,9 @@
       "@/messages/*": [
         "./frontend/messages/*"
       ],
+      "@/i18n/*": [
+        "./frontend/i18n/*"
+      ],
       "@/types/*": [
         "./frontend/types/*"
       ],
@@ -40,6 +44,12 @@
       ],
       "@/prisma/*": [
         "./backend/prisma/*"
+      ],
+      "@/frontend/*": [
+        "./frontend/*"
+      ],
+      "@/backend/*": [
+        "./backend/*"
       ],
       "@/*": [
         "./*"

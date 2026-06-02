@@ -1,9 +1,11 @@
+import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
-const withNextIntl = createNextIntlPlugin('./frontend/i18n/request.ts');
+const withNextIntl = createNextIntlPlugin(
+  './frontend/i18n/request.ts'
+);
 
-/** @type {import('next').NextConfig} */
-const nextConfig: import('next').NextConfig = {
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
@@ -13,6 +15,14 @@ const nextConfig: import('next').NextConfig = {
       {
         protocol: 'https',
         hostname: 'lh3.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
       },
     ],
   },
