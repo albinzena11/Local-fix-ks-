@@ -1,8 +1,7 @@
 'use client';
 
-import { Link } from "@/frontend/i18n/routing";
+import { Link, usePathname } from "@/i18n/routing";
 import {
-  FiTool,
   FiHeart,
   FiFacebook,
   FiInstagram,
@@ -11,9 +10,14 @@ import {
   FiArrowRight,
 } from "react-icons/fi";
 import { useTranslations } from "next-intl";
+import Logo from "./Logo";
 
 export default function Footer() {
   const t = useTranslations();
+  const pathname = usePathname();
+
+  // Hide footer on admin pages
+  if (pathname.startsWith('/admin')) return null;
 
   const footerLinks = [
     {
@@ -24,6 +28,7 @@ export default function Footer() {
         { name: t('services.cleaning'), href: "/services?category=cleaning" },
         { name: t('services.construction'), href: "/services?category=construction" },
         { name: t('services.it'), href: "/services?category=it" },
+        { name: t('marketplace.categories.materials'), href: "/marketplace?category=materials" },
       ]
     },
     {
@@ -75,15 +80,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-20">
           {/* Brand & Newsletter Section */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center space-x-3 mb-8 group">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl flex items-center justify-center shadow-2xl group-hover:rotate-6 transition-transform">
-                <FiTool className="text-white text-2xl" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-black text-2xl tracking-tighter leading-none">Local<span className="text-blue-500">FIX</span></span>
-                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest mt-1">{t('footer.tagline')}</span>
-              </div>
-            </Link>
+            <div className="mb-8">
+                <Logo />
+            </div>
 
             <p className="text-slate-400 font-medium leading-relaxed mb-8 max-w-sm">
               {t('footer.description')}
@@ -131,12 +130,6 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-slate-500 text-sm font-bold uppercase tracking-wider">
               <span>© {new Date().getFullYear()} LocalFIX. {t('footer.no1Albania')}</span>
-              <div className="hidden md:block h-4 w-px bg-slate-800"></div>
-              <div className="flex items-center gap-6">
-                 <Link href="/privacy" className="hover:text-blue-500 transition-colors uppercase tracking-widest text-[10px]">Privacy</Link>
-                 <Link href="/terms" className="hover:text-blue-500 transition-colors uppercase tracking-widest text-[10px]">Terms</Link>
-                 <Link href="/cookies" className="hover:text-blue-500 transition-colors uppercase tracking-widest text-[10px]">Cookies</Link>
-              </div>
             </div>
 
             <div className="flex items-center gap-3 px-6 py-2 bg-slate-900 rounded-full border border-slate-800 text-xs font-black text-slate-400">
