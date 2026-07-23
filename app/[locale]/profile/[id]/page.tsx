@@ -61,7 +61,7 @@ export default function PublicProfilePage() {
             return;
         }
 
-        if ((session?.user as any)?.id === id) {
+        if (session?.user?.id === id) {
             alert("You cannot message yourself.");
             return;
         }

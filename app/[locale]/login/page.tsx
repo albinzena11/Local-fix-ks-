@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link, useRouter } from "@/i18n/routing";
 import { signIn } from "next-auth/react";
 import { FiMail, FiLock, FiHome } from "react-icons/fi";
+import { FcGoogle } from "react-icons/fc";
 import { useTranslations } from "next-intl";
 
 export default function LoginPage() {
@@ -63,30 +64,53 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md mx-auto">
+    <div className="min-h-screen mesh-gradient-bg py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center relative overflow-hidden selection:bg-blue-100 selection:text-blue-900">
+      {/* Decorative Orbs */}
+      <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[140px] pointer-events-none animate-pulse-slow"></div>
+      <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[140px] pointer-events-none animate-pulse-slow [animation-delay:2s]"></div>
+
+      <div className="max-w-md w-full mx-auto relative z-10">
         <div className="text-center mb-10">
           <Link href="/" className="inline-flex items-center space-x-3 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
+            <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-500/30 group-hover:scale-110 transition-transform">
               <FiHome className="text-white text-2xl" />
             </div>
             <div>
-              <span className="font-extrabold text-3xl text-gray-900 tracking-tight">Local</span>
-              <span className="font-extrabold text-3xl text-blue-600 tracking-tight">FIX</span>
+              <span className="font-black text-3xl text-slate-900 tracking-tight">Local</span>
+              <span className="font-black text-3xl text-gradient-accent tracking-tight">FIX</span>
             </div>
           </Link>
-          <h2 className="mt-8 text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-8 text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
             {t('loginTitle')}
           </h2>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-slate-600 font-semibold">
             {t('loginSubtitle')}
           </p>
         </div>
 
-        <div className="bg-white py-8 px-6 shadow-xl rounded-2xl sm:px-10">
+        <div className="glass-card py-10 px-6 sm:px-10 rounded-[2.5rem] border border-white/80">
+          <div className="mb-6">
+            <button
+              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              className="w-full flex justify-center items-center gap-3 py-4 px-4 border border-slate-200/80 rounded-2xl shadow-sm bg-white/90 text-sm font-extrabold text-slate-700 hover:bg-white hover:shadow-md transition-all"
+            >
+              <FcGoogle className="text-2xl" />
+              Vazhdo me Google
+            </button>
+          </div>
+
+          <div className="relative mb-6">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-slate-200"></div>
+            </div>
+            <div className="relative flex justify-center text-xs font-black uppercase tracking-widest">
+              <span className="px-3 bg-white/80 rounded-full text-slate-400">Ose me email</span>
+            </div>
+          </div>
+
           <form className="space-y-6" onSubmit={handleSubmit}>
             {error && (
-              <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r">
+              <div className="bg-red-50/90 border-l-4 border-red-500 p-4 rounded-r-xl">
                 <div className="flex">
                   <div className="flex-shrink-0">
                     <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
@@ -94,19 +118,19 @@ export default function LoginPage() {
                     </svg>
                   </div>
                   <div className="ml-3">
-                    <p className="text-sm text-red-700">{error}</p>
+                    <p className="text-sm font-bold text-red-700">{error}</p>
                   </div>
                 </div>
               </div>
             )}
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-xs font-black uppercase tracking-widest text-slate-500 mb-2">
                 {tForms('email')}
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FiMail className="h-5 w-5 text-gray-400" />
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <FiMail className="h-5 w-5 text-slate-400" />
                 </div>
                 <input
                   id="email"
@@ -116,19 +140,19 @@ export default function LoginPage() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="pl-10 block w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  className="pl-12 block w-full px-4 py-4 border border-slate-200/80 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-white/70 font-semibold text-slate-900 placeholder:text-slate-400"
                   placeholder={t('emailPlaceholder')}
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="password" className="block text-xs font-black uppercase tracking-widest text-slate-500 mb-2">
                 {tForms('password')}
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FiLock className="h-5 w-5 text-gray-400" />
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <FiLock className="h-5 w-5 text-slate-400" />
                 </div>
                 <input
                   id="password"
@@ -138,7 +162,7 @@ export default function LoginPage() {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="pl-10 block w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  className="pl-12 block w-full px-4 py-4 border border-slate-200/80 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-white/70 font-semibold text-slate-900 placeholder:text-slate-400"
                   placeholder={t('passwordPlaceholder')}
                 />
               </div>
@@ -146,7 +170,7 @@ export default function LoginPage() {
 
             <div className="flex items-center justify-between">
               <div className="text-sm">
-                <Link href="/forgot-password" className="font-medium text-blue-600 hover:text-blue-500">
+                <Link href="/forgot-password" className="font-extrabold text-blue-600 hover:text-blue-500">
                   {t('forgotPassword')}
                 </Link>
               </div>
@@ -156,7 +180,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-xl shadow-lg text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center py-4 px-4 border border-transparent rounded-2xl shadow-xl text-base font-black text-white bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 focus:outline-none transition-all disabled:opacity-50 hover:scale-[1.02] active:scale-[0.98]"
               >
                 {loading ? (
                   <span className="flex items-center">
@@ -173,17 +197,17 @@ export default function LoginPage() {
             </div>
           </form>
 
-          <div className="mt-8 pt-6 border-t border-gray-200">
-            <p className="text-center text-sm text-gray-600">
+          <div className="mt-8 pt-6 border-t border-slate-200/80">
+            <p className="text-center text-sm font-bold text-slate-600">
               {t('noAccount')}{" "}
-              <Link href="/register" className="font-medium text-blue-600 hover:text-blue-500">
+              <Link href="/register" className="font-black text-blue-600 hover:text-blue-500">
                 {t('registerHere')}
               </Link>
             </p>
             <div className="mt-4 text-center">
               <Link
                 href="/register?role=provider"
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-green-700 bg-green-50 hover:bg-green-100 rounded-xl transition-colors"
+                className="inline-flex items-center px-5 py-2.5 text-xs font-black uppercase tracking-widest text-emerald-700 bg-emerald-50 hover:bg-emerald-100/80 rounded-xl transition-all hover:scale-105"
               >
                 <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z" />

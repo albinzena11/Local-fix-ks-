@@ -135,29 +135,33 @@ export default function EditProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen mesh-gradient-bg relative overflow-hidden selection:bg-blue-100 selection:text-blue-900">
+      {/* Decorative Orbs */}
+      <div className="absolute top-[-10%] right-[-5%] w-[550px] h-[550px] bg-blue-500/10 rounded-full blur-[140px] pointer-events-none animate-pulse-slow"></div>
+      <div className="absolute bottom-[-10%] left-[-5%] w-[550px] h-[550px] bg-indigo-500/10 rounded-full blur-[140px] pointer-events-none animate-pulse-slow [animation-delay:2s]"></div>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-10">
           <Link
             href="/profile"
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6"
+            className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 font-black glass px-4 py-2 rounded-xl border border-blue-200/60 shadow-sm"
           >
             <FiArrowLeft className="w-4 h-4 mr-2" />
             Kthehu në Profil
           </Link>
 
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-3 tracking-tight">
             Editoni Profilin
           </h1>
-          <p className="text-gray-600">
+          <p className="text-slate-600 font-semibold text-lg">
             Përditësoni informacionet personale dhe preferencat tuaja
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Profile Image Section */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+          <div className="glass-card rounded-[2.5rem] border border-white/80 p-8 md:p-10">
             <h2 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
               <FiCamera className="w-5 h-5 mr-2 text-blue-600" />
               Foto e Profilit
@@ -241,7 +245,7 @@ export default function EditProfilePage() {
           </div>
 
           {/* Personal Information */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+          <div className="glass-card rounded-[2.5rem] border border-white/80 p-8 md:p-10">
             <h2 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
               <FiUser className="w-5 h-5 mr-2 text-blue-600" />
               Informacione Personale
@@ -259,7 +263,7 @@ export default function EditProfilePage() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-5 py-3.5 border-2 border-slate-100 bg-slate-50 rounded-xl focus:ring-0 focus:border-blue-600 outline-none transition-all font-bold text-slate-700"
                   placeholder="Emri juaj i plotë"
                 />
               </div>
@@ -275,10 +279,10 @@ export default function EditProfilePage() {
                   required
                   value={formData.email}
                   disabled
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-500 cursor-not-allowed"
+                  className="w-full px-5 py-3.5 border-2 border-slate-100 rounded-xl bg-slate-100 text-slate-400 cursor-not-allowed font-bold"
                   placeholder="email@shembull.com"
                 />
-                <p className="text-xs text-gray-500 mt-1 pl-1">Email nuk mund të ndryshohet</p>
+                <p className="text-xs text-slate-400 mt-2 pl-1 font-medium">Email nuk mund të ndryshohet</p>
               </div>
 
               <div>
@@ -291,7 +295,7 @@ export default function EditProfilePage() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-5 py-3.5 border-2 border-slate-100 bg-slate-50 rounded-xl focus:ring-0 focus:border-blue-600 outline-none transition-all font-bold text-slate-700"
                   placeholder="+355 XX XXX XXXX"
                 />
               </div>
@@ -305,7 +309,7 @@ export default function EditProfilePage() {
                   name="location"
                   value={formData.location}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-5 py-3.5 border-2 border-slate-100 bg-slate-50 rounded-xl focus:ring-0 focus:border-blue-600 outline-none transition-all font-bold text-slate-700 appearance-none"
                 >
                   <option value="">Zgjidhni qytetin</option>
                   {cities.map(city => (
@@ -323,7 +327,7 @@ export default function EditProfilePage() {
                   rows={4}
                   value={formData.bio}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-5 py-3.5 border-2 border-slate-100 bg-slate-50 rounded-xl focus:ring-0 focus:border-blue-600 outline-none transition-all font-bold text-slate-700"
                   placeholder="Përshkruani veten shkurtimisht..."
                   maxLength={500}
                 />
@@ -340,7 +344,7 @@ export default function EditProfilePage() {
           </div>
 
           {/* Preferences */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+          <div className="bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 p-8 md:p-10">
             <h2 className="text-lg font-semibold text-gray-900 mb-6">
               Preferencat
             </h2>
@@ -355,7 +359,7 @@ export default function EditProfilePage() {
                     name="language"
                     value={formData.language}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-5 py-3.5 border-2 border-slate-100 bg-slate-50 rounded-xl focus:ring-0 focus:border-blue-600 outline-none transition-all font-bold text-slate-700 appearance-none"
                   >
                     {languages.map(lang => (
                       <option key={lang.code} value={lang.code}>
@@ -405,19 +409,22 @@ export default function EditProfilePage() {
           </div>
 
           {/* Password Section */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-200 p-8">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
-              Ndryshimi i Fjalëkalimit
-            </h2>
-            <p className="text-gray-700 mb-6">
-              Ju mund të ndryshoni fjalëkalimin tuaj nga faqja e sigurisë
-            </p>
-            <Link
-              href="/profile/security"
-              className="inline-flex items-center px-5 py-2.5 bg-white border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition"
-            >
-              Shko te Siguria
-            </Link>
+          <div className="bg-gradient-to-r from-slate-900 to-indigo-950 rounded-[2rem] p-8 md:p-10 shadow-2xl text-white relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-2xl -mr-20 -mt-20"></div>
+            <div className="relative z-10">
+              <h2 className="text-xl font-black mb-4">
+                Ndryshimi i Fjalëkalimit
+              </h2>
+              <p className="text-slate-300 mb-8 font-medium">
+                Ju mund të ndryshoni fjalëkalimin tuaj nga faqja e sigurisë
+              </p>
+              <Link
+                href="/profile/security"
+                className="inline-flex items-center px-8 py-3.5 bg-white text-slate-900 font-black rounded-xl hover:bg-slate-100 transition-colors shadow-xl"
+              >
+                Shko te Siguria
+              </Link>
+            </div>
           </div>
 
           {/* Action Buttons */}
@@ -425,7 +432,7 @@ export default function EditProfilePage() {
             <button
               type="button"
               onClick={handleCancel}
-              className="px-8 py-3.5 bg-white border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition flex items-center justify-center"
+              className="px-8 py-4 bg-white border-2 border-slate-200 text-slate-700 font-black rounded-xl hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-center"
             >
               <FiX className="w-5 h-5 mr-2" />
               Anulo
@@ -433,7 +440,7 @@ export default function EditProfilePage() {
             <button
               type="submit"
               disabled={saving}
-              className="px-8 py-3.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-lg hover:from-blue-700 hover:to-blue-800 transition flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
+              className="px-8 py-4 bg-blue-600 text-white font-black rounded-xl hover:bg-blue-700 transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed shadow-xl shadow-blue-200 hover:-translate-y-0.5"
             >
               {saving ? (
                 <>

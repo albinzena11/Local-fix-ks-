@@ -42,13 +42,30 @@ export default function SecurityPage() {
 
     setLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Password change request:", formData);
-      alert("Fjalëkalimi u ndryshua me sukses!");
-      setFormData({ currentPassword: "", newPassword: "", confirmPassword: "" });
+    try {
+      const res = await fetch("/api/profile/password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          currentPassword: formData.currentPassword,
+          newPassword: formData.newPassword
+        })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.error || "Ndodhi një gabim!");
+      } else {
+        alert("Fjalëkalimi u ndryshua me sukses!");
+        setFormData({ currentPassword: "", newPassword: "", confirmPassword: "" });
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Gabim gjatë lidhjes me serverin.");
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   };
 
   const handleToggleTwoFactor = () => {

@@ -3,14 +3,15 @@
 
 import { useState } from "react";
 import { Link, useRouter } from "@/i18n/routing";
-import { FiUser, FiMail, FiLock, FiBriefcase, FiHome, FiPhone, FiMapPin } from "react-icons/fi";
+import { signIn } from "next-auth/react";
+import { FiUser, FiMail, FiLock, FiHome, FiPhone, FiMapPin } from "react-icons/fi";
+import { FcGoogle } from "react-icons/fc";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 export default function RegisterPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const roleParam = searchParams.get("role");
   const t = useTranslations('auth');
   const tForms = useTranslations('forms');
   const tErrors = useTranslations('errors');
@@ -22,7 +23,6 @@ export default function RegisterPage() {
     confirmPassword: "",
     phone: "",
     location: "",
-    role: roleParam === "provider" ? "PROVIDER" : "CLIENT",
   });
 
   const [loading, setLoading] = useState(false);
@@ -79,7 +79,6 @@ export default function RegisterPage() {
           password: formData.password,
           phone: formData.phone,
           location: formData.location,
-          role: formData.role,
         }),
       });
 
@@ -100,7 +99,6 @@ export default function RegisterPage() {
           confirmPassword: "",
           phone: "",
           location: "",
-          role: formData.role,
         });
         setSuccess("");
         router.push("/login?message=" + encodeURIComponent(t('registerSuccess')));
@@ -116,29 +114,51 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md mx-auto">
+    <div className="min-h-screen mesh-gradient-bg py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center relative overflow-hidden selection:bg-blue-100 selection:text-blue-900">
+      {/* Decorative Orbs */}
+      <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[140px] pointer-events-none animate-pulse-slow"></div>
+      <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[140px] pointer-events-none animate-pulse-slow [animation-delay:2s]"></div>
+
+      <div className="max-w-md w-full mx-auto relative z-10">
         <div className="text-center mb-10">
           <Link href="/" className="inline-flex items-center space-x-3 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
+            <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-500/30 group-hover:scale-110 transition-transform">
               <FiHome className="text-white text-2xl" />
             </div>
             <div>
-              <span className="font-extrabold text-3xl text-gray-900 tracking-tight">Local</span>
-              <span className="font-extrabold text-3xl text-blue-600 tracking-tight">FIX</span>
+              <span className="font-black text-3xl text-slate-900 tracking-tight">Local</span>
+              <span className="font-black text-3xl text-gradient-accent tracking-tight">FIX</span>
             </div>
           </Link>
-          <h2 className="mt-8 text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-8 text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
             {t('createAccount')}
           </h2>
-          <p className="mt-2 text-gray-600">
-            {formData.role === "PROVIDER"
-              ? t('joinProvider')
-              : t('joinClient')}
+          <p className="mt-2 text-slate-600 font-semibold">
+            Krijoni një llogari për të filluar me LocalFix.
           </p>
         </div>
 
-        <div className="bg-white py-8 px-6 shadow-xl rounded-2xl sm:px-10">
+        <div className="glass-card py-10 px-6 sm:px-10 rounded-[2.5rem] border border-white/80">
+          <div className="mb-6">
+            <button
+              type="button"
+              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              className="w-full flex justify-center items-center gap-3 py-3.5 px-4 border border-gray-300 rounded-xl shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+            >
+              <FcGoogle className="text-xl" />
+              Regjistrohu me Google
+            </button>
+          </div>
+
+          <div className="relative mb-6">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-300"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-white text-gray-500">Ose me email</span>
+            </div>
+          </div>
+
           <form className="space-y-6" onSubmit={handleSubmit}>
             {error && (
               <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r">
@@ -185,7 +205,7 @@ export default function RegisterPage() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="pl-10 block w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  className="pl-10 block w-full px-4 py-3.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-slate-50 hover:bg-white"
                   placeholder={t('fullNameBox')}
                 />
               </div>
@@ -207,7 +227,7 @@ export default function RegisterPage() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="pl-10 block w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  className="pl-10 block w-full px-4 py-3.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-slate-50 hover:bg-white"
                   placeholder={t('emailPlaceholder')}
                 />
               </div>
@@ -227,7 +247,7 @@ export default function RegisterPage() {
                   type="tel"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="pl-10 block w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  className="pl-10 block w-full px-4 py-3.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-slate-50 hover:bg-white"
                   placeholder={t('phoneBox')}
                 />
               </div>
@@ -247,7 +267,7 @@ export default function RegisterPage() {
                   type="text"
                   value={formData.location}
                   onChange={handleChange}
-                  className="pl-10 block w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  className="pl-10 block w-full px-4 py-3.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-slate-50 hover:bg-white"
                   placeholder={t('locationBox')}
                 />
               </div>
@@ -268,7 +288,7 @@ export default function RegisterPage() {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="pl-10 block w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  className="pl-10 block w-full px-4 py-3.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-slate-50 hover:bg-white"
                   placeholder={t('passwordPlaceholder')}
                 />
               </div>
@@ -290,38 +310,13 @@ export default function RegisterPage() {
                   required
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="pl-10 block w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  className="pl-10 block w-full px-4 py-3.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-slate-50 hover:bg-white"
                   placeholder={t('passwordPlaceholder')}
                 />
               </div>
             </div>
 
-            <div>
-              <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-1">
-                {t('roleLabel')} *
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FiBriefcase className="h-5 w-5 text-gray-400" />
-                </div>
-                <select
-                  id="role"
-                  name="role"
-                  value={formData.role}
-                  onChange={handleChange}
-                  required
-                  className="pl-10 block w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors appearance-none"
-                >
-                  <option value="CLIENT">{t('roleClient')}</option>
-                  <option value="PROVIDER">{t('roleProvider')}</option>
-                </select>
-                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                  <svg className="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </div>
-              </div>
-            </div>
+
 
             <div className="flex items-center">
               <input
@@ -357,7 +352,7 @@ export default function RegisterPage() {
                     {t('registering')}
                   </span>
                 ) : (
-                  formData.role === "PROVIDER" ? t('registerProvider') : t('registerClient')
+                  t('registerClient')
                 )}
               </button>
             </div>

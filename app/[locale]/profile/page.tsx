@@ -38,7 +38,7 @@ export default async function ProfilePage() {
                 <h2 className="text-xl font-bold text-gray-900">{session.user?.name}</h2>
                 <p className="text-gray-600 text-sm">{session.user?.email}</p>
                 <span className="mt-2 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium capitalize">
-                  {(session?.user as any)?.role}
+                  {session?.user?.role}
                 </span>
               </div>
 
@@ -58,6 +58,15 @@ export default async function ProfilePage() {
                   <FiEdit className="w-5 h-5 mr-3" />
                   Editoni Profilin
                 </Link>
+                {session.user?.role === "PROVIDER" && (
+                  <Link
+                    href="/profile/portfolio"
+                    className="flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                  >
+                    <FiUser className="w-5 h-5 mr-3 text-blue-500" />
+                    Portofoli Im
+                  </Link>
+                )}
                 <Link
                   href="/profile/security"
                   className="flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-gray-900"
@@ -134,7 +143,7 @@ export default async function ProfilePage() {
                         Roli
                       </label>
                       <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-                        <p className="text-gray-900 capitalize">{(session?.user as any)?.role}</p>
+                        <p className="text-gray-900 capitalize">{session?.user?.role}</p>
                       </div>
                     </div>
                   </div>
@@ -153,7 +162,7 @@ export default async function ProfilePage() {
                       </label>
                       <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
                         <code className="text-sm font-mono text-gray-900">
-                          {(session?.user as any)?.id}
+                          {session?.user?.id}
                         </code>
                       </div>
                     </div>
