@@ -6,8 +6,8 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { AuthProvider } from '@/components/providers/AuthProvider';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
+import HeaderWrapper from '@/components/HeaderWrapper';
+import FooterWrapper from '@/components/FooterWrapper';
 
 const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
 const outfit = Outfit({ subsets: ["latin"], variable: '--font-outfit' });
@@ -21,15 +21,15 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${inter.variable} ${outfit.variable} scroll-smooth`} suppressHydrationWarning>
-      <body className="font-sans antialiased text-slate-900 bg-white dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+    <html lang={locale} className={`${inter.variable} ${outfit.variable} scroll-smooth`} data-scroll-behavior="smooth" suppressHydrationWarning>
+      <body className="font-sans antialiased text-slate-900 bg-[#fafafa] transition-colors duration-300">
         <AuthProvider>
           <NextIntlClientProvider messages={messages} locale={locale}>
-            <Header />
+            <HeaderWrapper />
             <main className="min-h-screen">
               {children}
             </main>
-            <Footer />
+            <FooterWrapper />
           </NextIntlClientProvider>
         </AuthProvider>
       </body>

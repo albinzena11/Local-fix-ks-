@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import InfoPage from '@/frontend/components/InfoPage';
+import InfoPage from '@/components/InfoPage';
 
 export default function CommunityPage() {
   const t = useTranslations('community');

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/backend/lib/auth";
+import { authOptions } from "@/lib/auth";
 
 export async function POST(req: NextRequest) {
     const session = await getServerSession(authOptions);
@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-        const { category, bio, experience } = await req.json();
+        const { category, bio, experience, cvUrl, portfolioUrl, workImages } = await req.json();
 
         const existing = await prisma.providerApplication.findFirst({
             where: { userId: session.user.id, status: "PENDING" }
@@ -26,6 +26,9 @@ export async function POST(req: NextRequest) {
                 category,
                 bio,
                 experience,
+                cvUrl: cvUrl || null,
+                portfolioUrl: portfolioUrl || null,
+                workImages: Array.isArray(workImages) ? workImages : [],
                 status: "PENDING"
             }
         });

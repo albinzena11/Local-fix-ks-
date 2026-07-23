@@ -55,6 +55,7 @@ export default function DashboardPage() {
   const pathname = usePathname();
   const [session, setSession] = useState<{ user?: SessionUser } | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
   const [loadingNotifications, setLoadingNotifications] = useState(false);
@@ -63,7 +64,26 @@ export default function DashboardPage() {
   const [newAppointment, setNewAppointment] = useState({ title: '', date: '', description: '' });
   const [dashboardStats, setDashboardStats] = useState<DashboardStats | null>(null);
 
+  // Dropdown states
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
+
+  // Close dropdowns when clicking outside (simple approach for now)
   useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!(e.target as Element).closest('.dropdown-container')) {
+        setShowNotifications(false);
+        setShowSettings(false);
+        setShowProfile(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    setIsMounted(true);
     fetchSession();
     fetchNotifications();
     fetchAppointments();
@@ -127,7 +147,7 @@ export default function DashboardPage() {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch('/api/dashboard/stats');
+      const response = await fetch('/api/stats');
       if (response.ok) {
         const data = await response.json();
         setDashboardStats(data);
@@ -289,22 +309,36 @@ export default function DashboardPage() {
 
   const quickActions = isProvider ? providerActions : clientActions;
 
-  // Role-based Recent Activity (Mock)
-  const clientActivity = [
-    { id: 1, title: isProvider ? t('recentActivity.newRequest') : t('recentActivity.requestApproved'), time: "1h", status: t('profileCard.active'), type: "request" },
-  ];
+  // Role-based Recent Activity using Real Notifications
+  const recentActivity = notifications.slice(0, 5).map(n => ({
+    id: n.id,
+    title: n.title,
+    time: formatTime(n.createdAt),
+    status: n.read ? t('recentActivity.read') || 'Lexuar' : t('recentActivity.new') || 'E Re',
+    type: n.type
+  }));
+
+  if (recentActivity.length === 0) {
+      recentActivity.push({
+          id: "no-activity",
+          title: t('notifications.noNotifications'),
+          time: "-",
+          status: "-",
+          type: "info"
+      });
+  }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen mesh-gradient-bg selection:bg-blue-100 selection:text-blue-900">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-30">
+      <header className="glass border-b border-white/60 sticky top-0 z-30 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-black text-gradient-accent">
                 LocalFix
               </h1>
-              <span className="ml-4 text-gray-500 hidden md:inline border-l pl-4 border-gray-300">
+              <span className="ml-4 text-slate-500 font-bold text-sm hidden md:inline border-l pl-4 border-slate-200">
                 {t('title')}
               </span>
             </div>
@@ -318,29 +352,32 @@ export default function DashboardPage() {
                   const nextLocale = locales[(currentIndex + 1) % locales.length];
                   router.replace(pathname, { locale: nextLocale });
                 }}
-                className="p-2 rounded-full hover:bg-gray-100 transition flex items-center space-x-2 text-gray-600"
+                className="p-2.5 rounded-xl bg-slate-50/80 hover:bg-white hover:shadow-md transition flex items-center space-x-2 text-slate-700 font-bold"
                 title={t('changeLanguage')}
               >
-                <FiGlobe className="w-5 h-5" />
-                <span className="text-xs font-bold uppercase">{locale}</span>
+                <FiGlobe className="w-5 h-5 text-blue-600" />
+                <span className="text-xs font-black uppercase tracking-widest">{locale}</span>
               </button>
 
               {/* Notifications */}
-              <div className="relative group">
-                <button className="p-2 rounded-full hover:bg-gray-100 transition relative">
-                  <FiBell className="w-5 h-5 text-gray-600" />
+              <div className="relative dropdown-container">
+                <button 
+                  onClick={() => { setShowNotifications(!showNotifications); setShowSettings(false); setShowProfile(false); }}
+                  className="p-2.5 rounded-xl bg-slate-50/80 hover:bg-white hover:shadow-md transition relative focus:outline-none"
+                >
+                  <FiBell className="w-5 h-5 text-slate-700" />
                   {unreadCount > 0 && (
-                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center animate-pulse">
+                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-[10px] font-black rounded-full flex items-center justify-center animate-pulse">
                       {unreadCount}
                     </span>
                   )}
                 </button>
 
-                <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <div className="p-4 border-b border-gray-200 flex justify-between items-center bg-gray-50 rounded-t-xl">
-                    <h3 className="font-semibold text-gray-900">{t('notifications.title')}</h3>
+                <div className={`absolute right-0 mt-2 w-80 glass-card rounded-2xl shadow-2xl border border-white/80 transition-all duration-200 z-50 ${showNotifications ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
+                  <div className="p-4 border-b border-slate-200/60 flex justify-between items-center rounded-t-2xl">
+                    <h3 className="font-black text-slate-900">{t('notifications.title')}</h3>
                     {notifications.length > 0 && (
-                      <Link href="/profile/notifications" className="text-blue-600 hover:text-blue-800 text-xs font-semibold uppercase tracking-wide">
+                      <Link href="/profile/notifications" className="text-blue-600 hover:text-blue-800 text-xs font-black uppercase tracking-wide">
                         {t('notifications.viewAll')}
                       </Link>
                     )}
@@ -353,11 +390,11 @@ export default function DashboardPage() {
                       </div>
                     ) : notifications.length === 0 ? (
                       <div className="p-8 text-center">
-                        <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                          <FiBell className="w-6 h-6 text-gray-400" />
+                        <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                          <FiBell className="w-6 h-6 text-slate-400" />
                         </div>
-                        <p className="text-gray-500">{t('notifications.noNotifications')}</p>
-                        <p className="text-gray-400 text-xs mt-1">{t('notifications.noNotificationsSub')}</p>
+                        <p className="text-slate-600 font-bold text-sm">{t('notifications.noNotifications')}</p>
+                        <p className="text-slate-400 text-xs mt-1">{t('notifications.noNotificationsSub')}</p>
                       </div>
                     ) : (
                       <div className="p-2">
@@ -365,15 +402,15 @@ export default function DashboardPage() {
                           <button
                             key={notification.id}
                             onClick={() => markAsRead(notification.id)}
-                            className={`w-full text-left flex items-start p-3 hover:bg-gray-50 rounded-lg transition ${!notification.read ? 'bg-blue-50' : ''}`}
+                            className={`w-full text-left flex items-start p-3 hover:bg-white/80 rounded-xl transition ${!notification.read ? 'bg-blue-50/80' : ''}`}
                           >
-                            <div className={`p-2 rounded-lg mr-3 shadow-sm ${getNotificationColor(notification.type)}`}>
+                            <div className={`p-2 rounded-xl mr-3 shadow-sm ${getNotificationColor(notification.type)}`}>
                               <span className="text-sm">{getNotificationIcon(notification.type)}</span>
                             </div>
                             <div className="flex-1 min-w-0">
-                              <p className="font-medium text-gray-900 truncate text-sm">{notification.title}</p>
-                              <p className="text-xs text-gray-500 truncate">{notification.message}</p>
-                              <p className="text-[10px] text-gray-400 mt-1 uppercase tracking-wide">{formatTime(notification.createdAt)}</p>
+                              <p className="font-bold text-slate-900 truncate text-sm">{notification.title}</p>
+                              <p className="text-xs text-slate-500 truncate">{notification.message}</p>
+                              <p className="text-[10px] text-slate-400 mt-1 uppercase font-bold tracking-wide">{formatTime(notification.createdAt)}</p>
                             </div>
                             {!notification.read && (
                               <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
@@ -385,10 +422,10 @@ export default function DashboardPage() {
                   </div>
 
                   {notifications.length > 0 && unreadCount > 0 && (
-                    <div className="p-3 border-t border-gray-200 bg-gray-50 rounded-b-xl">
+                    <div className="p-3 border-t border-slate-200/60 rounded-b-2xl">
                       <button
                         onClick={markAllAsRead}
-                        className="w-full text-center text-blue-600 hover:text-blue-800 font-medium text-sm py-1"
+                        className="w-full text-center text-blue-600 hover:text-blue-800 font-extrabold text-sm py-1"
                       >
                         {t('notifications.markAllRead')}
                       </button>
@@ -398,57 +435,63 @@ export default function DashboardPage() {
               </div>
 
               {/* Settings Dropdown */}
-              <div className="relative group">
-                <button className="p-2 rounded-full hover:bg-gray-100 transition">
-                  <FiSettings className="w-5 h-5 text-gray-600" />
+              <div className="relative dropdown-container">
+                <button 
+                  onClick={() => { setShowSettings(!showSettings); setShowNotifications(false); setShowProfile(false); }}
+                  className="p-2.5 rounded-xl bg-slate-50/80 hover:bg-white hover:shadow-md transition focus:outline-none"
+                >
+                  <FiSettings className="w-5 h-5 text-slate-700" />
                 </button>
 
-                <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <div className="p-4 border-b border-gray-200 bg-gray-50 rounded-t-xl">
-                    <h3 className="font-semibold text-gray-900">{t('settings.title')}</h3>
+                <div className={`absolute right-0 mt-2 w-64 glass-card rounded-2xl shadow-2xl border border-white/80 transition-all duration-200 z-50 ${showSettings ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
+                  <div className="p-4 border-b border-slate-200/60 rounded-t-2xl">
+                    <h3 className="font-black text-slate-900">{t('settings.title')}</h3>
                   </div>
                   <div className="p-2 space-y-1">
-                    <p className="text-xs font-bold text-gray-400 uppercase tracking-wider px-3 py-2">{t('settings.profile')}</p>
-                    <Link href="/profile" className="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors">
-                      <FiUser className="w-4 h-4 mr-3 text-gray-400" /> {t('settings.viewProfile')}
+                    <p className="text-xs font-black text-slate-400 uppercase tracking-wider px-3 py-2">{t('settings.profile')}</p>
+                    <Link href="/profile" className="flex items-center px-3 py-2 text-slate-700 hover:bg-blue-50/50 hover:text-blue-600 rounded-xl text-sm font-bold transition-colors">
+                      <FiUser className="w-4 h-4 mr-3 text-slate-400" /> {t('settings.viewProfile')}
                     </Link>
-                    <Link href="/profile/edit" className="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors">
-                      <FiEdit className="w-4 h-4 mr-3 text-gray-400" /> {t('settings.editProfile')}
+                    <Link href="/profile/edit" className="flex items-center px-3 py-2 text-slate-700 hover:bg-blue-50/50 hover:text-blue-600 rounded-xl text-sm font-bold transition-colors">
+                      <FiEdit className="w-4 h-4 mr-3 text-slate-400" /> {t('settings.editProfile')}
                     </Link>
 
-                    <div className="my-2 border-t border-gray-100"></div>
+                    <div className="my-2 border-t border-slate-100"></div>
 
-                    <p className="text-xs font-bold text-gray-400 uppercase tracking-wider px-3 py-2">{t('settings.account')}</p>
-                    <Link href="/settings" className="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors">
-                      <FiSettings className="w-4 h-4 mr-3 text-gray-400" /> {t('settings.systemSettings')}
+                    <p className="text-xs font-black text-slate-400 uppercase tracking-wider px-3 py-2">{t('settings.account')}</p>
+                    <Link href="/settings" className="flex items-center px-3 py-2 text-slate-700 hover:bg-blue-50/50 hover:text-blue-600 rounded-xl text-sm font-bold transition-colors">
+                      <FiSettings className="w-4 h-4 mr-3 text-slate-400" /> {t('settings.systemSettings')}
                     </Link>
-                    <Link href="/help" className="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors">
-                      <FiHelpCircle className="w-4 h-4 mr-3 text-gray-400" /> {t('settings.helpSupport')}
+                    <Link href="/help" className="flex items-center px-3 py-2 text-slate-700 hover:bg-blue-50/50 hover:text-blue-600 rounded-xl text-sm font-bold transition-colors">
+                      <FiHelpCircle className="w-4 h-4 mr-3 text-slate-400" /> {t('settings.helpSupport')}
                     </Link>
                   </div>
                 </div>
               </div>
 
               {/* Profile Tool */}
-              <div className="relative group pl-2 border-l border-gray-200">
-                <button className="flex items-center space-x-3 p-1 rounded-full hover:bg-gray-100 transition ring-2 ring-transparent focus:ring-blue-100">
-                  <div className="w-9 h-9 bg-gradient-to-tr from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm shadow-md">
+              <div className="relative dropdown-container pl-2 border-l border-slate-200">
+                <button 
+                  onClick={() => { setShowProfile(!showProfile); setShowSettings(false); setShowNotifications(false); }}
+                  className="flex items-center space-x-3 p-1 rounded-full hover:bg-slate-100 transition outline-none"
+                >
+                  <div className="w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-full flex items-center justify-center text-white font-black text-sm shadow-md">
                     {session?.user?.name?.charAt(0) || "U"}
                   </div>
                 </button>
 
-                <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <div className="p-4 border-b border-gray-100">
-                    <p className="font-bold text-gray-900 truncate">{session?.user?.name}</p>
-                    <p className="text-xs text-gray-500 truncate">{session?.user?.email}</p>
-                    <span className="mt-2 inline-block px-2 py-0.5 bg-blue-50 text-blue-700 text-[10px] font-bold uppercase tracking-wider rounded">
+                <div className={`absolute right-0 mt-2 w-60 glass-card rounded-2xl shadow-2xl border border-white/80 transition-all duration-200 z-50 ${showProfile ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
+                  <div className="p-4 border-b border-slate-100">
+                    <p className="font-black text-slate-900 truncate">{session?.user?.name}</p>
+                    <p className="text-xs text-slate-500 font-semibold truncate">{session?.user?.email}</p>
+                    <span className="mt-2 inline-block px-2.5 py-1 bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-wider rounded-lg border border-blue-100">
                       {session?.user?.role}
                     </span>
                   </div>
                   <div className="p-2">
                     <button
                       onClick={() => signOut({ callbackUrl: '/login' })}
-                      className="w-full flex items-center px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg text-sm font-medium transition-colors"
+                      className="w-full flex items-center px-3 py-2.5 text-rose-600 hover:bg-rose-50 rounded-xl text-sm font-bold transition-colors"
                     >
                       <FiLogOut className="w-4 h-4 mr-3" /> {t('userMenu.signOut')}
                     </button>
@@ -460,23 +503,23 @@ export default function DashboardPage() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
 
         {/* Welcome Section */}
-        <div className="bg-gradient-to-r from-blue-700 to-indigo-800 rounded-2xl shadow-xl p-8 text-white relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+        <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 rounded-[2.5rem] shadow-2xl p-8 md:p-12 text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
           <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
-              <h2 className="text-3xl font-bold mb-2">
+              <h2 className="text-3xl sm:text-4xl font-black mb-3 tracking-tight">
                 {t('welcome.joined')}, {session?.user?.name?.split(" ")[0]}!
               </h2>
-              <p className="text-blue-100 max-w-lg">
+              <p className="text-blue-100/80 max-w-lg font-medium text-base">
                 {isProvider ? t('welcome.providerDesc') : t('welcome.clientDesc')}
               </p>
             </div>
-            <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-xl border border-white/20">
-              <p className="text-xs text-blue-200 uppercase tracking-wider mb-1">{t('welcome.today')}</p>
-              <p className="text-2xl font-bold font-mono">{new Date().toLocaleDateString()}</p>
+            <div className="glass-dark px-6 py-4 rounded-2xl border border-white/10 shadow-xl">
+              <p className="text-xs text-blue-300 uppercase font-black tracking-widest mb-1">{t('welcome.today')}</p>
+              <p className="text-2xl font-black tracking-tight">{isMounted ? new Date().toLocaleDateString() : '...'}</p>
             </div>
           </div>
         </div>
@@ -484,17 +527,17 @@ export default function DashboardPage() {
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
-            <div key={index} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-              <div className="flex justify-between items-start mb-4">
-                <div className={`p-3 rounded-xl ${stat.color} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+            <div key={index} className="glass-card rounded-[2rem] p-6 hover-lift border border-white/80 transition-all group">
+              <div className="flex justify-between items-start mb-6">
+                <div className={`p-4 rounded-[1.5rem] ${stat.color} text-white shadow-lg shadow-blue-500/20 group-hover:rotate-6 transition-transform duration-300`}>
                   {stat.icon}
                 </div>
-                <span className={`text-xs font-bold px-2 py-1 rounded-full ${stat.trend === 'up' ? 'text-green-700 bg-green-50' : 'text-red-700 bg-red-50'}`}>
+                <span className={`text-xs font-black px-2.5 py-1 rounded-full ${stat.trend === 'up' ? 'text-emerald-700 bg-emerald-50 border border-emerald-200/60' : 'text-rose-700 bg-rose-50 border border-rose-200/60'}`}>
                   {stat.change}
                 </span>
               </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</h3>
-              <p className="text-sm text-gray-500 font-medium">{stat.label}</p>
+              <h3 className="text-3xl font-black text-slate-900 mb-1 tracking-tight">{stat.value}</h3>
+              <p className="text-xs font-black uppercase tracking-widest text-slate-400">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -508,16 +551,16 @@ export default function DashboardPage() {
                 <Link 
                   key={index}
                   href={action.link}
-                  className="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all flex items-center gap-4"
+                  className="group glass-card rounded-[2rem] p-6 hover-lift border border-white/80 transition-all flex items-center gap-5"
                 >
-                  <div className={`w-12 h-12 bg-gradient-to-br ${action.color} rounded-xl flex items-center justify-center text-xl text-white shadow-lg group-hover:scale-110 transition-transform`}>
+                  <div className={`w-14 h-14 bg-gradient-to-br ${action.color} rounded-[1.25rem] flex items-center justify-center text-2xl text-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform`}>
                     {action.icon}
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    <h3 className="font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors">
                       {action.title}
                     </h3>
-                    <p className="text-xs text-gray-500 font-medium">
+                    <p className="text-xs text-slate-500 font-semibold">
                       {action.description}
                     </p>
                   </div>
@@ -599,24 +642,26 @@ export default function DashboardPage() {
             )}
 
             {/* Recent Activity */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-              <div className="p-6 border-b border-gray-100 flex justify-between items-center">
+            <div className="bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+              <div className="p-8 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
                 <h3 className="font-bold text-gray-900 text-lg">{t('recentActivity.title')}</h3>
                 <Link href="/activity" className="text-blue-600 hover:text-blue-800 text-sm font-semibold">
                   {t('recentActivity.viewAll')}
                 </Link>
               </div>
               <div className="divide-y divide-gray-50">
-                {clientActivity.map((activity) => (
+                {recentActivity.map((activity) => (
                   <div key={activity.id} className="p-4 hover:bg-gray-50 transition-colors flex items-center">
                     <div className="w-2 h-2 rounded-full bg-blue-500 mr-4"></div>
                     <div className="flex-1">
                       <p className="text-sm font-medium text-gray-900">{activity.title}</p>
                       <p className="text-xs text-gray-500">{activity.time}</p>
                     </div>
-                    <span className="text-xs font-semibold px-2 py-1 bg-green-100 text-green-700 rounded-lg">
-                      {activity.status}
-                    </span>
+                    {activity.status !== "-" && (
+                        <span className={`text-xs font-semibold px-2 py-1 rounded-lg ${activity.status === 'E Re' ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-700'}`}>
+                        {activity.status}
+                        </span>
+                    )}
                   </div>
                 ))}
               </div>
@@ -626,8 +671,9 @@ export default function DashboardPage() {
           {/* Sidebar */}
           <div className="space-y-8">
             {/* Profile Summary */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <div className="flex items-center space-x-4 mb-6">
+            <div className="bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 p-8 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-10 -mt-10 blur-xl"></div>
+              <div className="flex items-center space-x-4 mb-8 relative z-10">
                 <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-2xl font-bold text-gray-500 overflow-hidden border-2 border-white shadow-lg">
                   {session?.user?.image ? (
                     <Image src={session.user.image} alt={session.user.name || "User"} width={64} height={64} className="w-full h-full object-cover" />
@@ -648,7 +694,7 @@ export default function DashboardPage() {
                 </div>
                 <div className="flex justify-between py-2">
                   <span className="text-gray-500">{t('profileCard.joined')}</span>
-                  <span className="font-semibold text-gray-900">{new Date().toLocaleDateString()}</span>
+                  <span className="font-semibold text-gray-900">{isMounted ? new Date().toLocaleDateString() : '...'}</span>
                 </div>
               </div>
 

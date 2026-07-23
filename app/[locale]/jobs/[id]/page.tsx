@@ -6,6 +6,7 @@ import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { FiArrowLeft, FiAlertTriangle, FiCheckCircle, FiClock, FiUpload } from "react-icons/fi";
+import ReviewSection from "@/components/ReviewSection";
 import { useSession } from "next-auth/react";
 
 interface Job {
@@ -27,28 +28,59 @@ interface Job {
 export default function JobDetailsPage() {
     const params = useParams();
     const id = Array.isArray(params.id) ? params.id[0] : params.id;
+    const { data: session } = useSession();
     const [job, setJob] = useState<Job | null>(null);
     const [loading, setLoading] = useState(true);
     const t = useTranslations('jobForm'); 
     const te = useTranslations('escrow');
 
-    // Actions
     const [uploading, setUploading] = useState(false);
     const [disputeReason, setDisputeReason] = useState("");
     const [showDisputeModal, setShowDisputeModal] = useState(false);
+    
+    // Offers and Payment State
+    const [offers, setOffers] = useState<any[]>([]);
+    const [showCheckout, setShowCheckout] = useState(false);
+    const [selectedOffer, setSelectedOffer] = useState<any>(null);
+    const [paymentMethod, setPaymentMethod] = useState("escrow");
+    const [isPaying, setIsPaying] = useState(false);
+
+    const [offerPrice, setOfferPrice] = useState("");
+    const [offerMessage, setOfferMessage] = useState("");
+    const [isSubmittingOffer, setIsSubmittingOffer] = useState(false);
+    const [hasSubmittedOffer, setHasSubmittedOffer] = useState(false);
 
     const fetchJob = useCallback(async () => {
         try {
             const res = await fetch(`/api/jobs/${id}`);
             if (res.ok) {
-                setJob(await res.json());
+                const data = await res.json();
+                setJob(data);
+                
+                // Fetch offers if client and job is open
+                if (data.status === "OPEN" && (session?.user?.email === data.client?.email || session?.user?.id === data.clientId)) {
+                    const offersRes = await fetch(`/api/offers?jobId=${id}`);
+                    if (offersRes.ok) {
+                        setOffers(await offersRes.json());
+                    }
+                }
+                
+                // If provider, check if they already submitted an offer
+                if (data.status === "OPEN" && session?.user?.role === "PROVIDER") {
+                    const offersRes = await fetch(`/api/offers`);
+                    if (offersRes.ok) {
+                        const myOffers = await offersRes.json();
+                        const submitted = myOffers.find((o: any) => o.jobId === id);
+                        if (submitted) setHasSubmittedOffer(true);
+                    }
+                }
             }
         } catch (e) {
             console.error(e);
         } finally {
             setLoading(false);
         }
-    }, [id]);
+    }, [id, session]);
 
     useEffect(() => {
         fetchJob();
@@ -103,18 +135,69 @@ export default function JobDetailsPage() {
         } catch (e) { console.error(e); }
     };
 
+    const handleHireAndPay = async () => {
+        if (!selectedOffer) return;
+        setIsPaying(true);
+        try {
+            const res = await fetch(`/api/jobs/${id}/pay`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    providerId: selectedOffer.providerId,
+                    paymentMethod: paymentMethod,
+                    amount: selectedOffer.price
+                })
+            });
+
+            if (res.ok) {
+                setShowCheckout(false);
+                fetchJob();
+                alert("Pagesa u krye me sukses! Profesionisti u punësua.");
+            } else {
+                alert("Ndodhi një gabim gjatë pagesës.");
+            }
+        } catch (e) {
+            console.error(e);
+        } finally {
+            setIsPaying(false);
+        }
+    };
+
+    const handleMakeOffer = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmittingOffer(true);
+        try {
+            const res = await fetch('/api/offers', {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    jobId: id,
+                    price: offerPrice,
+                    message: offerMessage
+                })
+            });
+
+            if (res.ok) {
+                setHasSubmittedOffer(true);
+            }
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsSubmittingOffer(false);
+        }
+    };
+
     if (loading) return <div className="p-10 text-center">Loading...</div>;
     if (!job) return <div className="p-10 text-center">Job not found</div>;
 
-    const { data: session } = useSession();
     const isCompleted = job.status === "COMPLETED";
     const isDisputed = job.status === "DISPUTED";
     const isVerifyPending = job.status === "VERIFY_PENDING";
     const isInProgress = job.status === "IN_PROGRESS";
     const isOpen = job.status === "OPEN";
 
-    const isClient = session?.user?.email === job.client?.email || (session?.user as any)?.id === job.clientId;
-    const isProvider = (session?.user as any)?.id === job.providerId;
+    const isClient = session?.user?.email === job.client?.email || session?.user?.id === job.clientId;
+    const isProvider = session?.user?.id === job.providerId;
 
     const handleVerify = async () => {
         if (!confirm(te('confirmVerify'))) return;
@@ -157,6 +240,41 @@ export default function JobDetailsPage() {
                     <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">{job.description}</p>
                 </div>
 
+                {/* OFFERS SECTION (Only for client when OPEN) */}
+                {isOpen && isClient && (
+                    <div className="mb-8">
+                        <h3 className="font-black text-xl mb-4 text-slate-900">Ofertat ({offers.length})</h3>
+                        {offers.length === 0 ? (
+                            <p className="text-slate-500 bg-slate-50 p-4 rounded-xl text-center">Nuk ka asnjë ofertë akoma.</p>
+                        ) : (
+                            <div className="space-y-4">
+                                {offers.map(offer => (
+                                    <div key={offer.id} className="border border-slate-200 p-4 rounded-xl flex flex-col md:flex-row justify-between items-center gap-4 bg-white shadow-sm hover:shadow-md transition">
+                                        <div className="flex items-center gap-4 w-full md:w-auto">
+                                            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">
+                                                {offer.provider.name?.charAt(0) || "U"}
+                                            </div>
+                                            <div>
+                                                <p className="font-bold text-slate-900">{offer.provider.name}</p>
+                                                <p className="text-sm text-slate-500 line-clamp-2">{offer.message}</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
+                                            <p className="font-black text-xl text-blue-600">{offer.price}€</p>
+                                            <button 
+                                                onClick={() => { setSelectedOffer(offer); setShowCheckout(true); }}
+                                                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-md"
+                                            >
+                                                Punëso
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                )}
+
                 {/* PROOFS SECTION */}
                 {(isCompleted || isDisputed || isVerifyPending) && (
                     <div className="space-y-6 mb-8">
@@ -196,13 +314,47 @@ export default function JobDetailsPage() {
 
                 {/* STATUS ACTIONS */}
                 <div className="border-t pt-6 flex flex-col gap-4">
-                    {isOpen && !isClient && (
-                        <button
-                            onClick={handleAccept}
-                            className="bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-bold shadow-lg shadow-blue-200 transition-all active:scale-95"
-                        >
-                            {te('acceptJob')}
-                        </button>
+                    {isOpen && !isClient && !isProvider && (
+                        <p className="text-slate-500 text-center">Duhet të jeni i regjistruar si Profesionist për të dërguar një ofertë.</p>
+                    )}
+                    
+                    {isOpen && isProvider && !hasSubmittedOffer && (
+                        <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                            <h3 className="font-black text-lg mb-4">Dërgo një Ofertë</h3>
+                            <form onSubmit={handleMakeOffer} className="space-y-4">
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-700 mb-1">Çmimi i Ofertës (€)</label>
+                                    <input 
+                                        type="number" 
+                                        required 
+                                        value={offerPrice}
+                                        onChange={(e) => setOfferPrice(e.target.value)}
+                                        className="w-full p-3 border border-slate-300 rounded-xl focus:border-blue-600 outline-none" 
+                                        placeholder="Psh: 50"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-700 mb-1">Mesazhi për Klientin</label>
+                                    <textarea 
+                                        required
+                                        value={offerMessage}
+                                        onChange={(e) => setOfferMessage(e.target.value)}
+                                        className="w-full p-3 border border-slate-300 rounded-xl focus:border-blue-600 outline-none min-h-[100px]"
+                                        placeholder="Pse duhet t'ju zgjedhë juve..."
+                                    ></textarea>
+                                </div>
+                                <button disabled={isSubmittingOffer} className="w-full bg-blue-600 text-white font-black py-3 rounded-xl hover:bg-blue-700 transition">
+                                    {isSubmittingOffer ? "Duke u dërguar..." : "Dërgo Ofertën"}
+                                </button>
+                            </form>
+                        </div>
+                    )}
+                    
+                    {isOpen && isProvider && hasSubmittedOffer && (
+                        <div className="bg-green-50 p-6 rounded-2xl flex items-center justify-center gap-3 border border-green-200">
+                            <FiCheckCircle className="text-2xl text-green-600" />
+                            <p className="font-bold text-green-900">Oferta juaj është dërguar me sukses. Prisni përgjigjen e klientit.</p>
+                        </div>
                     )}
 
                     {isInProgress && isProvider && (
@@ -253,14 +405,22 @@ export default function JobDetailsPage() {
                     )}
 
                     {isCompleted && (
-                        <div className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 flex items-center gap-4">
-                            <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 text-2xl">
-                                <FiCheckCircle />
+                        <div className="space-y-0">
+                            <div className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 flex items-center gap-4">
+                                <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 text-2xl">
+                                    <FiCheckCircle />
+                                </div>
+                                <div>
+                                    <p className="font-black text-emerald-900">{te('jobCompleted')}</p>
+                                    <p className="text-xs text-emerald-700">{te('paymentProcessed')}</p>
+                                </div>
                             </div>
-                            <div>
-                                <p className="font-black text-emerald-900">{te('jobCompleted')}</p>
-                                <p className="text-xs text-emerald-700">{te('paymentProcessed')}</p>
-                            </div>
+                            <ReviewSection
+                                jobId={id!}
+                                isClient={isClient}
+                                isCompleted={isCompleted}
+                                revieweeId={job.providerId}
+                            />
                         </div>
                     )}
 
@@ -327,6 +487,54 @@ export default function JobDetailsPage() {
                                 {te('cancel', { defaultValue: 'Anulo' })}
                             </button>
                         </div>
+                    </div>
+                </div>
+            )}
+            {/* Checkout Modal */}
+            {showCheckout && selectedOffer && (
+                <div className="fixed inset-0 bg-slate-900/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm animate-in fade-in">
+                    <div className="bg-white max-w-md w-full rounded-3xl p-8 shadow-2xl relative">
+                        <button onClick={() => setShowCheckout(false)} className="absolute top-6 right-6 text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
+                        <h2 className="text-2xl font-black text-slate-900 mb-2">Paguaj & Punëso</h2>
+                        <p className="text-slate-500 mb-6 font-medium">Jeni duke punësuar <b>{selectedOffer.provider.name}</b> për <b>{selectedOffer.price}€</b>.</p>
+                        
+                        <div className="space-y-3 mb-8">
+                            <label className={`block border-2 p-4 rounded-xl cursor-pointer transition ${paymentMethod === 'escrow' ? 'border-blue-600 bg-blue-50/50' : 'border-slate-200'}`}>
+                                <div className="flex items-center gap-3">
+                                    <input type="radio" name="payment" value="escrow" checked={paymentMethod === 'escrow'} onChange={(e) => setPaymentMethod(e.target.value)} className="w-5 h-5 accent-blue-600" />
+                                    <div>
+                                        <p className="font-bold text-slate-900">Escrow (E Rekomanduar)</p>
+                                        <p className="text-xs text-slate-500">Paratë mbahen nga platforma derisa puna të kryhet.</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label className={`block border-2 p-4 rounded-xl cursor-pointer transition ${paymentMethod === 'card' ? 'border-blue-600 bg-blue-50/50' : 'border-slate-200'}`}>
+                                <div className="flex items-center gap-3">
+                                    <input type="radio" name="payment" value="card" checked={paymentMethod === 'card'} onChange={(e) => setPaymentMethod(e.target.value)} className="w-5 h-5 accent-blue-600" />
+                                    <div>
+                                        <p className="font-bold text-slate-900">Kartë Bankare</p>
+                                        <p className="text-xs text-slate-500">Paguaj menjëherë me Visa/Mastercard.</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label className={`block border-2 p-4 rounded-xl cursor-pointer transition ${paymentMethod === 'cash' ? 'border-blue-600 bg-blue-50/50' : 'border-slate-200'}`}>
+                                <div className="flex items-center gap-3">
+                                    <input type="radio" name="payment" value="cash" checked={paymentMethod === 'cash'} onChange={(e) => setPaymentMethod(e.target.value)} className="w-5 h-5 accent-blue-600" />
+                                    <div>
+                                        <p className="font-bold text-slate-900">Cash / Dorazi</p>
+                                        <p className="text-xs text-slate-500">Pa mbrojtje Escrow nga platforma.</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <button 
+                            onClick={handleHireAndPay}
+                            disabled={isPaying}
+                            className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-xl shadow-lg shadow-blue-200 transition disabled:opacity-70"
+                        >
+                            {isPaying ? "Duke procesuar..." : `Paguaj ${selectedOffer.price}€`}
+                        </button>
                     </div>
                 </div>
             )}

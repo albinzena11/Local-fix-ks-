@@ -20,6 +20,10 @@ export default function ProviderApplyPage() {
             category: formData.get('category'),
             bio: formData.get('bio'),
             experience: formData.get('experience'),
+            cvUrl: formData.get('cvUrl'),
+            portfolioUrl: formData.get('portfolioUrl'),
+            // Fallback for mock images
+            workImages: formData.get('workImages') ? String(formData.get('workImages')).split(',').map(s => s.trim()) : [],
         };
 
         try {
@@ -108,6 +112,37 @@ export default function ProviderApplyPage() {
                                 placeholder="..."
                                 className="w-full px-5 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:ring-0 focus:border-blue-600 outline-none transition-all font-bold text-slate-700 placeholder:text-slate-400"
                             ></textarea>
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-black text-slate-700 mb-3 ml-1 uppercase tracking-wider">CV Link (Google Drive / LinkedIn)</label>
+                            <input 
+                                type="url"
+                                name="cvUrl"
+                                placeholder="https://"
+                                className="w-full px-5 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:ring-0 focus:border-blue-600 outline-none transition-all font-bold text-slate-700 placeholder:text-slate-400"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-black text-slate-700 mb-3 ml-1 uppercase tracking-wider">Portfolio Link (Website / Behance)</label>
+                            <input 
+                                type="url"
+                                name="portfolioUrl"
+                                placeholder="https://"
+                                className="w-full px-5 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:ring-0 focus:border-blue-600 outline-none transition-all font-bold text-slate-700 placeholder:text-slate-400"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-black text-slate-700 mb-3 ml-1 uppercase tracking-wider">Foto të Punëve (Ndaj me presje Link-et e Imazheve)</label>
+                            <input 
+                                type="text"
+                                name="workImages"
+                                placeholder="https://image1.jpg, https://image2.jpg"
+                                className="w-full px-5 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:ring-0 focus:border-blue-600 outline-none transition-all font-bold text-slate-700 placeholder:text-slate-400"
+                            />
+                            <p className="text-xs text-slate-500 mt-2 ml-1">Meqenëse jemi në fazë testimi, vendosni linket e fotove online.</p>
                         </div>
 
                         <div>
