@@ -1,6 +1,6 @@
 'use client';
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { FiClock, FiMapPin, FiArrowRight, FiCheckCircle, FiShield, FiTrendingUp, FiStar } from "react-icons/fi";
 import { Link } from "@/i18n/routing";
@@ -11,37 +11,33 @@ interface JobListProps {
 
 const JobList: React.FC<JobListProps> = ({ mode = 'available' }) => {
   const t = useTranslations('jobList');
-  console.log('Rendering JobList in mode:', mode);
+  const [jobs, setJobs] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const mockJobs = [
-    {
-      id: "1",
-      title: "Apartment Cleaning",
-      category: "Cleaning",
-      location: "Tirana, Center",
-      date: "Today",
-      budget: "40€",
-      status: "OPEN"
-    },
-    {
-      id: "2",
-      title: "Broken AC Unit Repair",
-      category: "Electrical",
-      location: "Durrës",
-      date: "2 hours ago",
-      budget: "60€",
-      status: "OPEN"
-    },
-    {
-      id: "3",
-      title: "Garden Maintenance",
-      category: "Care",
-      location: "Vlorë",
-      date: "Yesterday",
-      budget: "30€+",
-      status: "OPEN"
-    }
-  ];
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const res = await fetch(`/api/jobs?mode=${mode}`);
+        if (res.ok) {
+          const data = await res.json();
+          setJobs(data);
+        }
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchJobs();
+  }, [mode]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center py-20">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-12">
@@ -56,30 +52,36 @@ const JobList: React.FC<JobListProps> = ({ mode = 'available' }) => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {mockJobs.map((job) => (
-          <div key={job.id} className="group bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
-                
-                <div className="w-20 h-20 bg-slate-50 rounded-3xl flex items-center justify-center text-3xl group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-inner">
-                    {job.category === 'Cleaning' ? '🧹' : job.category === 'Electrical' ? '⚡' : '🌳'}
-                </div>
-
-                <div className="flex-1 text-center md:text-left">
-                    <h3 className="text-xl font-black text-slate-900 mb-2 group-hover:text-blue-600 transition-colors uppercase tracking-tight">{job.title}</h3>
-                    <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 text-slate-400 font-bold text-sm">
-                        <span className="flex items-center gap-1.5"><FiMapPin className="text-blue-500" /> {job.location}</span>
-                        <span className="flex items-center gap-1.5"><FiClock className="text-blue-500" /> {job.date}</span>
+        {jobs.length === 0 ? (
+            <div className="col-span-1 lg:col-span-2 text-center py-12 glass-card rounded-[2.5rem]">
+                <p className="text-slate-500 font-bold">{t('noJobsFound') || 'Nuk u gjetën punë.'}</p>
+            </div>
+        ) : (
+            jobs.map((job) => (
+              <div key={job.id} className="group glass-card p-8 rounded-[2.5rem] hover-lift flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-36 h-36 bg-blue-600/10 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+                    
+                    <div className="w-20 h-20 bg-gradient-to-br from-slate-100 to-slate-200/80 rounded-3xl flex items-center justify-center text-3xl group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white transition-all duration-500 shadow-md group-hover:shadow-blue-500/30">
+                        {job.category === 'cleaning' ? '🧹' : job.category === 'electrical' ? '⚡' : '💼'}
                     </div>
-                </div>
 
-                <div className="flex flex-col items-center md:items-end gap-3">
-                    <div className="text-2xl font-black text-slate-900">{job.budget}</div>
-                    <Link href={`/services?id=${job.id}`} className="px-6 py-2.5 bg-blue-50 text-blue-700 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all">
-                        {t('viewDetails')}
-                    </Link>
-                </div>
-          </div>
-        ))}
+                    <div className="flex-1 text-center md:text-left">
+                        <h3 className="text-xl font-extrabold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors uppercase tracking-tight">{job.title}</h3>
+                        <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 text-slate-500 font-bold text-sm">
+                            <span className="flex items-center gap-1.5"><FiMapPin className="text-blue-600" /> {job.location}</span>
+                            <span className="flex items-center gap-1.5"><FiClock className="text-indigo-500" /> {new Date(job.createdAt).toLocaleDateString()}</span>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col items-center md:items-end gap-3">
+                        <div className="text-2xl font-black text-gradient-accent">{job.budget} €</div>
+                        <Link href={`/jobs/${job.id}`} className="px-6 py-2.5 bg-slate-900 text-white rounded-xl font-extrabold text-xs uppercase tracking-widest hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all shadow-md">
+                            {t('viewDetails')}
+                        </Link>
+                    </div>
+              </div>
+            ))
+        )}
       </div>
 
       {/* Provider Promo Section */}
