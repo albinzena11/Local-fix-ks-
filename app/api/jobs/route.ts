@@ -7,14 +7,19 @@ export async function POST(req: Request) {
   try {
     const session = await getServerSession(authOptions);
     if (!session || !session.user?.email) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Duhet të jeni i identifikuar (login) për të postuar kërkesë punë." }, { status: 401 });
     }
 
     const body = await req.json();
     const { title, description, location, budget, category, service, phone } = body;
 
     const user = await prisma.user.findUnique({ where: { email: session.user.email } });
-    if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
+    if (!user) return NextResponse.json({ error: "Përdoruesi nuk u gjet." }, { status: 404 });
+
+    const effectivePhone = user.phone || phone;
+    if (!effectivePhone || String(effectivePhone).trim().length < 6) {
+      return NextResponse.json({ error: "Kërkohet një numër telefoni i vlefshëm për të publikuar kërkesën." }, { status: 400 });
+    }
 
     // Update user phone if provided and currently null
     if (phone && !user.phone) {
