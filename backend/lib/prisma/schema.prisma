@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -75,6 +76,8 @@ model Job {
   remindersSent     Int       @default(0)
   clientProofImages String[]  @default([])
   paymentReleased   Boolean   @default(false)
+  paymentMethod     String?
+  escrowAmount      Float?
   dispute           Dispute?
   client            User      @relation("ClientJobs", fields: [clientId], references: [id])
   provider          User?     @relation("ProviderJobs", fields: [providerId], references: [id])
@@ -241,6 +244,9 @@ model ProviderApplication {
   category    String
   bio         String
   experience  String
+  cvUrl       String?
+  portfolioUrl String?
+  workImages  String[]
   status      ProviderStatus @default(PENDING)
   createdAt   DateTime       @default(now())
   updatedAt   DateTime       @updatedAt

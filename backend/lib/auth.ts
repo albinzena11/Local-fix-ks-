@@ -1,9 +1,10 @@
 // lib/auth.ts - version me logging të plotë
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcryptjs";
-import { prisma } from "@/lib/prisma";
-import { logger } from "@/lib/logger";
+import { prisma } from "./prisma";
+import { logger } from "./logger";
 
 interface AuthUser {
   id: string;
@@ -16,6 +17,10 @@ interface AuthUser {
 
 export const authOptions: NextAuthOptions = {
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+    }),
     CredentialsProvider({
       name: "credentials",
       credentials: {
@@ -27,12 +32,10 @@ export const authOptions: NextAuthOptions = {
 
         try {
           if (!credentials?.email || !credentials?.password) {
-            console.log("❌ Missing email or password");
             return null;
           }
 
           const email = credentials.email.toLowerCase().trim();
-          console.log("🔍 Searching for user with email:", email);
 
           // Gjej përdoruesin
           const user = await prisma.user.findUnique({
@@ -40,32 +43,14 @@ export const authOptions: NextAuthOptions = {
           });
 
           if (!user) {
-            console.log("❌ User not found in database");
             return null;
           }
-
-          console.log("✅ User found:", {
-            id: user.id,
-            email: user.email,
-            name: user.name,
-            passwordLength: user.password.length,
-            passwordStartsWith: user.password.substring(0, 20) + "..."
-          });
-
-          // Krahaso fjalëkalimet
-          console.log("🔑 Comparing passwords...");
-          console.log("Input password:", credentials.password);
-          console.log("Stored hash:", user.password.substring(0, 30) + "...");
 
           const passwordMatch = await bcrypt.compare(credentials.password, user.password);
-          console.log("Password match result:", passwordMatch ? "✅ MATCH" : "❌ NO MATCH");
 
           if (!passwordMatch) {
-            console.log("❌ Password does not match");
             return null;
           }
-
-          console.log("🎉 Login successful for:", user.email, "Role:", user.role);
 
           return {
             id: user.id,
@@ -114,6 +99,38 @@ export const authOptions: NextAuthOptions = {
         session.user.email = token.email as string;
       }
       return session;
+    },
+    async signIn({ user, account, profile }) {
+      if (account?.provider === "google") {
+        if (!user.email) return false;
+        const existingUser = await prisma.user.findUnique({
+          where: { email: user.email }
+        });
+        
+        if (!existingUser) {
+          // Krijojmë përdoruesin nëse nuk ekziston
+          const newUser = await prisma.user.create({
+            data: {
+              email: user.email,
+              name: user.name || "",
+              password: "", // No password for OAuth
+              role: "CLIENT",
+              avatar: user.image || "",
+            }
+          });
+          user.id = newUser.id;
+          (user as any).role = newUser.role;
+          (user as any).providerStatus = "NONE";
+          (user as any).sellerStatus = "NONE";
+        } else {
+          user.id = existingUser.id;
+          (user as any).role = existingUser.role;
+          (user as any).providerStatus = existingUser.providerStatus || "NONE";
+          (user as any).sellerStatus = existingUser.sellerStatus || "NONE";
+        }
+        return true;
+      }
+      return true;
     }
   },
   secret: process.env.NEXTAUTH_SECRET,
