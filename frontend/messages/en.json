@@ -1,777 +1,788 @@
 {
-    "header": {
-        "title": "LocalFIX - Your Local Service Marketplace",
-        "searchService": "Find Service",
-        "offerService": "Offer Service",
-        "login": "Login",
-        "register": "Register",
-        "dashboard": "Dashboard",
-        "profile": "Profile",
-        "messages": "Messages",
-        "logout": "Logout",
-        "marketplace": "Marketplace",
-        "adminPanel": "Admin Panel",
-        "findServices": "Find Services",
-        "findJobs": "Find Jobs"
+  "header": {
+    "title": "LocalFIX - Your Local Service Marketplace",
+    "searchService": "Find Service",
+    "offerService": "Offer Service",
+    "login": "Login",
+    "register": "Register",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "messages": "Messages",
+    "logout": "Logout",
+    "marketplace": "Marketplace",
+    "adminPanel": "Admin Panel",
+    "findServices": "Find Services",
+    "findJobs": "Find Jobs"
+  },
+  "hero": {
+    "title": "Find reliable providers for every local service",
+    "subtitle": "The most trusted platform to find and provide local services",
+    "seeAllJobs": "Show all jobs",
+    "badge": "No. 1 Platform in Albania",
+    "welcomeBack": "Welcome Back",
+    "ourServices": "Our Services",
+    "discoverMore": "Discover more",
+    "whyChooseUs": "Why choose us?",
+    "or": "or"
+  },
+  "categories": {
+    "title": "Our Most Popular Services",
+    "subtitle": "Choose from a wide range of services provided by verified professionals"
+  },
+  "services": {
+    "home": "Home & Family",
+    "homeDescription": "Services for your home",
+    "repair": "Repairs",
+    "repairDescription": "All types of repairs",
+    "electrical": "Electrician",
+    "plumbing": "Plumber",
+    "cleaning": "Cleaning",
+    "construction": "Construction",
+    "it": "IT & Technology",
+    "painting": "Painting",
+    "transport": "Transport",
+    "assembly": "Assembly",
+    "care": "Care",
+    "plumbingDescription": "Plumbing specialists",
+    "electricalDescription": "Electrical professionals",
+    "itDescription": "Technology solutions",
+    "cleaningDescription": "Professional cleaning"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "search": "Search"
+  },
+  "forms": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "location": "Location",
+    "description": "Description",
+    "budget": "Budget"
+  },
+  "auth": {
+    "loginTitle": "Login to Account",
+    "registerTitle": "Create New Account",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "emailPlaceholder": "name@email.com",
+    "passwordPlaceholder": "••••••••",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign In",
+    "signingIn": "Signing In...",
+    "registerHere": "Register here",
+    "registerProvider": "Register as Service Provider",
+    "registerClient": "Register as Client",
+    "createAccount": "Create New Account",
+    "joinClient": "Join our community of clients",
+    "joinProvider": "Register as Service Provider",
+    "fullName": "Full Name",
+    "fullNameBox": "Enter your full name",
+    "phone": "Phone (Optional)",
+    "phoneBox": "+355 XX XXX XXXX",
+    "location": "Location (Optional)",
+    "locationBox": "City, Rajon",
+    "roleLabel": "I want to register as:",
+    "roleClient": "Client (I need services)",
+    "roleProvider": "Provider (I offer services)",
+    "termsAgreement": "I agree to the",
+    "terms": "Terms of Service",
+    "and": "and",
+    "privacy": "Privacy Policy",
+    "registering": "Registering...",
+    "registerSuccess": "Registration successful! You can now login.",
+    "alreadyHaveAccount": "Already have an account?",
+    "loginHere": "Login here",
+    "emailError": "Invalid email or password",
+    "generalError": "Something went wrong. Please try again.",
+    "welcomeBack": "Welcome Back",
+    "loginSubtitle": "Sign in to continue",
+    "passwordMinLengthHint": "Min. 6 characters"
+  },
+  "errors": {
+    "fillAllFields": "Please fill all mandatory fields",
+    "passwordMinLength": "Password must be at least 6 characters",
+    "passwordsDoNotMatch": "Passwords do not match",
+    "invalidEmail": "Email is invalid",
+    "registrationFailed": "Something went wrong during registration"
+  },
+  "stats": {
+    "registeredUsers": "Registered Users",
+    "completedServices": "Completed Services",
+    "averageRating": "Average Rating",
+    "satisfiedClients": "Satisfied Clients",
+    "activeRequests": "Active Requests",
+    "offersReceived": "Offers Received",
+    "hiredProfessionals": "Hired Professionals",
+    "totalExpenses": "Total Expenses",
+    "activeJobs": "Active Jobs",
+    "monthlyEarnings": "Monthly Earnings",
+    "profileViews": "Profile Views",
+    "hired": "Profesionistë të Punësuar",
+    "completedJobs": "Punë të Kryera",
+    "rating": "Vlerësimi",
+    "success": "Shkalla e Suksesit",
+    "messages": "Mesazhe të Reja"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "notifications": {
+      "title": "Notifications",
+      "viewAll": "View all",
+      "noNotifications": "No notifications",
+      "noNotificationsSub": "New notifications will appear here",
+      "markAllRead": "Mark all as read"
     },
-    "hero": {
-        "title": "Find reliable providers for every local service",
-        "subtitle": "The most trusted platform to find and provide local services",
-        "seeAllJobs": "Show all jobs",
-        "badge": "No. 1 Platform in Albania",
-        "welcomeBack": "Welcome Back",
-        "ourServices": "Our Services",
-        "discoverMore": "Discover more",
-        "whyChooseUs": "Why choose us?",
-        "or": "or"
+    "settings": {
+      "title": "Settings",
+      "profile": "Profile",
+      "viewProfile": "View Profile",
+      "editProfile": "Edit Profile",
+      "myServices": "My Services",
+      "account": "Account",
+      "systemSettings": "System Settings",
+      "systemSettingsDesc": "Language, theme and notifications",
+      "security": "Security",
+      "payments": "Payments",
+      "help": "Help",
+      "helpSupport": "Help & Support"
     },
-    "categories": {
-        "title": "Our Most Popular Services",
-        "subtitle": "Choose from a wide range of services provided by verified professionals"
+    "userMenu": {
+      "user": "User",
+      "signOut": "Sign Out"
     },
-    "services": {
-        "home": "Home & Family",
-        "homeDescription": "Services for your home",
-        "repair": "Repairs",
-        "repairDescription": "All types of repairs",
-        "electrical": "Electrician",
-        "plumbing": "Plumber",
-        "cleaning": "Cleaning",
-        "construction": "Construction",
-        "it": "IT & Technology",
-        "painting": "Painting",
-        "transport": "Transport",
-        "assembly": "Assembly",
-        "care": "Care",
-        "plumbingDescription": "Plumbing specialists",
-        "electricalDescription": "Electrical professionals",
-        "itDescription": "Technology solutions",
-        "cleaningDescription": "Professional cleaning"
+    "changeLanguage": "Change Language",
+    "welcome": {
+      "clientDesc": "Post requests, find qualified professionals, and solve your problems.",
+      "providerDesc": "Manage your jobs, track earnings, and build your reputation.",
+      "joined": "Joined",
+      "today": "Today"
     },
-    "buttons": {
-        "submit": "Submit",
+    "searchPlaceholder": "Search requests, professionals, or help...",
+    "quickActions": {
+      "title": "Quick Actions",
+      "postRequest": "Post Request",
+      "postRequestDesc": "Request a professional",
+      "findPros": "Find Professionals",
+      "findProsDesc": "Browse offers",
+      "myHires": "My Hires",
+      "myHiresDesc": "Job history",
+      "support": "Support",
+      "supportDesc": "Contact us",
+      "findJobs": "Find Jobs",
+      "findJobsDesc": "View new requests",
+      "manageOffers": "Manage Offers",
+      "earnings": "Earnings",
+      "earningsDesc": "Financial reports",
+      "providerHelp": "Provider Help",
+      "providerHelpDesc": "Assistance for providers",
+      "marketplace": "Marketplace",
+      "marketplaceDesc": "Buy and sell professional tools"
+    },
+    "recentActivity": {
+      "title": "Recent Activity",
+      "viewAll": "View all",
+      "newRequest": "New request",
+      "requestApproved": "Your request was approved"
+    },
+    "profileCard": {
+      "title": "Your Profile",
+      "status": "Status",
+      "active": "Active",
+      "userId": "User ID",
+      "joined": "Joined",
+      "updateProfile": "Update Profile"
+    },
+    "appointments": {
+      "title": "Upcoming Appointments",
+      "noAppointments": "No upcoming appointments",
+      "addNew": "Add New Appointment",
+      "addModal": {
+        "title": "Add Appointment",
+        "labelTitle": "Title",
+        "labelDate": "Date & Time",
+        "labelDesc": "Description (Optional)",
+        "placeholderTitle": "e.g. Consultation",
+        "placeholderDesc": "Additional details...",
         "cancel": "Cancel",
-        "save": "Save",
-        "search": "Search"
+        "save": "Save Appointment"
+      },
+      "consultation": "Konsultë",
+      "tomorrow": "Nesër",
+      "dayAfterTomorrow": "Pasnesër"
     },
-    "forms": {
-        "name": "Name",
-        "email": "Email",
-        "phone": "Phone",
-        "password": "Password",
-        "confirmPassword": "Confirm Password",
-        "location": "Location",
-        "description": "Description",
-        "budget": "Budget"
+    "consultation": "Consultation",
+    "tomorrow": "Tomorrow",
+    "dayAfterTomorrow": "Day after tomorrow",
+    "tips": {
+      "title": "Tips for Better Usage",
+      "desc": "Use filters to find professionals faster, update your profile for better results.",
+      "learnMore": "Learn More"
     },
-    "auth": {
-        "loginTitle": "Login to Account",
-        "registerTitle": "Create New Account",
-        "noAccount": "Don't have an account?",
-        "haveAccount": "Already have an account?",
-        "emailPlaceholder": "name@email.com",
-        "passwordPlaceholder": "••••••••",
-        "forgotPassword": "Forgot password?",
-        "signIn": "Sign In",
-        "signingIn": "Signing In...",
-        "registerHere": "Register here",
-        "registerProvider": "Register as Service Provider",
-        "registerClient": "Register as Client",
-        "createAccount": "Create New Account",
-        "joinClient": "Join our community of clients",
-        "joinProvider": "Register as Service Provider",
-        "fullName": "Full Name",
-        "fullNameBox": "Enter your full name",
-        "phone": "Phone (Optional)",
-        "phoneBox": "+355 XX XXX XXXX",
-        "location": "Location (Optional)",
-        "locationBox": "City, Rajon",
-        "roleLabel": "I want to register as:",
-        "roleClient": "Client (I need services)",
-        "roleProvider": "Provider (I offer services)",
-        "termsAgreement": "I agree to the",
-        "terms": "Terms of Service",
-        "and": "and",
-        "privacy": "Privacy Policy",
-        "registering": "Registering...",
-        "registerSuccess": "Registration successful! You can now login.",
-        "alreadyHaveAccount": "Already have an account?",
-        "loginHere": "Login here",
-        "emailError": "Invalid email or password",
-        "generalError": "Something went wrong. Please try again.",
-        "welcomeBack": "Welcome Back",
-        "loginSubtitle": "Sign in to continue",
-        "passwordMinLengthHint": "Min. 6 characters"
+    "debug": {
+      "title": "Debug Information",
+      "devOnly": "Development Only"
     },
-    "errors": {
-        "fillAllFields": "Please fill all mandatory fields",
-        "passwordMinLength": "Password must be at least 6 characters",
-        "passwordsDoNotMatch": "Passwords do not match",
-        "invalidEmail": "Email is invalid",
-        "registrationFailed": "Something went wrong during registration"
-    },
-    "stats": {
-        "registeredUsers": "Registered Users",
-        "completedServices": "Completed Services",
-        "averageRating": "Average Rating",
-        "satisfiedClients": "Satisfied Clients",
-        "activeRequests": "Active Requests",
-        "offersReceived": "Offers Received",
-        "hiredProfessionals": "Hired Professionals",
-        "totalExpenses": "Total Expenses",
-        "activeJobs": "Active Jobs",
-        "monthlyEarnings": "Monthly Earnings",
-        "profileViews": "Profile Views"
-    },
-    "dashboard": {
-        "title": "Dashboard",
-        "notifications": {
-            "title": "Notifications",
-            "viewAll": "View all",
-            "noNotifications": "No notifications",
-            "noNotificationsSub": "New notifications will appear here",
-            "markAllRead": "Mark all as read"
-        },
-        "settings": {
-            "title": "Settings",
-            "profile": "Profile",
-            "viewProfile": "View Profile",
-            "editProfile": "Edit Profile",
-            "myServices": "My Services",
-            "account": "Account",
-            "systemSettings": "System Settings",
-            "systemSettingsDesc": "Language, theme and notifications",
-            "security": "Security",
-            "payments": "Payments",
-            "help": "Help",
-            "helpSupport": "Help & Support"
-        },
-        "userMenu": {
-            "user": "User",
-            "signOut": "Sign Out"
-        },
-        "changeLanguage": "Change Language",
-        "welcome": {
-            "clientDesc": "Post requests, find qualified professionals, and solve your problems.",
-            "providerDesc": "Manage your jobs, track earnings, and build your reputation.",
-            "joined": "Joined",
-            "today": "Today"
-        },
-        "searchPlaceholder": "Search requests, professionals, or help...",
-        "quickActions": {
-            "title": "Quick Actions",
-            "postRequest": "Post Request",
-            "postRequestDesc": "Request a professional",
-            "findPros": "Find Professionals",
-            "findProsDesc": "Browse offers",
-            "myHires": "My Hires",
-            "myHiresDesc": "Job history",
-            "support": "Support",
-            "supportDesc": "Contact us",
-            "findJobs": "Find Jobs",
-            "findJobsDesc": "View new requests",
-            "manageOffers": "Manage Offers",
-            "earnings": "Earnings",
-            "earningsDesc": "Financial reports",
-            "providerHelp": "Provider Help",
-            "providerHelpDesc": "Assistance for providers",
-            "marketplace": "Marketplace",
-            "marketplaceDesc": "Buy and sell professional tools"
-        },
-        "recentActivity": {
-            "title": "Recent Activity",
-            "viewAll": "View all",
-            "newRequest": "New request",
-            "requestApproved": "Your request was approved"
-        },
-        "profileCard": {
-            "title": "Your Profile",
-            "status": "Status",
-            "active": "Active",
-            "userId": "User ID",
-            "joined": "Joined",
-            "updateProfile": "Update Profile"
-        },
-        "appointments": {
-            "title": "Upcoming Appointments",
-            "noAppointments": "No upcoming appointments",
-            "addNew": "Add New Appointment",
-            "addModal": {
-                "title": "Add Appointment",
-                "labelTitle": "Title",
-                "labelDate": "Date & Time",
-                "labelDesc": "Description (Optional)",
-                "placeholderTitle": "e.g. Consultation",
-                "placeholderDesc": "Additional details...",
-                "cancel": "Cancel",
-                "save": "Save Appointment"
-            }
-        },
-        "consultation": "Consultation",
-        "tomorrow": "Tomorrow",
-        "dayAfterTomorrow": "Day after tomorrow",
-        "tips": {
-            "title": "Tips for Better Usage",
-            "desc": "Use filters to find professionals faster, update your profile for better results.",
-            "learnMore": "Learn More"
-        },
-        "debug": {
-            "title": "Debug Information",
-            "devOnly": "Development Only"
-        },
-        "becomeProvider": "Bëhu Profesionist",
-        "becomeProviderDesc": "Regjistrohuni si profesionist për të ofruar shërbimet tuaja, për të hapur kurse dhe për të dërguar kontrata pune.",
-        "pendingApproval": "Kërkesa në proces aprovimi",
-        "applyNow": "Apliko Tani",
-        "providerSections": {
-            "portfolio": "Portfolio",
-            "portfolioDesc": "Menaxhoni fotot e punëve tuaja të kryera.",
-            "courses": "Kurse",
-            "coursesDesc": "Ngarkoni kurset tuaja profesionale.",
-            "contracts": "Kontrata",
-            "contractsDesc": "Menaxhoni kontratat e punës.",
-            "viewAll": "Shiko",
-            "add": "Shto"
-        }
-    },
-    "features": {
-        "title": "Why Choose Local FIX?",
-        "subtitle": "We offer more than just a platform",
-        "securePayment": "Secure Payment",
-        "verifiedProviders": "Verified Providers",
-        "satisfactionGuarantee": "Satisfaction Guarantee",
-        "realReviews": "Real Reviews",
-        "support247": "24/7 Support",
-        "competitivePrices": "Competitive Prices",
-        "securePaymentDescription": "Funds are held in escrow and released only after work is confirmed",
-        "verifiedProvidersDescription": "All providers are verified with real reviews",
-        "satisfactionGuaranteeDescription": "Pay only when you are satisfied with the result",
-        "realReviewsDescription": "Read reviews from real customers before choosing",
-        "support247Description": "Assistance throughout the work process",
-        "competitivePricesDescription": "Compare prices and choose the best option for your budget"
-    },
-    "home": {
-        "cta": {
-            "title": "Ready to get started?",
-            "subtitle": "Join thousands of satisfied customers and professionals today.",
-            "registerClient": "Register as Client",
-            "registerProvider": "Register as Provider",
-            "login": "Login here"
-        }
-    },
-    "faq": {
-        "title": "Frequently Asked Questions",
-        "subtitle": "Find answers to common questions",
-        "badge": "Frequently Asked Questions",
-        "q1": "How does payment work?",
-        "a1": "Payment is done through our secure platform. Funds are held in escrow until the work is completed.",
-        "q2": "Are professionals verified?",
-        "a2": "Yes, all providers undergo an identity and skill verification process.",
-        "q3": "How much does registration cost?",
-        "a3": "Registration is free for clients. Providers only pay a small fee for each job won.",
-        "q4": "What if I am not satisfied?",
-        "a4": "We offer a satisfaction guarantee. If there are issues, our support team will intervene for a resolution.",
-        "stillHaveQuestions": "Still have questions?",
-        "contactUs": "Contact us",
-        "emailSupport": "Email Support"
-    },
-    "testimonials": {
-        "title": "What Our Users Say",
-        "subtitle": "Thousands of satisfied users trust us every day for their local needs.",
-        "badge": "Customer Testimonials"
-    },
-    "trustedBy": {
-        "title": "Trusted by leading companies"
-    },
-    "admin": {
-        "loading": "Loading admin panel...",
-        "title": "LocalFIX Admin",
-        "overview": "Overview",
-        "usersProviders": "Users & Providers",
-        "disputes": "Disputes",
-        "exit": "Exit Admin",
-        "role": "ADMINISTRATOR"
-    },
-    "blog": {
-        "title": "Blog",
-        "description": "Latest news and tips from LocalFIX",
-        "readMore": "Read more",
-        "categories": {
-            "home": "Home",
-            "tips": "Tips",
-            "news": "News"
-        }
-    },
-    "footer": {
-        "services": "Services",
-        "company": "Company",
-        "support": "Support",
-        "legal": "Legal",
-        "about": "About Us",
-        "howItWorks": "How It Works",
-        "trustSafety": "Trust & Safety",
-        "blog": "Blog",
-        "careers": "Careers",
-        "helpCenter": "Help Center",
-        "contact": "Contact",
-        "faq": "FAQ",
-        "disputes": "Dispute Resolution",
-        "community": "Community",
-        "terms": "Terms of Service",
-        "privacy": "Privacy Policy",
-        "cookies": "Cookie Policy",
-        "licenses": "Licenses",
-        "accessibility": "Accessibility",
-        "description": "LocalFIX is the leading platform in Albania for connecting customers with the best local service professionals.",
-        "rights": "All rights reserved.",
-        "sitemap": "Sitemap",
-        "madeWith": "Made with",
-        "in": "in",
-        "location": "Albania & Kosovo",
-        "tagline": "Professional Services",
-        "no1Albania": "No. 1 Platform in Albania."
-    },
-    "about": {
-        "title": "About Us",
-        "description": "Learn more about LocalFIX's mission and team.",
-        "mission": {
-            "title": "Our Mission",
-            "desc": "LocalFIX aims to connect clients with the best professionals in Albania, ensuring quality and reliability in every service."
-        },
-        "vision": {
-            "title": "Our Vision",
-            "desc": "To become the primary source for every service need, fostering local economic growth through technology."
-        },
-        "team": "Our dedicated team works every day to provide you with the best experience."
-    },
-    "howItWorksPage": {
-        "title": "How it Works",
-        "description": "Your guide to using the platform",
-        "forClients": {
-            "title": "For Clients",
-            "desc": "Post, choose, and pay only when the job is done."
-        },
-        "forProviders": {
-            "title": "For Providers",
-            "desc": "Find work, build your reputation, and increase your earnings."
-        }
-    },
-    "howItWorksComponent": {
-        "title": "How It Works?",
-        "step1": {
-            "title": "Post Request",
-            "desc": "Fill the form in 2 minutes"
-        },
-        "step2": {
-            "title": "Accept Offers",
-            "desc": "Choose the best offer"
-        },
-        "step3": {
-            "title": "Pay Securely",
-            "desc": "Money stays safe"
-        },
-        "step4": {
-            "title": "Get Service",
-            "desc": "Work is done professionally"
-        }
-    },
-    "trustSafety": {
-        "title": "Trust and Safety",
-        "description": "Your safety is our top priority",
-        "verified": {
-            "title": "Verified Professionals",
-            "desc": "Every provider goes through a rigorous identity and skill verification process."
-        },
-        "payment": {
-            "title": "Payment Protection",
-            "desc": "Your payments are held securely and released only when you are satisfied with the work."
-        },
-        "secure": {
-            "title": "Secure Data",
-            "desc": "We use the latest encryption technology to protect your data."
-        },
-        "standards": {
-            "title": "Community Standards",
-            "desc": "We do not tolerate any form of fraud, harassment, or unprofessional behavior."
-        }
-    },
-    "contactPage": {
-        "title": "Contact",
-        "description": "We're here to listen",
-        "form": {
-            "title": "Write to us",
-            "name": "Name",
-            "email": "Email",
-            "message": "Message",
-            "submit": "Send Message"
-        },
-        "info": {
-            "email": "Email",
-            "phone": "Phone",
-            "workingHours": "Monday - Friday, 09:00 - 17:00",
-            "offices": "Our Offices",
-            "address": "Example Street, No. 123, Tirana, Albania"
-        }
-    },
-    "careers": {
-        "title": "Careers",
-        "description": "Join the LocalFIX team",
-        "hiring": "We are hiring!",
-        "hiringDesc": "Are you passionate about technology and local services? We want to know you.",
-        "viewPositions": "View Open Positions",
-        "activePositions": "Active Positions",
-        "apply": "Apply"
-    },
-    "community": {
-        "title": "Community",
-        "description": "Join the LocalFIX community",
-        "forum": {
-            "title": "Discussion Forums",
-            "desc": "Talk with other members, exchange home tips, and share your experiences.",
-            "cta": "Go to Forum"
-        },
-        "expert": {
-            "title": "Ask an Expert",
-            "desc": "Have a technical question? Get answers from our top professionals.",
-            "cta": "Ask the Expert"
-        },
-        "success": "Success Stories"
-    },
-    "faqPage": {
-        "title": "Frequently Asked Questions (FAQ)",
-        "description": "Answers to your most common questions",
-        "q1": "Is LocalFIX free?",
-        "a1": "Registration and searching for professionals is free for clients. Service providers pay a small percentage for each job won.",
-        "q2": "How is service quality ensured?",
-        "a2": "All professionals are verified and rated by other clients. We constantly monitor their performance.",
-        "q3": "What if I am not satisfied?",
-        "a3": "We have a client protection policy. If the work is not done according to the agreement, we will intervene to resolve the issue or refund you.",
-        "q4": "How does payment work?",
-        "a4": "You can pay securely through the platform. Funds are held blocked until the work is completed."
-    },
-    "terms": {
-        "title": "Terms of Service",
-        "description": "Please read our terms of service carefully.",
-        "lastUpdated": "Last Updated",
-        "acceptance": {
-            "title": "1. Acceptance of Terms",
-            "desc": "By accessing and using LocalFIX, you agree to be bound by these terms."
-        },
-        "userConduct": {
-            "title": "2. User Conduct",
-            "desc": "You are responsible for maintaining the confidentiality of your account and for all activities that occur under it."
-        },
-        "payments": {
-            "title": "3. Payments and Fees",
-            "desc": "Details about service fees and payment processing. Funds are released only after the work is completed."
-        },
-        "termination": {
-            "title": "4. Termination",
-            "desc": "We reserve the right to terminate or suspend your access if our rules are violated."
-        }
-    },
-    "privacy": {
-        "title": "Privacy Policy",
-        "description": "Your data security is our top priority.",
-        "lastUpdated": "Last Updated",
-        "collection": {
-            "title": "Data Collection",
-            "desc": "We collect information you provide us directly, such as name, email, and phone number when you register."
-        },
-        "usage": {
-            "title": "Use of Information",
-            "desc": "Your data is used to provide services, improve the platform, and for communication."
-        },
-        "sharing": {
-            "title": "Data Sharing",
-            "desc": "We do not sell your personal data to third parties and share it only when necessary for the service."
-        }
-    },
-    "cookies": {
-        "title": "Cookie Policy",
-        "description": "How we use cookies to improve your experience.",
-        "lastUpdated": "Last Updated",
-        "what": {
-            "title": "What are Cookies?",
-            "desc": "Cookies are small text files stored on your device when you visit our website."
-        },
-        "how": {
-            "title": "How we use them?",
-            "desc": "We use cookies to keep you logged in and to understand how the site is used."
-        },
-        "types": {
-            "title": "Types of Cookies",
-            "essential": "Essential: For site functioning (e.g. login).",
-            "analytics": "Analytical: To understand how the site is used.",
-            "marketing": "Marketing: To show you relevant ads."
-        }
-    },
-    "disputes": {
-        "title": "Dispute Resolution",
-        "description": "How we resolve conflicts on the platform.",
-        "process": {
-            "title": "Resolution Process",
-            "desc": "We always encourage open communication between the client and the professional to resolve any issues."
-        },
-        "mediation": {
-            "title": "Mediation",
-            "desc": "In difficult cases, our support team will intervene to review evidence and make a fair decision."
-        }
-    },
-    "accessibility": {
-        "title": "Accessibility",
-        "description": "Our commitment to inclusion.",
-        "commitment": {
-            "title": "Our Commitment",
-            "desc": "LocalFIX is committed to making its platform accessible to everyone, including people with disabilities."
-        },
-        "standards": {
-            "title": "Standards",
-            "desc": "We strive to follow the Web Content Accessibility Guidelines (WCAG) 2.1."
-        },
-        "feedback": "If you encounter any accessibility issues, please contact us."
-    },
-    "licenses": {
-        "title": "Licenses",
-        "description": "Information about software and professional licenses.",
-        "lastUpdated": "Last Updated",
-        "software": {
-            "title": "Software Licenses",
-            "desc": "Our platform uses several open source libraries and other software licenses."
-        },
-        "professional": {
-            "title": "Professional Licenses",
-            "desc": "All professionals on the platform must hold appropriate licenses according to the law."
-        },
-        "copyright": {
-            "title": "Copyright",
-            "content": "All content on this site is property of LocalFIX or its partners."
-        },
-        "openSource": {
-            "title": "Open Source Licenses",
-            "content": "We use several open source libraries. Here is the list of them and their respective licenses:"
-        }
-    },
-    "sitemap": {
-        "title": "Sitemap",
-        "sections": {
-            "main": "Main",
-            "services": "Services",
-            "company": "Company",
-            "support": "Support",
-            "legal": "Legal"
-        }
-    },
-    "jobForm": {
-        "title": "Post a Request",
-        "description": "Describe what you need and get offers from professionals.",
-        "backToDashboard": "Back to Dashboard",
-        "fullName": "Full Name *",
-        "namePlaceholder": "Enter your full name",
-        "phone": "Phone *",
-        "phonePlaceholder": "+355 XX XXX XXXX",
-        "email": "Email *",
-        "emailPlaceholder": "email@example.com",
-        "jobTitle": "Job Title *",
-        "jobTitlePlaceholder": "e.g. Fixing lights, Apartment cleaning",
-        "category": "Category *",
-        "selectCategory": "Select category",
-        "detailedDescription": "Detailed Description *",
-        "descriptionPlaceholder": "Describe in detail what you need, specific problems, etc...",
-        "location": "Location *",
-        "locationPlaceholder": "e.g. Tirana, Center",
-        "estimatedBudget": "Estimated Budget (optional)",
-        "budgetCurrency": "€",
-        "submit": "Post Request",
-        "submitting": "Posting...",
-        "contactNote": "After submission, you will be contacted within 24 hours by our providers",
-        "success": "Request sent successfully! We will contact you within 24 hours.",
-        "postAnother": "Post another request",
-        "error": "Something went wrong",
-        "serverError": "Server connection error",
-        "services": {
-            "electrical": "Electrical Repairs",
-            "plumbing": "Plumbing Repairs",
-            "cleaning": "Cleaning & Maintenance",
-            "assembly": "Furniture Assembly",
-            "it": "IT & Computer Services",
-            "painting": "Painting Work",
-            "construction": "Construction & Renovation",
-            "transport": "Transport & Delivery",
-            "photography": "Photography & Video",
-            "care": "Care & Assistance",
-            "other": "Others"
-        }
-    },
-    "jobList": {
-        "errorLoading": "Error loading data",
-        "activeRequests": "Active Requests",
-        "refresh": "Refresh",
-        "noJobs": "No requests",
-        "noJobsSub": "Be the first to post a request!",
-        "postFirstRequest": "Post First Request",
-        "postedBy": "Posted by",
-        "viewDetails": "View Details",
-        "areYouProvider": "Are you a Provider?",
-        "providerPromo": "Offer services and earn money securely with our platform",
-        "guaranteedClients": "Guaranteed clients",
-        "securePayment": "Secure payment",
-        "localJobs": "Local jobs",
-        "onlineReputation": "Online reputation",
-        "registerAsProvider": "Register as Provider",
-        "availableJobs": "Available Jobs",
-        "availableJobsDesc": "Find new opportunities near you",
-        "availableJobsTab": "Find Jobs",
-        "latestOpportunities": "Latest Opportunities",
-        "homeServices": "Home Services",
-        "paintingCleaningRepair": "Painting, Cleaning, Repair",
-        "itExpert": "IT Expert",
-        "designers": "Designers",
-        "delivery": "Delivery",
-        "myWorks": "My Works",
-        "myWorksDesc": "Manage the jobs you've taken on",
-        "myWorksTab": "My Works",
-        "myRequests": "My Requests",
-        "myRequestsDesc": "Status of requests you've posted",
-        "myRequestsTab": "My Requests"
-    },
-    "escrow": {
-        "verifyPending": "Verification Pending",
-        "verifyPendingDesc": "Provider has marked the job as completed.",
-        "waitingClient": "Waiting for the client to verify your work. If not verified within 24 hours, the job will be auto-approved.",
-        "verifyAndPay": "Verify & Release Payment",
-        "openDispute": "Open Dispute",
-        "jobCompleted": "Job Completed",
-        "paymentProcessed": "Payment has been processed successfully.",
-        "workProofProvider": "Provider Proof",
-        "workProofClient": "Client Proof",
-        "reportProblem": "Have a problem? Report dispute",
-        "disputeTitle": "Job in Dispute",
-        "disputeDesc": "The administrator will review evidence from both parties and decide on the next steps.",
-        "uploadAdditionalProof": "Upload additional proof",
-        "inProgress": "Job is in progress",
-        "inProgressDesc": "When finished, upload a photo as proof to request payment.",
-        "uploadProofAndComplete": "Upload Proof & Complete",
-        "uploading": "Uploading...",
-        "acceptJob": "Accept This Job (Provider)",
-        "confirmVerify": "Do you want to verify the completion of the work and release the payment?",
-        "backToDashboard": "Back to Dashboard",
-        "reportDispute": "Report Dispute",
-        "disputeReasonPlaceholder": "Describe the problem in detail...",
-        "submitReport": "Submit Report"
-    },
-    "servicesPage": {
-        "title": "Browse Services",
-        "searchPlaceholder": "Search for services...",
-        "allCategories": "All Categories",
-        "searchButton": "Search",
-        "noServices": "No services found",
-        "noServicesSub": "No services found matching your criteria.",
-        "loading": "Loading services...",
-        "viewDetails": "View Details",
-        "new": "New",
-        "rating": "Rating",
-        "location": "Location",
-        "becomeProviderTitle": "Do you have a skill to offer?",
-        "becomeProviderDesc": "Become part of our platform and start earning today by offering your professional services.",
-        "startNow": "Start Now"
-    },
-    "messages": {
-        "title": "Messages",
-        "select": "Select a conversation to start messaging",
-        "typePlaceholder": "Type a message...",
-        "send": "Send",
-        "unknown": "Unknown",
-        "noMessages": "Start a conversation",
-        "loading": "Loading..."
-    },
-    "settingsPage": {
-        "title": "System Settings",
-        "subtitle": "Personalize your LocalFix experience",
-        "backToDashboard": "Back to Dashboard",
-        "general": {
-            "title": "General",
-            "language": {
-                "title": "Language",
-                "desc": "Choose your interface language"
-            },
-            "appearance": {
-                "title": "Appearance",
-                "desc": "Choose between light or dark mode",
-                "system": "System (Default)",
-                "light": "Light",
-                "dark": "Dark"
-            }
-        },
-        "notifications": {
-            "title": "Notifications",
-            "push": {
-                "title": "Push Notifications",
-                "desc": "Get notifications on your device"
-            },
-            "sms": {
-                "title": "SMS Alerts",
-                "desc": "Urgent job notifications"
-            }
-        },
-        "save": "Save Changes",
-        "saving": "Saving...",
-        "success": "Settings updated!",
-        "error": "Error saving settings"
-    },
-    "marketplace": {
-        "title": "Product Marketplace",
-        "subtitle": "Buy and sell products in our community",
-        "searchPlaceholder": "Search for products...",
-        "allCategories": "All Categories",
-        "noProducts": "No products found",
-        "noProductsSub": "Be the first to list a product!",
-        "addProduct": "Sell a Product",
-        "myProducts": "My Products",
-        "buyNow": "Buy Now",
-        "loginToBuy": "Please login to buy.",
-        "buySuccess": "Purchase successful!",
-        "buyError": "There was a problem during purchase.",
-        "transactionError": "Transaction error.",
-        "info": "Our platform secures every transaction. Funds are held safely until the buyer receives the product.",
-        "commissionNote": "Platform takes 8% commission.",
-        "productName": "Product Name",
-        "productPrice": "Price (€)",
-        "productCategory": "Category",
-        "productDescription": "Description",
-        "productImages": "Product Images",
-        "saving": "Saving...",
-        "success": "Product added successfully!",
-        "error": "Error adding product",
-        "categories": {
-            "tools": "Tools",
-            "electronics": "Electronics",
-            "furniture": "Furniture",
-            "materials": "Building Materials",
-            "other": "Others"
-        },
-        "status": {
-            "ACTIVE": "Active",
-            "SOLD": "Sold",
-            "DELETED": "Deleted"
-        },
-        "sellerApproval": {
-            "title": "Seller Approval",
-            "pending": "Your request is pending approval by the staff.",
-            "apply": "To sell products in the marketplace, you must apply for approval.",
-            "applyBtn": "Apply to become a Seller",
-            "goBack": "Back to Marketplace"
-        }
-    },
-    "provider": {
-        "apply": "Apply as Professional",
-        "applyDesc": "Fill in your details to start offering services.",
-        "category": "Service Category",
-        "experience": "Your Experience",
-        "bio": "Professional Bio",
-        "submit": "Submit Request",
-        "sending": "Sending...",
-        "success": "Application Sent!",
-        "successDesc": "Thank you! Your request to become a professional is being reviewed. You will be notified soon."
+    "becomeProvider": "Bëhu Profesionist",
+    "becomeProviderDesc": "Regjistrohuni si profesionist për të ofruar shërbimet tuaja, për të hapur kurse dhe për të dërguar kontrata pune.",
+    "pendingApproval": "Kërkesa në proces aprovimi",
+    "applyNow": "Apliko Tani",
+    "providerSections": {
+      "portfolio": "Portfolio",
+      "portfolioDesc": "Menaxhoni fotot e punëve tuaja të kryera.",
+      "courses": "Kurse",
+      "coursesDesc": "Ngarkoni kurset tuaja profesionale.",
+      "contracts": "Kontrata",
+      "contractsDesc": "Menaxhoni kontratat e punës.",
+      "viewAll": "Shiko",
+      "add": "Shto"
     }
+  },
+  "features": {
+    "title": "Why Choose Local FIX?",
+    "subtitle": "We offer more than just a platform",
+    "securePayment": "Secure Payment",
+    "verifiedProviders": "Verified Providers",
+    "satisfactionGuarantee": "Satisfaction Guarantee",
+    "realReviews": "Real Reviews",
+    "support247": "24/7 Support",
+    "competitivePrices": "Competitive Prices",
+    "securePaymentDescription": "Funds are held in escrow and released only after work is confirmed",
+    "verifiedProvidersDescription": "All providers are verified with real reviews",
+    "satisfactionGuaranteeDescription": "Pay only when you are satisfied with the result",
+    "realReviewsDescription": "Read reviews from real customers before choosing",
+    "support247Description": "Assistance throughout the work process",
+    "competitivePricesDescription": "Compare prices and choose the best option for your budget"
+  },
+  "home": {
+    "cta": {
+      "title": "Ready to get started?",
+      "subtitle": "Join thousands of satisfied customers and professionals today.",
+      "registerClient": "Register as Client",
+      "registerProvider": "Register as Provider",
+      "login": "Login here",
+      "loggedInTitle": "Vazhdoni me projektet tuaja",
+      "loggedInSubtitle": "Shikoni statusin e punëve ose postoni kërkesë të re direkt nga dashboard."
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions",
+    "badge": "Frequently Asked Questions",
+    "q1": "How does payment work?",
+    "a1": "Payment is done through our secure platform. Funds are held in escrow until the work is completed.",
+    "q2": "Are professionals verified?",
+    "a2": "Yes, all providers undergo an identity and skill verification process.",
+    "q3": "How much does registration cost?",
+    "a3": "Registration is free for clients. Providers only pay a small fee for each job won.",
+    "q4": "What if I am not satisfied?",
+    "a4": "We offer a satisfaction guarantee. If there are issues, our support team will intervene for a resolution.",
+    "stillHaveQuestions": "Still have questions?",
+    "contactUs": "Contact us",
+    "emailSupport": "Email Support"
+  },
+  "testimonials": {
+    "title": "What Our Users Say",
+    "subtitle": "Thousands of satisfied users trust us every day for their local needs.",
+    "badge": "Customer Testimonials"
+  },
+  "trustedBy": {
+    "title": "Trusted by leading companies"
+  },
+  "admin": {
+    "loading": "Loading admin panel...",
+    "title": "LocalFIX Admin",
+    "overview": "Overview",
+    "usersProviders": "Users & Providers",
+    "disputes": "Disputes",
+    "exit": "Exit Admin",
+    "role": "ADMINISTRATOR"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Latest news and tips from LocalFIX",
+    "readMore": "Read more",
+    "categories": {
+      "home": "Home",
+      "tips": "Tips",
+      "news": "News"
+    }
+  },
+  "footer": {
+    "services": "Services",
+    "company": "Company",
+    "support": "Support",
+    "legal": "Legal",
+    "about": "About Us",
+    "howItWorks": "How It Works",
+    "trustSafety": "Trust & Safety",
+    "blog": "Blog",
+    "careers": "Careers",
+    "helpCenter": "Help Center",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "disputes": "Dispute Resolution",
+    "community": "Community",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "licenses": "Licenses",
+    "accessibility": "Accessibility",
+    "description": "LocalFIX is the leading platform in Albania for connecting customers with the best local service professionals.",
+    "rights": "All rights reserved.",
+    "sitemap": "Sitemap",
+    "madeWith": "Made with",
+    "in": "in",
+    "location": "Albania & Kosovo",
+    "tagline": "Professional Services",
+    "no1Albania": "No. 1 Platform in Albania."
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Learn more about LocalFIX's mission and team.",
+    "mission": {
+      "title": "Our Mission",
+      "desc": "LocalFIX aims to connect clients with the best professionals in Albania, ensuring quality and reliability in every service."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "desc": "To become the primary source for every service need, fostering local economic growth through technology."
+    },
+    "team": "Our dedicated team works every day to provide you with the best experience."
+  },
+  "howItWorksPage": {
+    "title": "How it Works",
+    "description": "Your guide to using the platform",
+    "forClients": {
+      "title": "For Clients",
+      "desc": "Post, choose, and pay only when the job is done."
+    },
+    "forProviders": {
+      "title": "For Providers",
+      "desc": "Find work, build your reputation, and increase your earnings."
+    }
+  },
+  "howItWorksComponent": {
+    "title": "How It Works?",
+    "step1": {
+      "title": "Post Request",
+      "desc": "Fill the form in 2 minutes"
+    },
+    "step2": {
+      "title": "Accept Offers",
+      "desc": "Choose the best offer"
+    },
+    "step3": {
+      "title": "Pay Securely",
+      "desc": "Money stays safe"
+    },
+    "step4": {
+      "title": "Get Service",
+      "desc": "Work is done professionally"
+    }
+  },
+  "trustSafety": {
+    "title": "Trust and Safety",
+    "description": "Your safety is our top priority",
+    "verified": {
+      "title": "Verified Professionals",
+      "desc": "Every provider goes through a rigorous identity and skill verification process."
+    },
+    "payment": {
+      "title": "Payment Protection",
+      "desc": "Your payments are held securely and released only when you are satisfied with the work."
+    },
+    "secure": {
+      "title": "Secure Data",
+      "desc": "We use the latest encryption technology to protect your data."
+    },
+    "standards": {
+      "title": "Community Standards",
+      "desc": "We do not tolerate any form of fraud, harassment, or unprofessional behavior."
+    }
+  },
+  "contactPage": {
+    "title": "Contact",
+    "description": "We're here to listen",
+    "form": {
+      "title": "Write to us",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send Message"
+    },
+    "info": {
+      "email": "Email",
+      "phone": "Phone",
+      "workingHours": "Monday - Friday, 09:00 - 17:00",
+      "offices": "Our Offices",
+      "address": "Example Street, No. 123, Tirana, Albania"
+    }
+  },
+  "careers": {
+    "title": "Careers",
+    "description": "Join the LocalFIX team",
+    "hiring": "We are hiring!",
+    "hiringDesc": "Are you passionate about technology and local services? We want to know you.",
+    "viewPositions": "View Open Positions",
+    "activePositions": "Active Positions",
+    "apply": "Apply"
+  },
+  "community": {
+    "title": "Community",
+    "description": "Join the LocalFIX community",
+    "forum": {
+      "title": "Discussion Forums",
+      "desc": "Talk with other members, exchange home tips, and share your experiences.",
+      "cta": "Go to Forum"
+    },
+    "expert": {
+      "title": "Ask an Expert",
+      "desc": "Have a technical question? Get answers from our top professionals.",
+      "cta": "Ask the Expert"
+    },
+    "success": "Success Stories"
+  },
+  "faqPage": {
+    "title": "Frequently Asked Questions (FAQ)",
+    "description": "Answers to your most common questions",
+    "q1": "Is LocalFIX free?",
+    "a1": "Registration and searching for professionals is free for clients. Service providers pay a small percentage for each job won.",
+    "q2": "How is service quality ensured?",
+    "a2": "All professionals are verified and rated by other clients. We constantly monitor their performance.",
+    "q3": "What if I am not satisfied?",
+    "a3": "We have a client protection policy. If the work is not done according to the agreement, we will intervene to resolve the issue or refund you.",
+    "q4": "How does payment work?",
+    "a4": "You can pay securely through the platform. Funds are held blocked until the work is completed."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "description": "Please read our terms of service carefully.",
+    "lastUpdated": "Last Updated",
+    "acceptance": {
+      "title": "1. Acceptance of Terms",
+      "desc": "By accessing and using LocalFIX, you agree to be bound by these terms."
+    },
+    "userConduct": {
+      "title": "2. User Conduct",
+      "desc": "You are responsible for maintaining the confidentiality of your account and for all activities that occur under it."
+    },
+    "payments": {
+      "title": "3. Payments and Fees",
+      "desc": "Details about service fees and payment processing. Funds are released only after the work is completed."
+    },
+    "termination": {
+      "title": "4. Termination",
+      "desc": "We reserve the right to terminate or suspend your access if our rules are violated."
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "description": "Your data security is our top priority.",
+    "lastUpdated": "Last Updated",
+    "collection": {
+      "title": "Data Collection",
+      "desc": "We collect information you provide us directly, such as name, email, and phone number when you register."
+    },
+    "usage": {
+      "title": "Use of Information",
+      "desc": "Your data is used to provide services, improve the platform, and for communication."
+    },
+    "sharing": {
+      "title": "Data Sharing",
+      "desc": "We do not sell your personal data to third parties and share it only when necessary for the service."
+    }
+  },
+  "cookies": {
+    "title": "Cookie Policy",
+    "description": "How we use cookies to improve your experience.",
+    "lastUpdated": "Last Updated",
+    "what": {
+      "title": "What are Cookies?",
+      "desc": "Cookies are small text files stored on your device when you visit our website."
+    },
+    "how": {
+      "title": "How we use them?",
+      "desc": "We use cookies to keep you logged in and to understand how the site is used."
+    },
+    "types": {
+      "title": "Types of Cookies",
+      "essential": "Essential: For site functioning (e.g. login).",
+      "analytics": "Analytical: To understand how the site is used.",
+      "marketing": "Marketing: To show you relevant ads."
+    }
+  },
+  "disputes": {
+    "title": "Dispute Resolution",
+    "description": "How we resolve conflicts on the platform.",
+    "process": {
+      "title": "Resolution Process",
+      "desc": "We always encourage open communication between the client and the professional to resolve any issues."
+    },
+    "mediation": {
+      "title": "Mediation",
+      "desc": "In difficult cases, our support team will intervene to review evidence and make a fair decision."
+    }
+  },
+  "accessibility": {
+    "title": "Accessibility",
+    "description": "Our commitment to inclusion.",
+    "commitment": {
+      "title": "Our Commitment",
+      "desc": "LocalFIX is committed to making its platform accessible to everyone, including people with disabilities."
+    },
+    "standards": {
+      "title": "Standards",
+      "desc": "We strive to follow the Web Content Accessibility Guidelines (WCAG) 2.1."
+    },
+    "feedback": "If you encounter any accessibility issues, please contact us."
+  },
+  "licenses": {
+    "title": "Licenses",
+    "description": "Information about software and professional licenses.",
+    "lastUpdated": "Last Updated",
+    "software": {
+      "title": "Software Licenses",
+      "desc": "Our platform uses several open source libraries and other software licenses."
+    },
+    "professional": {
+      "title": "Professional Licenses",
+      "desc": "All professionals on the platform must hold appropriate licenses according to the law."
+    },
+    "copyright": {
+      "title": "Copyright",
+      "content": "All content on this site is property of LocalFIX or its partners."
+    },
+    "openSource": {
+      "title": "Open Source Licenses",
+      "content": "We use several open source libraries. Here is the list of them and their respective licenses:"
+    }
+  },
+  "sitemap": {
+    "title": "Sitemap",
+    "sections": {
+      "main": "Main",
+      "services": "Services",
+      "company": "Company",
+      "support": "Support",
+      "legal": "Legal"
+    }
+  },
+  "jobForm": {
+    "title": "Post a Request",
+    "description": "Describe what you need and get offers from professionals.",
+    "backToDashboard": "Back to Dashboard",
+    "fullName": "Full Name *",
+    "namePlaceholder": "Enter your full name",
+    "phone": "Phone *",
+    "phonePlaceholder": "+355 XX XXX XXXX",
+    "email": "Email *",
+    "emailPlaceholder": "email@example.com",
+    "jobTitle": "Job Title *",
+    "jobTitlePlaceholder": "e.g. Fixing lights, Apartment cleaning",
+    "category": "Category *",
+    "selectCategory": "Select category",
+    "detailedDescription": "Detailed Description *",
+    "descriptionPlaceholder": "Describe in detail what you need, specific problems, etc...",
+    "location": "Location *",
+    "locationPlaceholder": "e.g. Tirana, Center",
+    "estimatedBudget": "Estimated Budget (optional)",
+    "budgetCurrency": "€",
+    "submit": "Post Request",
+    "submitting": "Posting...",
+    "contactNote": "After submission, you will be contacted within 24 hours by our providers",
+    "success": "Request sent successfully! We will contact you within 24 hours.",
+    "postAnother": "Post another request",
+    "error": "Something went wrong",
+    "serverError": "Server connection error",
+    "services": {
+      "electrical": "Electrical Repairs",
+      "plumbing": "Plumbing Repairs",
+      "cleaning": "Cleaning & Maintenance",
+      "assembly": "Furniture Assembly",
+      "it": "IT & Computer Services",
+      "painting": "Painting Work",
+      "construction": "Construction & Renovation",
+      "transport": "Transport & Delivery",
+      "photography": "Photography & Video",
+      "care": "Care & Assistance",
+      "other": "Others"
+    }
+  },
+  "jobList": {
+    "errorLoading": "Error loading data",
+    "activeRequests": "Active Requests",
+    "refresh": "Refresh",
+    "noJobs": "No requests",
+    "noJobsFound": "No jobs found matching your criteria.",
+    "noJobsSub": "Be the first to post a request!",
+    "postFirstRequest": "Post First Request",
+    "postedBy": "Posted by",
+    "viewDetails": "View Details",
+    "areYouProvider": "Are you a Provider?",
+    "providerPromo": "Offer services and earn money securely with our platform",
+    "guaranteedClients": "Guaranteed clients",
+    "securePayment": "Secure payment",
+    "localJobs": "Local jobs",
+    "onlineReputation": "Online reputation",
+    "registerAsProvider": "Register as Provider",
+    "availableJobs": "Available Jobs",
+    "availableJobsDesc": "Find new opportunities near you",
+    "availableJobsTab": "Find Jobs",
+    "latestOpportunities": "Latest Opportunities",
+    "homeServices": "Home Services",
+    "paintingCleaningRepair": "Painting, Cleaning, Repair",
+    "itExpert": "IT Expert",
+    "designers": "Designers",
+    "delivery": "Delivery",
+    "myWorks": "My Works",
+    "myWorksDesc": "Manage the jobs you've taken on",
+    "myWorksTab": "My Works",
+    "myRequests": "My Requests",
+    "myRequestsDesc": "Status of requests you've posted",
+    "myRequestsTab": "My Requests"
+  },
+  "escrow": {
+    "verifyPending": "Verification Pending",
+    "verifyPendingDesc": "Provider has marked the job as completed.",
+    "waitingClient": "Waiting for the client to verify your work. If not verified within 24 hours, the job will be auto-approved.",
+    "verifyAndPay": "Verify & Release Payment",
+    "openDispute": "Open Dispute",
+    "jobCompleted": "Job Completed",
+    "paymentProcessed": "Payment has been processed successfully.",
+    "workProofProvider": "Provider Proof",
+    "workProofClient": "Client Proof",
+    "reportProblem": "Have a problem? Report dispute",
+    "disputeTitle": "Job in Dispute",
+    "disputeDesc": "The administrator will review evidence from both parties and decide on the next steps.",
+    "uploadAdditionalProof": "Upload additional proof",
+    "inProgress": "Job is in progress",
+    "inProgressDesc": "When finished, upload a photo as proof to request payment.",
+    "uploadProofAndComplete": "Upload Proof & Complete",
+    "uploading": "Uploading...",
+    "acceptJob": "Accept This Job (Provider)",
+    "confirmVerify": "Do you want to verify the completion of the work and release the payment?",
+    "backToDashboard": "Back to Dashboard",
+    "reportDispute": "Report Dispute",
+    "disputeReasonPlaceholder": "Describe the problem in detail...",
+    "submitReport": "Submit Report"
+  },
+  "servicesPage": {
+    "title": "Browse Services",
+    "searchPlaceholder": "Search for services...",
+    "allCategories": "All Categories",
+    "searchButton": "Search",
+    "noServices": "No services found",
+    "noServicesSub": "No services found matching your criteria.",
+    "loading": "Loading services...",
+    "viewDetails": "View Details",
+    "new": "New",
+    "rating": "Rating",
+    "location": "Location",
+    "becomeProviderTitle": "Do you have a skill to offer?",
+    "becomeProviderDesc": "Become part of our platform and start earning today by offering your professional services.",
+    "startNow": "Start Now"
+  },
+  "messages": {
+    "title": "Messages",
+    "select": "Select a conversation to start messaging",
+    "typePlaceholder": "Type a message...",
+    "send": "Send",
+    "unknown": "Unknown",
+    "noMessages": "Start a conversation",
+    "loading": "Loading..."
+  },
+  "settingsPage": {
+    "title": "System Settings",
+    "subtitle": "Personalize your LocalFix experience",
+    "backToDashboard": "Back to Dashboard",
+    "general": {
+      "title": "General",
+      "language": {
+        "title": "Language",
+        "desc": "Choose your interface language"
+      },
+      "appearance": {
+        "title": "Appearance",
+        "desc": "Choose between light or dark mode",
+        "system": "System (Default)",
+        "light": "Light",
+        "dark": "Dark"
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "push": {
+        "title": "Push Notifications",
+        "desc": "Get notifications on your device"
+      },
+      "sms": {
+        "title": "SMS Alerts",
+        "desc": "Urgent job notifications"
+      }
+    },
+    "save": "Save Changes",
+    "saving": "Saving...",
+    "success": "Settings updated!",
+    "error": "Error saving settings"
+  },
+  "marketplace": {
+    "title": "Product Marketplace",
+    "subtitle": "Buy and sell products in our community",
+    "searchPlaceholder": "Search for products...",
+    "allCategories": "All Categories",
+    "noProducts": "No products found",
+    "noProductsSub": "Be the first to list a product!",
+    "addProduct": "Sell a Product",
+    "myProducts": "My Products",
+    "buyNow": "Buy Now",
+    "loginToBuy": "Please login to buy.",
+    "buySuccess": "Purchase successful!",
+    "buyError": "There was a problem during purchase.",
+    "transactionError": "Transaction error.",
+    "info": "Our platform secures every transaction. Funds are held safely until the buyer receives the product.",
+    "commissionNote": "Platform takes 8% commission.",
+    "productName": "Product Name",
+    "productPrice": "Price (€)",
+    "productCategory": "Category",
+    "productDescription": "Description",
+    "productImages": "Product Images",
+    "saving": "Saving...",
+    "success": "Product added successfully!",
+    "error": "Error adding product",
+    "categories": {
+      "tools": "Tools",
+      "electronics": "Electronics",
+      "furniture": "Furniture",
+      "materials": "Building Materials",
+      "other": "Others"
+    },
+    "status": {
+      "ACTIVE": "Active",
+      "SOLD": "Sold",
+      "DELETED": "Deleted"
+    },
+    "sellerApproval": {
+      "title": "Seller Approval",
+      "pending": "Your request is pending approval by the staff.",
+      "apply": "To sell products in the marketplace, you must apply for approval.",
+      "applyBtn": "Apply to become a Seller",
+      "goBack": "Back to Marketplace"
+    }
+  },
+  "provider": {
+    "apply": "Apply as Professional",
+    "applyDesc": "Fill in your details to start offering services.",
+    "category": "Service Category",
+    "experience": "Your Experience",
+    "bio": "Professional Bio",
+    "submit": "Submit Request",
+    "sending": "Sending...",
+    "success": "Application Sent!",
+    "successDesc": "Thank you! Your request to become a professional is being reviewed. You will be notified soon."
+  }
 }

@@ -611,6 +611,7 @@
         "activeRequests": "Kërkesat Aktive",
         "refresh": "Rifresko",
         "noJobs": "Nuk ka kërkesa",
+        "noJobsFound": "Nuk u gjetën punë që përputhen me kërkimin tuaj.",
         "noJobsSub": "Jini i pari që poston një kërkesë!",
         "postFirstRequest": "Posto Kërkesën e Parë",
         "postedBy": "Postuar nga",

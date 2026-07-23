@@ -611,6 +611,7 @@
         "activeRequests": "Aktive Anfragen",
         "refresh": "Aktualisieren",
         "noJobs": "Keine Anfragen",
+        "noJobsFound": "Keine Jobs gefunden.",
         "noJobsSub": "Seien Sie der Erste, der eine Anfrage postet!",
         "postFirstRequest": "Erste Anfrage posten",
         "postedBy": "Gepostet von",
